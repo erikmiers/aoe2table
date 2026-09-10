@@ -1,0 +1,5425 @@
+[
+    {
+        "Name": "Amaom",
+        "InsightsLink": "https://www.aoe2insights.com/user/5496346/",
+        "LeagueID": "2326767053226268671",
+        "ToornamentProfile": "6562850023300268032"
+    },
+    {
+        "Name": "[AoT]DerPhysiker",
+        "InsightsLink": "https://www.aoe2insights.com/user/2413814/",
+        "LeagueID": "2337623415678838783",
+        "ToornamentProfile": "2337591866643099647"
+    },
+    {
+        "Name": "Breznsoiza",
+        "InsightsLink": "https://www.aoe2insights.com/user/5826400/",
+        "LeagueID": "2334055969868431359",
+        "ToornamentProfile": ""
+    },
+    {
+        "Name": "Bumpi",
+        "InsightsLink": "https://www.aoe2insights.com/user/1042044/",
+        "LeagueID": "2336595155083216895",
+        "ToornamentProfile": "8015330105445400576"
+    },
+    {
+        "Name": "butterbrotjunky",
+        "InsightsLink": "https://www.aoe2insights.com/user/2148050/",
+        "LeagueID": "2338413786039197695",
+        "ToornamentProfile": "6045678077947715584",
+        "Elo1v1": 1028,
+        "Ath1v1": 1391,
+        "EloTeam": 1220,
+        "AthTeam": 1369,
+        "Image": "https://www.aoe2insights.com/static/images/no-avatar.619914ab8f8d.svg",
+        "Civs1v1": [
+            {
+                "Name": "Mongols",
+                "Matches": "10",
+                "Wins": "8",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "9",
+                "Wins": "7",
+                "Rate": 77.8
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "14",
+                "Wins": "10",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "30",
+                "Wins": "20",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "18",
+                "Wins": "12",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "14",
+                "Wins": "9",
+                "Rate": 64.3
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "11",
+                "Wins": "7",
+                "Rate": 63.6
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "16",
+                "Wins": "10",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "18",
+                "Wins": "11",
+                "Rate": 61.1
+            },
+            {
+                "Name": "Franks",
+                "Matches": "15",
+                "Wins": "9",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Malians",
+                "Matches": "22",
+                "Wins": "13",
+                "Rate": 59.1
+            },
+            {
+                "Name": "Incas",
+                "Matches": "24",
+                "Wins": "14",
+                "Rate": 58.3
+            },
+            {
+                "Name": "Turks",
+                "Matches": "9",
+                "Wins": "5",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "18",
+                "Wins": "10",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Celts",
+                "Matches": "18",
+                "Wins": "10",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "26",
+                "Wins": "14",
+                "Rate": 53.8
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "13",
+                "Wins": "7",
+                "Rate": 53.8
+            },
+            {
+                "Name": "Goths",
+                "Matches": "17",
+                "Wins": "9",
+                "Rate": 52.9
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "22",
+                "Wins": "11",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "16",
+                "Wins": "8",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "12",
+                "Wins": "6",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "8",
+                "Wins": "4",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "20",
+                "Wins": "10",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "37",
+                "Wins": "18",
+                "Rate": 48.6
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "15",
+                "Wins": "7",
+                "Rate": 46.7
+            },
+            {
+                "Name": "Poles",
+                "Matches": "22",
+                "Wins": "10",
+                "Rate": 45.5
+            },
+            {
+                "Name": "Britons",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "25",
+                "Wins": "11",
+                "Rate": 44.0
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "14",
+                "Wins": "6",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "19",
+                "Wins": "8",
+                "Rate": 42.1
+            },
+            {
+                "Name": "Romans",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "17",
+                "Wins": "7",
+                "Rate": 41.2
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "13",
+                "Wins": "5",
+                "Rate": 38.5
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "26",
+                "Wins": "10",
+                "Rate": 38.5
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "13",
+                "Wins": "5",
+                "Rate": 38.5
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "25",
+                "Wins": "9",
+                "Rate": 36.0
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "6",
+                "Wins": "2",
+                "Rate": 33.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "12",
+                "Wins": "4",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "16",
+                "Wins": "5",
+                "Rate": 31.3
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "10",
+                "Wins": "3",
+                "Rate": 30.0
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "20",
+                "Wins": "6",
+                "Rate": 30.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "27",
+                "Wins": "7",
+                "Rate": 25.9
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Berbers",
+                "Matches": "15",
+                "Wins": "12",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Romans",
+                "Matches": "5",
+                "Wins": "4",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "8",
+                "Wins": "6",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "10",
+                "Wins": "7",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "16",
+                "Wins": "11",
+                "Rate": 68.8
+            },
+            {
+                "Name": "Italians",
+                "Matches": "19",
+                "Wins": "13",
+                "Rate": 68.4
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "18",
+                "Wins": "12",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "20",
+                "Wins": "13",
+                "Rate": 65.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "20",
+                "Wins": "12",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Franks",
+                "Matches": "25",
+                "Wins": "15",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "12",
+                "Wins": "7",
+                "Rate": 58.3
+            },
+            {
+                "Name": "Goths",
+                "Matches": "19",
+                "Wins": "11",
+                "Rate": 57.9
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "38",
+                "Wins": "22",
+                "Rate": 57.9
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "14",
+                "Wins": "8",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "14",
+                "Wins": "8",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "28",
+                "Wins": "16",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Malians",
+                "Matches": "16",
+                "Wins": "9",
+                "Rate": 56.3
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "22",
+                "Wins": "12",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "19",
+                "Wins": "10",
+                "Rate": 52.6
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "25",
+                "Wins": "13",
+                "Rate": 52.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "29",
+                "Wins": "15",
+                "Rate": 51.7
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "12",
+                "Wins": "6",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Britons",
+                "Matches": "16",
+                "Wins": "8",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "23",
+                "Wins": "11",
+                "Rate": 47.8
+            },
+            {
+                "Name": "Persians",
+                "Matches": "24",
+                "Wins": "11",
+                "Rate": 45.8
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "24",
+                "Wins": "11",
+                "Rate": 45.8
+            },
+            {
+                "Name": "Turks",
+                "Matches": "25",
+                "Wins": "11",
+                "Rate": 44.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "16",
+                "Wins": "7",
+                "Rate": 43.8
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "7",
+                "Wins": "3",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "17",
+                "Wins": "7",
+                "Rate": 41.2
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "10",
+                "Wins": "4",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "29",
+                "Wins": "11",
+                "Rate": 37.9
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "16",
+                "Wins": "6",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "19",
+                "Wins": "7",
+                "Rate": 36.8
+            },
+            {
+                "Name": "Incas",
+                "Matches": "19",
+                "Wins": "6",
+                "Rate": 31.6
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "10",
+                "Wins": "3",
+                "Rate": 30.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "7",
+                "Wins": "2",
+                "Rate": 28.6
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Poles",
+                "Matches": "13",
+                "Wins": "3",
+                "Rate": 23.1
+            },
+            {
+                "Name": "Celts",
+                "Matches": "15",
+                "Wins": "3",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "16",
+                "Wins": "3",
+                "Rate": 18.8
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "7",
+                "Wins": "1",
+                "Rate": 14.3
+            },
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Golden Swamp",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Mired",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Baltic",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Shoals",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Highland",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Serengeti",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Acropolis",
+                "Matches": "6",
+                "Wins": "5",
+                "Rate": 83.3
+            },
+            {
+                "Name": "Golden Pit",
+                "Matches": "11",
+                "Wins": "9",
+                "Rate": 81.8
+            },
+            {
+                "Name": "Yucatan",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Land Nomad",
+                "Matches": "29",
+                "Wins": "21",
+                "Rate": 72.4
+            },
+            {
+                "Name": "Scandinavia",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "17",
+                "Wins": "11",
+                "Rate": 64.7
+            },
+            {
+                "Name": "Islands",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Nomad",
+                "Matches": "47",
+                "Wins": "27",
+                "Rate": 57.4
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Lowland",
+                "Matches": "9",
+                "Wins": "5",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Fortress",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Runestones",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Valley",
+                "Matches": "16",
+                "Wins": "8",
+                "Rate": 50.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Coastal",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Atacama",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Black Forest",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "African Clearing",
+                "Matches": "33",
+                "Wins": "16",
+                "Rate": 48.5
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "180",
+                "Wins": "87",
+                "Rate": 48.3
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "32",
+                "Wins": "15",
+                "Rate": 46.9
+            },
+            {
+                "Name": "Arena",
+                "Matches": "202",
+                "Wins": "90",
+                "Rate": 44.6
+            },
+            {
+                "Name": "Hideout",
+                "Matches": "30",
+                "Wins": "13",
+                "Rate": 43.3
+            },
+            {
+                "Name": "Ghost Lake",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Haboob",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "12",
+                "Wins": "3",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Migration",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Acclivity",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Oasis",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Socotra",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Kilimanjaro",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Salt Marsh",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Prairie",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bogland",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Hill Fort",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Team Islands",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Land Madness",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Continental",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "Butti",
+        "InsightsLink": "https://www.aoe2insights.com/user/722216/",
+        "LeagueID": "2335137163755235327",
+        "ToornamentProfile": "2335112162693179391",
+        "Elo1v1": 1202,
+        "Ath1v1": 1401,
+        "EloTeam": 1135,
+        "AthTeam": 1227,
+        "Image": "https://www.aoe2insights.com/static/images/no-avatar.619914ab8f8d.svg",
+        "Civs1v1": [
+            {
+                "Name": "Malay",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "100",
+                "Wins": "57",
+                "Rate": 57.0
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "214",
+                "Wins": "112",
+                "Rate": 52.3
+            },
+            {
+                "Name": "Persians",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "20",
+                "Wins": "10",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "104",
+                "Wins": "48",
+                "Rate": 46.2
+            },
+            {
+                "Name": "Turks",
+                "Matches": "12",
+                "Wins": "4",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Huns",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Britons",
+                "Matches": "9",
+                "Wins": "7",
+                "Rate": 77.8
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "8",
+                "Wins": "6",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "19",
+                "Wins": "14",
+                "Rate": 73.7
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "7",
+                "Wins": "5",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "7",
+                "Wins": "5",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "7",
+                "Wins": "5",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "13",
+                "Wins": "9",
+                "Rate": 69.2
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "12",
+                "Wins": "8",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Turks",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Italians",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "17",
+                "Wins": "11",
+                "Rate": 64.7
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "16",
+                "Wins": "10",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "15",
+                "Wins": "9",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "12",
+                "Wins": "7",
+                "Rate": 58.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Wei",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "16",
+                "Wins": "9",
+                "Rate": 56.3
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "9",
+                "Wins": "5",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "26",
+                "Wins": "14",
+                "Rate": 53.8
+            },
+            {
+                "Name": "Franks",
+                "Matches": "17",
+                "Wins": "9",
+                "Rate": 52.9
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "14",
+                "Wins": "7",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "13",
+                "Wins": "6",
+                "Rate": 46.2
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "7",
+                "Wins": "3",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Goths",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Poles",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "18",
+                "Wins": "7",
+                "Rate": 38.9
+            },
+            {
+                "Name": "Malay",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Malians",
+                "Matches": "11",
+                "Wins": "4",
+                "Rate": 36.4
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "6",
+                "Wins": "2",
+                "Rate": 33.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "7",
+                "Wins": "2",
+                "Rate": 28.6
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "13",
+                "Wins": "3",
+                "Rate": 23.1
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "9",
+                "Wins": "2",
+                "Rate": 22.2
+            },
+            {
+                "Name": "Wu",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "10",
+                "Wins": "2",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "6",
+                "Wins": "1",
+                "Rate": 16.7
+            },
+            {
+                "Name": "Romans",
+                "Matches": "6",
+                "Wins": "1",
+                "Rate": 16.7
+            },
+            {
+                "Name": "Celts",
+                "Matches": "10",
+                "Wins": "1",
+                "Rate": 10.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Kawasan",
+                "Matches": "6",
+                "Wins": "6",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Runestones",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Acropolis",
+                "Matches": "7",
+                "Wins": "6",
+                "Rate": 85.7
+            },
+            {
+                "Name": "Prairie",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Cenotes",
+                "Matches": "7",
+                "Wins": "5",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Black Forest",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "33",
+                "Wins": "20",
+                "Rate": 60.6
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "326",
+                "Wins": "168",
+                "Rate": 51.5
+            },
+            {
+                "Name": "Socotra",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Frigid Lake",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Fortified Clearing",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Mongolia",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Land Nomad",
+                "Matches": "7",
+                "Wins": "3",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Land Madness",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "African Clearing",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Arena",
+                "Matches": "21",
+                "Wins": "6",
+                "Rate": 28.6
+            },
+            {
+                "Name": "Hideout",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Hill Fort",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Nomad",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Haboob",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Kilimanjaro",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "canttouchme",
+        "InsightsLink": "https://www.aoe2insights.com/user/1965270/",
+        "LeagueID": "2321287616852473855",
+        "ToornamentProfile": ""
+    },
+    {
+        "Name": "canuck54",
+        "InsightsLink": "https://www.aoe2insights.com/user/1783740/",
+        "LeagueID": "2315879104413708287",
+        "ToornamentProfile": "3562379440336568320"
+    },
+    {
+        "Name": "CaptainMorgan",
+        "InsightsLink": "https://www.aoe2insights.com/user/4850356/",
+        "LeagueID": "2337621665157664767",
+        "ToornamentProfile": "7229892643868704768"
+    },
+    {
+        "Name": "Chainy555",
+        "InsightsLink": "https://www.aoe2insights.com/user/6676580/",
+        "LeagueID": "2323424284128253951",
+        "ToornamentProfile": "5915361077003632640"
+    },
+    {
+        "Name": "chelbird",
+        "InsightsLink": "https://www.aoe2insights.com/user/2543478/",
+        "LeagueID": "2326227123586447359",
+        "ToornamentProfile": "4816435207159128064"
+    },
+    {
+        "Name": "Clemi",
+        "InsightsLink": "https://www.aoe2insights.com/user/4240344/",
+        "LeagueID": "2338386527384387583",
+        "ToornamentProfile": "2338034865186068479"
+    },
+    {
+        "Name": "_Critic4L_",
+        "InsightsLink": "https://www.aoe2insights.com/user/697710/",
+        "LeagueID": "2331771420870533119",
+        "ToornamentProfile": "2331578829844588543"
+    },
+    {
+        "Name": "CrunkerShice ",
+        "InsightsLink": "https://www.aoe2insights.com/user/4654963/",
+        "LeagueID": "2326429539403589631",
+        "ToornamentProfile": "7081005671565484032"
+    },
+    {
+        "Name": "Dayjay",
+        "InsightsLink": "https://www.aoe2insights.com/user/42359/",
+        "LeagueID": "2315915406008262655",
+        "ToornamentProfile": "3645230024677482496"
+    },
+    {
+        "Name": "DerHausmeister",
+        "InsightsLink": "https://www.aoe2insights.com/user/224851/",
+        "LeagueID": "2326769361613496319",
+        "ToornamentProfile": "3535502219504812032"
+    },
+    {
+        "Name": "Drachyr",
+        "InsightsLink": "https://www.aoe2insights.com/user/516518/",
+        "LeagueID": "2337621654305218559",
+        "ToornamentProfile": "5794930268554493952"
+    },
+    {
+        "Name": "dummgl\u00fccklich",
+        "InsightsLink": "https://www.aoe2insights.com/user/3009689/",
+        "LeagueID": "2332515400550205439",
+        "ToornamentProfile": "6321948873995476992"
+    },
+    {
+        "Name": "EdricSturm",
+        "InsightsLink": "https://www.aoe2insights.com/user/1467023/",
+        "LeagueID": "2328602558315661311",
+        "ToornamentProfile": "5056829266949201920"
+    },
+    {
+        "Name": "El Blugo",
+        "InsightsLink": "https://www.aoe2insights.com/user/5488135/",
+        "LeagueID": "2316949272563970047",
+        "ToornamentProfile": "2316939629090537471"
+    },
+    {
+        "Name": "eriksamuel",
+        "InsightsLink": "https://www.aoe2insights.com/user/5208140/",
+        "LeagueID": "2338390008243918847",
+        "ToornamentProfile": "2318183168276072447"
+    },
+    {
+        "Name": "fanalhb",
+        "InsightsLink": "https://www.aoe2insights.com/user/452987/",
+        "LeagueID": "2320327614743265279",
+        "ToornamentProfile": "4411489665760329728"
+    },
+    {
+        "Name": "FaultierNosta",
+        "InsightsLink": "https://www.aoe2insights.com/user/4853138/",
+        "LeagueID": "2327449239820478463",
+        "ToornamentProfile": "2293697142030915583"
+    },
+    {
+        "Name": "Gleipdonir",
+        "InsightsLink": "https://www.aoe2insights.com/user/429778/",
+        "LeagueID": "2332874042270291967",
+        "ToornamentProfile": "4934005533084164096"
+    },
+    {
+        "Name": "GrindyFox Replays",
+        "InsightsLink": "https://www.aoe2insights.com/user/11906924/",
+        "LeagueID": "2334055981561645055",
+        "ToornamentProfile": "8016098586130776064"
+    },
+    {
+        "Name": "Hannes77",
+        "InsightsLink": "https://www.aoe2insights.com/user/1883963/",
+        "LeagueID": "2324802758599047167",
+        "ToornamentProfile": "4374449701858320384",
+        "Image": "https://www.aoe2insights.com/static/images/no-avatar.619914ab8f8d.svg",
+        "Elo1v1": 1392,
+        "Ath1v1": 1542,
+        "EloTeam": 1400,
+        "AthTeam": 2332,
+        "Civs1v1": [
+            {
+                "Name": "Khitans",
+                "Matches": "9",
+                "Wins": "7",
+                "Rate": 77.8
+            },
+            {
+                "Name": "Franks",
+                "Matches": "59",
+                "Wins": "39",
+                "Rate": 66.1
+            },
+            {
+                "Name": "Goths",
+                "Matches": "104",
+                "Wins": "62",
+                "Rate": 59.6
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "84",
+                "Wins": "50",
+                "Rate": 59.5
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "76",
+                "Wins": "45",
+                "Rate": 59.2
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "50",
+                "Wins": "29",
+                "Rate": 58.0
+            },
+            {
+                "Name": "Celts",
+                "Matches": "52",
+                "Wins": "30",
+                "Rate": 57.7
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "39",
+                "Wins": "22",
+                "Rate": 56.4
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "71",
+                "Wins": "40",
+                "Rate": 56.3
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "57",
+                "Wins": "32",
+                "Rate": 56.1
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "59",
+                "Wins": "33",
+                "Rate": 55.9
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "43",
+                "Wins": "24",
+                "Rate": 55.8
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "45",
+                "Wins": "25",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "45",
+                "Wins": "25",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "83",
+                "Wins": "46",
+                "Rate": 55.4
+            },
+            {
+                "Name": "Romans",
+                "Matches": "31",
+                "Wins": "17",
+                "Rate": 54.8
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "47",
+                "Wins": "25",
+                "Rate": 53.2
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "91",
+                "Wins": "48",
+                "Rate": 52.7
+            },
+            {
+                "Name": "Britons",
+                "Matches": "46",
+                "Wins": "24",
+                "Rate": 52.2
+            },
+            {
+                "Name": "Poles",
+                "Matches": "56",
+                "Wins": "29",
+                "Rate": 51.8
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "85",
+                "Wins": "44",
+                "Rate": 51.8
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "41",
+                "Wins": "21",
+                "Rate": 51.2
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "43",
+                "Wins": "22",
+                "Rate": 51.2
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "45",
+                "Wins": "23",
+                "Rate": 51.1
+            },
+            {
+                "Name": "Incas",
+                "Matches": "47",
+                "Wins": "24",
+                "Rate": 51.1
+            },
+            {
+                "Name": "Turks",
+                "Matches": "56",
+                "Wins": "27",
+                "Rate": 48.2
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "50",
+                "Wins": "24",
+                "Rate": 48.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "64",
+                "Wins": "30",
+                "Rate": 46.9
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "30",
+                "Wins": "14",
+                "Rate": 46.7
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "41",
+                "Wins": "19",
+                "Rate": 46.3
+            },
+            {
+                "Name": "Huns",
+                "Matches": "44",
+                "Wins": "20",
+                "Rate": 45.5
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "40",
+                "Wins": "18",
+                "Rate": 45.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "47",
+                "Wins": "21",
+                "Rate": 44.7
+            },
+            {
+                "Name": "Indians",
+                "Matches": "16",
+                "Wins": "7",
+                "Rate": 43.8
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "44",
+                "Wins": "19",
+                "Rate": 43.2
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "21",
+                "Wins": "9",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "47",
+                "Wins": "20",
+                "Rate": 42.6
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "66",
+                "Wins": "28",
+                "Rate": 42.4
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "52",
+                "Wins": "22",
+                "Rate": 42.3
+            },
+            {
+                "Name": "Malians",
+                "Matches": "45",
+                "Wins": "19",
+                "Rate": 42.2
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "62",
+                "Wins": "26",
+                "Rate": 41.9
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "48",
+                "Wins": "20",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "47",
+                "Wins": "19",
+                "Rate": 40.4
+            },
+            {
+                "Name": "Persians",
+                "Matches": "65",
+                "Wins": "26",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "52",
+                "Wins": "20",
+                "Rate": 38.5
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "46",
+                "Wins": "16",
+                "Rate": 34.8
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "9",
+                "Wins": "3",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Wu",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "4",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Georgians",
+                "Matches": "10",
+                "Wins": "7",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "59",
+                "Wins": "39",
+                "Rate": 66.1
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "47",
+                "Wins": "31",
+                "Rate": 66.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "39",
+                "Wins": "25",
+                "Rate": 64.1
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "38",
+                "Wins": "24",
+                "Rate": 63.2
+            },
+            {
+                "Name": "Malay",
+                "Matches": "53",
+                "Wins": "32",
+                "Rate": 60.4
+            },
+            {
+                "Name": "Shu",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "66",
+                "Wins": "39",
+                "Rate": 59.1
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "61",
+                "Wins": "36",
+                "Rate": 59.0
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "77",
+                "Wins": "44",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Incas",
+                "Matches": "45",
+                "Wins": "25",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "35",
+                "Wins": "19",
+                "Rate": 54.3
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "59",
+                "Wins": "32",
+                "Rate": 54.2
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "41",
+                "Wins": "22",
+                "Rate": 53.7
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "41",
+                "Wins": "22",
+                "Rate": 53.7
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "116",
+                "Wins": "60",
+                "Rate": 51.7
+            },
+            {
+                "Name": "Persians",
+                "Matches": "66",
+                "Wins": "34",
+                "Rate": 51.5
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "45",
+                "Wins": "23",
+                "Rate": 51.1
+            },
+            {
+                "Name": "Italians",
+                "Matches": "49",
+                "Wins": "25",
+                "Rate": 51.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "55",
+                "Wins": "28",
+                "Rate": 50.9
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "57",
+                "Wins": "29",
+                "Rate": 50.9
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "67",
+                "Wins": "34",
+                "Rate": 50.7
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "22",
+                "Wins": "11",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "32",
+                "Wins": "16",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Malians",
+                "Matches": "44",
+                "Wins": "22",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Wu",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "67",
+                "Wins": "33",
+                "Rate": 49.3
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "63",
+                "Wins": "31",
+                "Rate": 49.2
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "55",
+                "Wins": "27",
+                "Rate": 49.1
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "99",
+                "Wins": "48",
+                "Rate": 48.5
+            },
+            {
+                "Name": "Huns",
+                "Matches": "56",
+                "Wins": "27",
+                "Rate": 48.2
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "52",
+                "Wins": "25",
+                "Rate": 48.1
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "73",
+                "Wins": "35",
+                "Rate": 47.9
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "76",
+                "Wins": "36",
+                "Rate": 47.4
+            },
+            {
+                "Name": "Poles",
+                "Matches": "32",
+                "Wins": "15",
+                "Rate": 46.9
+            },
+            {
+                "Name": "Britons",
+                "Matches": "79",
+                "Wins": "37",
+                "Rate": 46.8
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "51",
+                "Wins": "23",
+                "Rate": 45.1
+            },
+            {
+                "Name": "Romans",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "65",
+                "Wins": "28",
+                "Rate": 43.1
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "33",
+                "Wins": "14",
+                "Rate": 42.4
+            },
+            {
+                "Name": "Turks",
+                "Matches": "85",
+                "Wins": "36",
+                "Rate": 42.4
+            },
+            {
+                "Name": "Franks",
+                "Matches": "113",
+                "Wins": "46",
+                "Rate": 40.7
+            },
+            {
+                "Name": "Celts",
+                "Matches": "56",
+                "Wins": "22",
+                "Rate": 39.3
+            },
+            {
+                "Name": "Indians",
+                "Matches": "21",
+                "Wins": "8",
+                "Rate": 38.1
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "21",
+                "Wins": "8",
+                "Rate": 38.1
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "37",
+                "Wins": "14",
+                "Rate": 37.8
+            },
+            {
+                "Name": "Wei",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "23",
+                "Wins": "7",
+                "Rate": 30.4
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Mongolia",
+                "Matches": "4",
+                "Wins": "4",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Land Madness",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Prairie",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Fortified Clearing",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Wade",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Graveyards",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Glade",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Lowland",
+                "Matches": "8",
+                "Wins": "6",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Islands",
+                "Matches": "19",
+                "Wins": "14",
+                "Rate": 73.7
+            },
+            {
+                "Name": "Golden Swamp",
+                "Matches": "18",
+                "Wins": "13",
+                "Rate": 72.2
+            },
+            {
+                "Name": "Atacama",
+                "Matches": "16",
+                "Wins": "11",
+                "Rate": 68.8
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "73",
+                "Wins": "49",
+                "Rate": 67.1
+            },
+            {
+                "Name": "Yucatan",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Budapest",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Acropolis",
+                "Matches": "23",
+                "Wins": "15",
+                "Rate": 65.2
+            },
+            {
+                "Name": "Baltic",
+                "Matches": "13",
+                "Wins": "8",
+                "Rate": 61.5
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "26",
+                "Wins": "16",
+                "Rate": 61.5
+            },
+            {
+                "Name": "Runestones",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Hideout",
+                "Matches": "71",
+                "Wins": "42",
+                "Rate": 59.2
+            },
+            {
+                "Name": "Team Islands",
+                "Matches": "12",
+                "Wins": "7",
+                "Rate": 58.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Valley",
+                "Matches": "19",
+                "Wins": "11",
+                "Rate": 57.9
+            },
+            {
+                "Name": "Golden Pit",
+                "Matches": "33",
+                "Wins": "19",
+                "Rate": 57.6
+            },
+            {
+                "Name": "Arena",
+                "Matches": "565",
+                "Wins": "302",
+                "Rate": 53.5
+            },
+            {
+                "Name": "African Clearing",
+                "Matches": "23",
+                "Wins": "12",
+                "Rate": 52.2
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "25",
+                "Wins": "13",
+                "Rate": 52.0
+            },
+            {
+                "Name": "Serengeti",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Bog Islands",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Michi",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Alpine Lakes",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Kilimanjaro",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Continental",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Cenotes",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Ghost Lake",
+                "Matches": "10",
+                "Wins": "5",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Migration",
+                "Matches": "10",
+                "Wins": "5",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Nile Delta",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Shoals",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "156",
+                "Wins": "75",
+                "Rate": 48.1
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "1004",
+                "Wins": "462",
+                "Rate": 46.0
+            },
+            {
+                "Name": "Land Nomad",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Fortress",
+                "Matches": "21",
+                "Wins": "9",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Nomad",
+                "Matches": "29",
+                "Wins": "12",
+                "Rate": 41.4
+            },
+            {
+                "Name": "Kawasan",
+                "Matches": "10",
+                "Wins": "4",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Archipelago",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Socotra",
+                "Matches": "21",
+                "Wins": "8",
+                "Rate": 38.1
+            },
+            {
+                "Name": "Hill Fort",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Water Nomad",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Haboob",
+                "Matches": "9",
+                "Wins": "3",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Black Forest",
+                "Matches": "13",
+                "Wins": "4",
+                "Rate": 30.8
+            },
+            {
+                "Name": "Acclivity",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Mediterranean",
+                "Matches": "6",
+                "Wins": "1",
+                "Rate": 16.7
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "7",
+                "Wins": "1",
+                "Rate": 14.3
+            },
+            {
+                "Name": "Amazon Tunnel",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Northern Isles",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Sherwood Forest",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Mountain Pass",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Lombardia",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Scandinavia",
+                "Matches": "4",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "heineseeki",
+        "InsightsLink": "https://www.aoe2insights.com/user/11596404/",
+        "LeagueID": "2323424653140035583",
+        "ToornamentProfile": "2297195947693381631",
+        "Image": "https://avatars.steamstatic.com/d7a588bcc60596d6ca67f6dc2c22924549c0c8d5.jpg",
+        "Elo1v1": 1315,
+        "Ath1v1": 1369,
+        "EloTeam": 1418,
+        "AthTeam": 1418,
+        "Civs1v1": [
+            {
+                "Name": "Vikings",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "5",
+                "Wins": "4",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "28",
+                "Wins": "21",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "37",
+                "Wins": "26",
+                "Rate": 70.3
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "10",
+                "Wins": "7",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Romans",
+                "Matches": "38",
+                "Wins": "26",
+                "Rate": 68.4
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Malay",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "16",
+                "Wins": "10",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Turks",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Wu",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Franks",
+                "Matches": "182",
+                "Wins": "100",
+                "Rate": 54.9
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "11",
+                "Wins": "6",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "23",
+                "Wins": "12",
+                "Rate": 52.2
+            },
+            {
+                "Name": "Persians",
+                "Matches": "12",
+                "Wins": "6",
+                "Rate": 50.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "13",
+                "Wins": "6",
+                "Rate": 46.2
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Poles",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "6",
+                "Wins": "2",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Britons",
+                "Matches": "22",
+                "Wins": "7",
+                "Rate": 31.8
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "36",
+                "Wins": "11",
+                "Rate": 30.6
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "9",
+                "Wins": "2",
+                "Rate": 22.2
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "6",
+                "Wins": "1",
+                "Rate": 16.7
+            },
+            {
+                "Name": "Incas",
+                "Matches": "4",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "4",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Wei",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "5",
+                "Wins": "5",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "7",
+                "Wins": "6",
+                "Rate": 85.7
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "14",
+                "Wins": "11",
+                "Rate": 78.6
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "10",
+                "Wins": "7",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Celts",
+                "Matches": "13",
+                "Wins": "9",
+                "Rate": 69.2
+            },
+            {
+                "Name": "Malay",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Turks",
+                "Matches": "11",
+                "Wins": "7",
+                "Rate": 63.6
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Romans",
+                "Matches": "10",
+                "Wins": "6",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "14",
+                "Wins": "8",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Persians",
+                "Matches": "23",
+                "Wins": "13",
+                "Rate": 56.5
+            },
+            {
+                "Name": "Franks",
+                "Matches": "39",
+                "Wins": "22",
+                "Rate": 56.4
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "43",
+                "Wins": "24",
+                "Rate": 55.8
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "18",
+                "Wins": "10",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Malians",
+                "Matches": "15",
+                "Wins": "8",
+                "Rate": 53.3
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "19",
+                "Wins": "10",
+                "Rate": 52.6
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "21",
+                "Wins": "11",
+                "Rate": 52.4
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "23",
+                "Wins": "12",
+                "Rate": 52.2
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "18",
+                "Wins": "9",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "15",
+                "Wins": "7",
+                "Rate": 46.7
+            },
+            {
+                "Name": "Poles",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "16",
+                "Wins": "7",
+                "Rate": 43.8
+            },
+            {
+                "Name": "Britons",
+                "Matches": "24",
+                "Wins": "10",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "5",
+                "Wins": "2",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "18",
+                "Wins": "7",
+                "Rate": 38.9
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "16",
+                "Wins": "6",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "9",
+                "Wins": "3",
+                "Rate": 33.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Incas",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "13",
+                "Wins": "2",
+                "Rate": 15.4
+            },
+            {
+                "Name": "Goths",
+                "Matches": "11",
+                "Wins": "1",
+                "Rate": 9.1
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "5",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Migration",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Stranded",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Fortress",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Kawasan",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Prairie",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Valley",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Cenotes",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Nomad",
+                "Matches": "34",
+                "Wins": "25",
+                "Rate": 73.5
+            },
+            {
+                "Name": "Wade",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "423",
+                "Wins": "220",
+                "Rate": 52.0
+            },
+            {
+                "Name": "Acropolis",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Socotra",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Golden Pit",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Haboob",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Land Nomad",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Hideout",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Arena",
+                "Matches": "28",
+                "Wins": "12",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Land Madness",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Amazon Tunnel",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "5",
+                "Wins": "1",
+                "Rate": 20.0
+            },
+            {
+                "Name": "African Clearing",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "Hydira/ Sporttaucher",
+        "InsightsLink": "https://www.aoe2insights.com/user/12649379/",
+        "LeagueID": "2336999739071524863",
+        "ToornamentProfile": "5913917599252758528"
+    },
+    {
+        "Name": "Invictus SPQR",
+        "InsightsLink": "https://www.aoe2insights.com/user/488386/matches/",
+        "LeagueID": "2335529204683055103",
+        "ToornamentProfile": "8490206630801842176"
+    },
+    {
+        "Name": "iroNistiC",
+        "InsightsLink": "https://www.aoe2insights.com/user/4146680/",
+        "LeagueID": "2338388820444413951",
+        "ToornamentProfile": "2295933501959550975"
+    },
+    {
+        "Name": "Janchez",
+        "InsightsLink": "https://www.aoe2insights.com/user/5578711/",
+        "LeagueID": "2326429530796861439",
+        "ToornamentProfile": "4637175394821365760"
+    },
+    {
+        "Name": "JoJo_Baum",
+        "InsightsLink": "https://www.aoe2insights.com/user/2334926/",
+        "LeagueID": "2316195295265550335",
+        "ToornamentProfile": "6043751734461792256"
+    },
+    {
+        "Name": "keiAhnung",
+        "InsightsLink": "https://www.aoe2insights.com/user/344155/",
+        "LeagueID": "2337000628725860351",
+        "ToornamentProfile": "8562345334391169024"
+    },
+    {
+        "Name": "kelar",
+        "InsightsLink": "https://www.aoe2insights.com/user/2048591/",
+        "LeagueID": "2332876629073766399",
+        "ToornamentProfile": "4147234057713713152"
+    },
+    {
+        "Name": "Kerkermeister",
+        "InsightsLink": "https://www.aoe2insights.com/user/1453507/",
+        "LeagueID": "2337927697727490047",
+        "ToornamentProfile": "2337900634464223231"
+    },
+    {
+        "Name": "KickersEmden_aoe",
+        "InsightsLink": "https://www.aoe2insights.com/user/12227469/",
+        "LeagueID": "2316097653837867007",
+        "ToornamentProfile": "7783170401647771648"
+    },
+    {
+        "Name": "Knastfighter",
+        "InsightsLink": "https://www.aoe2insights.com/user/4095818/",
+        "LeagueID": "2332876614268590079",
+        "ToornamentProfile": "7380673437417496576"
+    },
+    {
+        "Name": "[KO19] TUCaN",
+        "InsightsLink": "https://www.aoe2insights.com/user/606523/",
+        "LeagueID": "2337835952756477951",
+        "ToornamentProfile": "4657914755794264064"
+    },
+    {
+        "Name": "Lemon",
+        "InsightsLink": "https://www.aoe2insights.com/user/12611152/",
+        "LeagueID": "2336994825679841279",
+        "ToornamentProfile": "2333609211677126655"
+    },
+    {
+        "Name": "LL ENR1CO",
+        "InsightsLink": "https://www.aoe2insights.com/user/1792891/",
+        "LeagueID": "2321691321942048767",
+        "ToornamentProfile": "7858947650924855296"
+    },
+    {
+        "Name": "LL | Han",
+        "InsightsLink": "https://www.aoe2insights.com/user/2495109/",
+        "LeagueID": "2316027510259955711",
+        "ToornamentProfile": "8890798115475775488"
+    },
+    {
+        "Name": "LL | Oerni",
+        "InsightsLink": "https://www.aoe2insights.com/user/1288707/",
+        "LeagueID": "2326767517123672063",
+        "ToornamentProfile": "8548854241372741632"
+    },
+    {
+        "Name": "Locksley",
+        "InsightsLink": "https://www.aoe2insights.com/user/4342864/",
+        "LeagueID": "2317426291759196159",
+        "ToornamentProfile": "2244958554276200447"
+    },
+    {
+        "Name": "LordMadlow",
+        "InsightsLink": "https://www.aoe2insights.com/user/4045325/",
+        "LeagueID": "2336481604536236031",
+        "ToornamentProfile": "6619572433483440128"
+    },
+    {
+        "Name": "Lukas",
+        "InsightsLink": "https://www.aoe2insights.com/user/11679134/",
+        "LeagueID": "2325301863753299967",
+        "ToornamentProfile": "2316822755442120703"
+    },
+    {
+        "Name": "m24stefan",
+        "InsightsLink": "https://www.aoe2insights.com/user/281567/",
+        "LeagueID": "2338414116649019391",
+        "ToornamentProfile": "5693969543979458560"
+    },
+    {
+        "Name": "Madeen",
+        "InsightsLink": "https://www.aoe2insights.com/user/259958/",
+        "LeagueID": "2329196536896823295",
+        "ToornamentProfile": "7662042426779967488"
+    },
+    {
+        "Name": "Makrobean",
+        "InsightsLink": "https://www.aoe2insights.com/user/2887845/",
+        "LeagueID": "2330419485904463871",
+        "ToornamentProfile": "4547446803687489536"
+    },
+    {
+        "Name": "manu_of-steel",
+        "InsightsLink": "https://www.aoe2insights.com/user/10304936/",
+        "LeagueID": "2337000949614698495",
+        "ToornamentProfile": "6268917189031043072"
+    },
+    {
+        "Name": "Mescal",
+        "InsightsLink": "https://www.aoe2insights.com/user/4853771/",
+        "LeagueID": "2338390793449885695",
+        "ToornamentProfile": "8827005606513975296"
+    },
+    {
+        "Name": "Metalmania",
+        "InsightsLink": "https://www.aoe2insights.com/user/12434787/",
+        "LeagueID": "2339321630800076799",
+        "ToornamentProfile": "8256588125633961984"
+    },
+    {
+        "Name": "[NE]Bay Araya",
+        "InsightsLink": "https://www.aoe2insights.com/user/3755897/",
+        "LeagueID": "2315921402705233919",
+        "ToornamentProfile": "7057549562238361600",
+        "Image": "https://avatars.steamstatic.com/2959e2bb9f77558ec718443a4d6d63ee5928f17f.jpg",
+        "Elo1v1": 1144,
+        "Ath1v1": 1261,
+        "EloTeam": 1196,
+        "AthTeam": 1450,
+        "Civs1v1": [
+            {
+                "Name": "Jurchens",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "4",
+                "Wins": "4",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "5",
+                "Wins": "4",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Wu",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Romans",
+                "Matches": "8",
+                "Wins": "6",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "30",
+                "Wins": "21",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "21",
+                "Wins": "14",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "19",
+                "Wins": "12",
+                "Rate": 63.2
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "24",
+                "Wins": "15",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Goths",
+                "Matches": "8",
+                "Wins": "5",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "18",
+                "Wins": "11",
+                "Rate": 61.1
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "22",
+                "Wins": "13",
+                "Rate": 59.1
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "29",
+                "Wins": "17",
+                "Rate": 58.6
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "26",
+                "Wins": "15",
+                "Rate": 57.7
+            },
+            {
+                "Name": "Turks",
+                "Matches": "21",
+                "Wins": "12",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Incas",
+                "Matches": "16",
+                "Wins": "9",
+                "Rate": 56.3
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "45",
+                "Wins": "25",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Huns",
+                "Matches": "22",
+                "Wins": "12",
+                "Rate": 54.5
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "35",
+                "Wins": "19",
+                "Rate": 54.3
+            },
+            {
+                "Name": "Italians",
+                "Matches": "26",
+                "Wins": "14",
+                "Rate": 53.8
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "38",
+                "Wins": "20",
+                "Rate": 52.6
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "19",
+                "Wins": "10",
+                "Rate": 52.6
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "69",
+                "Wins": "36",
+                "Rate": 52.2
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "28",
+                "Wins": "14",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "13",
+                "Wins": "6",
+                "Rate": 46.2
+            },
+            {
+                "Name": "Malians",
+                "Matches": "11",
+                "Wins": "5",
+                "Rate": 45.5
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "43",
+                "Wins": "19",
+                "Rate": 44.2
+            },
+            {
+                "Name": "Franks",
+                "Matches": "16",
+                "Wins": "7",
+                "Rate": 43.8
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "21",
+                "Wins": "9",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "26",
+                "Wins": "11",
+                "Rate": 42.3
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "19",
+                "Wins": "8",
+                "Rate": 42.1
+            },
+            {
+                "Name": "Britons",
+                "Matches": "31",
+                "Wins": "13",
+                "Rate": 41.9
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "46",
+                "Wins": "19",
+                "Rate": 41.3
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "10",
+                "Wins": "4",
+                "Rate": 40.0
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "13",
+                "Wins": "5",
+                "Rate": 38.5
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Persians",
+                "Matches": "17",
+                "Wins": "6",
+                "Rate": 35.3
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "18",
+                "Wins": "6",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "16",
+                "Wins": "4",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Celts",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "8",
+                "Wins": "1",
+                "Rate": 12.5
+            },
+            {
+                "Name": "Poles",
+                "Matches": "9",
+                "Wins": "1",
+                "Rate": 11.1
+            },
+            {
+                "Name": "Indians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Khitans",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "15",
+                "Wins": "14",
+                "Rate": 93.3
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "14",
+                "Wins": "11",
+                "Rate": 78.6
+            },
+            {
+                "Name": "Romans",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "14",
+                "Wins": "10",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Britons",
+                "Matches": "36",
+                "Wins": "25",
+                "Rate": 69.4
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "9",
+                "Wins": "6",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "16",
+                "Wins": "10",
+                "Rate": 62.5
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "20",
+                "Wins": "12",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "27",
+                "Wins": "16",
+                "Rate": 59.3
+            },
+            {
+                "Name": "Huns",
+                "Matches": "17",
+                "Wins": "10",
+                "Rate": 58.8
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "19",
+                "Wins": "11",
+                "Rate": 57.9
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "14",
+                "Wins": "8",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "14",
+                "Wins": "8",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "28",
+                "Wins": "16",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Poles",
+                "Matches": "18",
+                "Wins": "10",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Italians",
+                "Matches": "20",
+                "Wins": "11",
+                "Rate": 55.0
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "22",
+                "Wins": "12",
+                "Rate": 54.5
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "64",
+                "Wins": "34",
+                "Rate": 53.1
+            },
+            {
+                "Name": "Franks",
+                "Matches": "57",
+                "Wins": "30",
+                "Rate": 52.6
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "21",
+                "Wins": "11",
+                "Rate": 52.4
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "39",
+                "Wins": "20",
+                "Rate": 51.3
+            },
+            {
+                "Name": "Malians",
+                "Matches": "20",
+                "Wins": "10",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "22",
+                "Wins": "11",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "32",
+                "Wins": "16",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "16",
+                "Wins": "8",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "16",
+                "Wins": "8",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "31",
+                "Wins": "15",
+                "Rate": 48.4
+            },
+            {
+                "Name": "Turks",
+                "Matches": "23",
+                "Wins": "11",
+                "Rate": 47.8
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "13",
+                "Wins": "6",
+                "Rate": 46.2
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "11",
+                "Wins": "5",
+                "Rate": 45.5
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "14",
+                "Wins": "6",
+                "Rate": 42.9
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "19",
+                "Wins": "8",
+                "Rate": 42.1
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "24",
+                "Wins": "10",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "27",
+                "Wins": "11",
+                "Rate": 40.7
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "10",
+                "Wins": "4",
+                "Rate": 40.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "23",
+                "Wins": "9",
+                "Rate": 39.1
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "32",
+                "Wins": "11",
+                "Rate": 34.4
+            },
+            {
+                "Name": "Celts",
+                "Matches": "16",
+                "Wins": "5",
+                "Rate": 31.3
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "7",
+                "Wins": "2",
+                "Rate": 28.6
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "22",
+                "Wins": "5",
+                "Rate": 22.7
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "10",
+                "Wins": "2",
+                "Rate": 20.0
+            },
+            {
+                "Name": "Indians",
+                "Matches": "4",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Wu",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Morass",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Prairie",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Lombardia",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Scandinavia",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Fortress",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Kawasan",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Serengeti",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Cenotes",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Shoals",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Hideout",
+                "Matches": "8",
+                "Wins": "6",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "7",
+                "Wins": "5",
+                "Rate": 71.4
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "10",
+                "Wins": "7",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Golden Pit",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "14",
+                "Wins": "9",
+                "Rate": 64.3
+            },
+            {
+                "Name": "Atacama",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Valley",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "595",
+                "Wins": "315",
+                "Rate": 52.9
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "45",
+                "Wins": "23",
+                "Rate": 51.1
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "8",
+                "Wins": "4",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Frigid Lake",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Yucatan",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Golden Swamp",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Haboob",
+                "Matches": "12",
+                "Wins": "5",
+                "Rate": 41.7
+            },
+            {
+                "Name": "Arena",
+                "Matches": "141",
+                "Wins": "54",
+                "Rate": 38.3
+            },
+            {
+                "Name": "Nomad",
+                "Matches": "19",
+                "Wins": "7",
+                "Rate": 36.8
+            },
+            {
+                "Name": "African Clearing",
+                "Matches": "9",
+                "Wins": "3",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Lowland",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Acclivity",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Murkwood",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Coastal Forest",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Pacific Islands",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Acropolis",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Salt Marsh",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Black Forest",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "[NE]Darky",
+        "InsightsLink": "https://www.aoe2insights.com/user/3755936/",
+        "LeagueID": "2316194842827870207",
+        "ToornamentProfile": "7858784747692277760",
+        "Image": "https://avatars.steamstatic.com/177a1aeb1198b13f236464dfc55272d6c9883f27.jpg",
+        "Elo1v1": 1088,
+        "Ath1v1": 1136,
+        "EloTeam": 1218,
+        "AthTeam": 1541,
+        "Civs1v1": [
+            {
+                "Name": "Koreans",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "5",
+                "Wins": "4",
+                "Rate": 80.0
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "18",
+                "Wins": "10",
+                "Rate": 55.6
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Turks",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Romans",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Poles",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Turks",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Celts",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Franks",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Britons",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Romans",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "4",
+                "Wins": "1",
+                "Rate": 25.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Malians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Fortified Clearing",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Atacama",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Glade",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Four Lakes",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "8",
+                "Wins": "4",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "29",
+                "Wins": "13",
+                "Rate": 44.8
+            },
+            {
+                "Name": "Arena",
+                "Matches": "8",
+                "Wins": "3",
+                "Rate": 37.5
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Ghost Lake",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": " OIDA | .#sILVER",
+        "InsightsLink": "https://www.aoe2insights.com/user/5637894/",
+        "LeagueID": "2334799739118477311",
+        "ToornamentProfile": "4571725746866036736"
+    },
+    {
+        "Name": "OIDA | Tasty ",
+        "InsightsLink": "https://www.aoe2insights.com/user/4741867/",
+        "LeagueID": "2317372161020626943",
+        "ToornamentProfile": "5394674526748246016"
+    },
+    {
+        "Name": "Olli90",
+        "InsightsLink": "https://www.aoe2insights.com/user/1870017/",
+        "LeagueID": "2338418402852605951",
+        "ToornamentProfile": ""
+    },
+    {
+        "Name": "peatschmo",
+        "InsightsLink": "https://aoe2insights.com/user/2353404/",
+        "LeagueID": "2338415917484191743",
+        "ToornamentProfile": "2334387990069929983"
+    },
+    {
+        "Name": "Promiskuitiv",
+        "InsightsLink": "https://www.aoe2insights.com/user/59600/",
+        "LeagueID": "2336997517232052223",
+        "ToornamentProfile": "6850199825605959680"
+    },
+    {
+        "Name": "Pumbaa Jr.",
+        "InsightsLink": "https://www.aoe2insights.com/user/841156/",
+        "LeagueID": "2334762565368541183",
+        "ToornamentProfile": "2334359533252159487"
+    },
+    {
+        "Name": "Reaper552",
+        "InsightsLink": "https://www.aoe2insights.com/user/4923044/",
+        "LeagueID": "2316027590146277375",
+        "ToornamentProfile": "6596615597271474176"
+    },
+    {
+        "Name": "rennlowe_aoe",
+        "InsightsLink": "https://www.aoe2insights.com/user/12320226/",
+        "LeagueID": "2328254305751912447",
+        "ToornamentProfile": "7421586505095380992"
+    },
+    {
+        "Name": "rOb",
+        "InsightsLink": "https://www.aoe2insights.com/user/836594/",
+        "LeagueID": "2316038816217772031",
+        "ToornamentProfile": "3785502413080150016"
+    },
+    {
+        "Name": "Samuel02",
+        "InsightsLink": "https://www.aoe2insights.com/search/?q=LM+%7C+Samu/",
+        "LeagueID": "2338416205280612351",
+        "ToornamentProfile": "7711511882591240192"
+    },
+    {
+        "Name": "Scol1ng",
+        "InsightsLink": "https://www.aoe2insights.com/user/6003640/",
+        "LeagueID": "2327449250808520703",
+        "ToornamentProfile": "8585636119813054464"
+    },
+    {
+        "Name": "SC-Quatorze",
+        "InsightsLink": "https://www.aoe2insights.com/user/2115740/",
+        "LeagueID": "2316843914046507007",
+        "ToornamentProfile": "6557146444530024448"
+    },
+    {
+        "Name": "SirFreddi",
+        "InsightsLink": "https://www.aoe2insights.com/user/4680289/",
+        "LeagueID": "2318787555507671039",
+        "ToornamentProfile": "6541201486047010816"
+    },
+    {
+        "Name": "SvenVonE",
+        "InsightsLink": "https://www.aoe2insights.com/user/952946/",
+        "LeagueID": "2317621090130679807",
+        "ToornamentProfile": "2296023311319158783",
+        "Image": "https://avatars.steamstatic.com/8dfe278c7493b6984540e57ecd57b791df13841e.jpg",
+        "Elo1v1": 1325,
+        "Ath1v1": 1329,
+        "EloTeam": 1375,
+        "AthTeam": 1470,
+        "Civs1v1": [
+            {
+                "Name": "Spanish",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Franks",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "11",
+                "Wins": "8",
+                "Rate": 72.7
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "20",
+                "Wins": "14",
+                "Rate": 70.0
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "21",
+                "Wins": "14",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Vikings",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "8",
+                "Wins": "4",
+                "Rate": 50.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Romans",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Britons",
+                "Matches": "9",
+                "Wins": "2",
+                "Rate": 22.2
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Celts",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Malay",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Malians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "CivsOp1v1": [
+            {
+                "Name": "Celts",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Burmese",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Dravidians",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Mayans",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Georgians",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Poles",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Tatars",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Bohemians",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Berbers",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Chinese",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Byzantines",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Lithuanians",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Wei",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Britons",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Teutons",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Turks",
+                "Matches": "4",
+                "Wins": "3",
+                "Rate": 75.0
+            },
+            {
+                "Name": "Burgundians",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Bulgarians",
+                "Matches": "6",
+                "Wins": "4",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Franks",
+                "Matches": "9",
+                "Wins": "6",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Jurchens",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Khitans",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Khmer",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Persians",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Vietnamese",
+                "Matches": "5",
+                "Wins": "3",
+                "Rate": 60.0
+            },
+            {
+                "Name": "Mongols",
+                "Matches": "7",
+                "Wins": "4",
+                "Rate": 57.1
+            },
+            {
+                "Name": "Magyars",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Malians",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Portuguese",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Aztecs",
+                "Matches": "4",
+                "Wins": "2",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Incas",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Spanish",
+                "Matches": "6",
+                "Wins": "3",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Sicilians",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Saracens",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Koreans",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Malay",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Hindustanis",
+                "Matches": "6",
+                "Wins": "2",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Armenians",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Goths",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Wu",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Italians",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "None",
+                "Matches": "0",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Huns",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Slavs",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Bengalis",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Gurjaras",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Cumans",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Japanese",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Ethiopians",
+                "Matches": "3",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Shu",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ],
+        "Maps1v1": [
+            {
+                "Name": "Hamburger",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Fortress",
+                "Matches": "2",
+                "Wins": "2",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Stranded",
+                "Matches": "1",
+                "Wins": "1",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Steppe",
+                "Matches": "3",
+                "Wins": "3",
+                "Rate": 100.0
+            },
+            {
+                "Name": "Lowland",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Mired",
+                "Matches": "3",
+                "Wins": "2",
+                "Rate": 66.7
+            },
+            {
+                "Name": "Arena",
+                "Matches": "30",
+                "Wins": "19",
+                "Rate": 63.3
+            },
+            {
+                "Name": "Arabia",
+                "Matches": "28",
+                "Wins": "15",
+                "Rate": 53.6
+            },
+            {
+                "Name": "MegaRandom",
+                "Matches": "27",
+                "Wins": "14",
+                "Rate": 51.9
+            },
+            {
+                "Name": "Enclosed",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Glade",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Gold Rush",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Kawasan",
+                "Matches": "2",
+                "Wins": "1",
+                "Rate": 50.0
+            },
+            {
+                "Name": "Yucatan",
+                "Matches": "9",
+                "Wins": "4",
+                "Rate": 44.4
+            },
+            {
+                "Name": "Land Nomad",
+                "Matches": "3",
+                "Wins": "1",
+                "Rate": 33.3
+            },
+            {
+                "Name": "Golden Swamp",
+                "Matches": "2",
+                "Wins": "0",
+                "Rate": 0.0
+            },
+            {
+                "Name": "Golden Pit",
+                "Matches": "1",
+                "Wins": "0",
+                "Rate": 0.0
+            }
+        ]
+    },
+    {
+        "Name": "ThisDino",
+        "InsightsLink": "https://www.aoe2insights.com/user/2533089/",
+        "LeagueID": "2339321560321181695",
+        "ToornamentProfile": "5062811774461485056"
+    },
+    {
+        "Name": "Thorbo",
+        "InsightsLink": "https://www.aoe2insights.com/user/4527022/",
+        "LeagueID": "2326053624353947647",
+        "ToornamentProfile": "4222679169009836032"
+    },
+    {
+        "Name": "Toaster226",
+        "InsightsLink": "https://www.aoe2insights.com/user/1718508/",
+        "LeagueID": "2317372110802952191",
+        "ToornamentProfile": "8615293149652271104"
+    },
+    {
+        "Name": "Twtis",
+        "InsightsLink": "https://www.aoe2insights.com/user/9095150/",
+        "LeagueID": "2319483286333605887",
+        "ToornamentProfile": "8598399577109987328"
+    },
+    {
+        "Name": "Umdeuter",
+        "InsightsLink": "https://www.aoe2insights.com/user/249384/",
+        "LeagueID": "2327156801584123903",
+        "ToornamentProfile": "3946877860619001856"
+    },
+    {
+        "Name": "Vonwegen",
+        "InsightsLink": "https://www.aoe2insights.com/user/1109845/",
+        "LeagueID": "2336998601266491391",
+        "ToornamentProfile": "4801244252874326016"
+    },
+    {
+        "Name": "Waldblume",
+        "InsightsLink": "https://www.aoe2insights.com/user/717115/",
+        "LeagueID": "2315974117368434687",
+        "ToornamentProfile": "6052411547435606016"
+    },
+    {
+        "Name": "XMASTERX/&%!",
+        "InsightsLink": "https://www.aoe2insights.com/user/13114643/",
+        "LeagueID": "2338582420594577407",
+        "ToornamentProfile": ""
+    },
+    {
+        "Name": "Zera",
+        "InsightsLink": "https://www.aoe2insights.com/user/12441257/",
+        "LeagueID": "2334057932567783423",
+        "ToornamentProfile": "2327793946991103999"
+    }
+]
