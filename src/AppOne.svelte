@@ -9,8 +9,7 @@
   import { generateNextRound } from "./AppOne";
 
   const BASE_URL = import.meta.env.BASE_URL;
-  // const DATA_URL = BASE_URL + "A2GS81V1/";
-  const DATA_URL = BASE_URL + "scraper/A2GS101V1/";
+  const DATA_URL = BASE_URL + "A2GS101V1/";
 
   let players: Member[] = [];
   let stages: Stage[] = $state([]);
