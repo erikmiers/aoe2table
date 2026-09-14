@@ -15,9 +15,15 @@
 TOORNAMENT_NAME = "A2GS101V1"
 TOORNAMENT_ID = "2543429363765755903"
 
+
+# ---- APIs ----
 TOORNAMENT_API = "https://play.toornament.com/api/"
 
 WORLDSEDGE_API = "https://aoe-api.worldsedgelink.com/community/leaderboard/"
+
+A2GDRAFTS_API = "https://api.aoe2germany.de/dashboard/drafts/search?page=0&pageSize=50"
+
+
 
 LINK_TO_METADATA = "https://api.npoint.io/ff1016d44df25eed664e"
 

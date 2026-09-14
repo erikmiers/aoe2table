@@ -129,7 +129,10 @@
                                     "number": 4,
                                     "status": "completed",
                                     "playedAt": "2026-09-12T15:23:48+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "sFvaQ",
+                                        "maps": "Konga"
+                                    }
                                 },
                                 {
                                     "id": "2562654619122761657",
@@ -183,7 +186,10 @@
                                     "number": 6,
                                     "status": "completed",
                                     "playedAt": "2026-09-12T17:51:36+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "PBRFH",
+                                        "maps": "tgJuo"
+                                    }
                                 },
                                 {
                                     "id": "2562654619122761651",
@@ -1068,7 +1074,10 @@
                                     "number": 2,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T21:15:30+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "KsIAz",
+                                        "maps": "spVvw"
+                                    }
                                 },
                                 {
                                     "id": "2562655425142089657",
@@ -1095,7 +1104,10 @@
                                     "number": 3,
                                     "status": "completed",
                                     "playedAt": "2026-09-13T21:07:31+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "todDO",
+                                        "maps": "ZfTej"
+                                    }
                                 },
                                 {
                                     "id": "2562655425142089654",
@@ -1149,7 +1161,10 @@
                                     "number": 5,
                                     "status": "completed",
                                     "playedAt": "2026-09-12T18:39:39+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "KlNdv",
+                                        "maps": "UZCZp"
+                                    }
                                 },
                                 {
                                     "id": "2562655425142089648",
@@ -1203,7 +1218,10 @@
                                     "number": 7,
                                     "status": "completed",
                                     "playedAt": "2026-09-13T19:51:12+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "LWhmj",
+                                        "maps": "HNcna"
+                                    }
                                 },
                                 {
                                     "id": "2562655425142089642",
@@ -1789,7 +1807,10 @@
                                     "number": 5,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T23:08:32+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "EctYI",
+                                        "maps": "iFOec"
+                                    }
                                 },
                                 {
                                     "id": "2562655797545836452",
@@ -1924,7 +1945,10 @@
                                     "number": 10,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T19:46:18+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "ypirf",
+                                        "maps": "CFNLH"
+                                    }
                                 },
                                 {
                                     "id": "2562655797545836437",
@@ -2149,7 +2173,10 @@
                                     "number": 6,
                                     "status": "completed",
                                     "playedAt": "2026-09-13T21:03:16+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "rjjOX",
+                                        "maps": "qwfID"
+                                    }
                                 },
                                 {
                                     "id": "2567508102718304236",
@@ -3127,7 +3154,10 @@
                                     "number": 6,
                                     "status": "completed",
                                     "playedAt": "2026-09-10T19:39:30+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "ydOPz",
+                                        "maps": "TSqYd"
+                                    }
                                 },
                                 {
                                     "id": "2562656374732484525",
@@ -3154,7 +3184,10 @@
                                     "number": 7,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T21:22:49+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "xaQMu",
+                                        "maps": "TNQsO"
+                                    }
                                 },
                                 {
                                     "id": "2562656374732484522",
@@ -3208,7 +3241,10 @@
                                     "number": 9,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T16:09:10+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "ISeug",
+                                        "maps": "cAuWm"
+                                    }
                                 },
                                 {
                                     "id": "2562656374732484516",
@@ -3235,7 +3271,10 @@
                                     "number": 10,
                                     "status": "completed",
                                     "playedAt": "2026-09-13T18:55:19+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "ICQQf",
+                                        "maps": "wvOQZ"
+                                    }
                                 }
                             ]
                         }
@@ -3767,7 +3806,10 @@
                                     "number": 6,
                                     "status": "completed",
                                     "playedAt": "2026-09-11T19:20:31+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "gxAeh",
+                                        "maps": "YaHuI"
+                                    }
                                 },
                                 {
                                     "id": "2562656786806020013",
@@ -3848,7 +3890,10 @@
                                     "number": 9,
                                     "status": "completed",
                                     "playedAt": "2026-09-13T14:30:53+00:00",
-                                    "meta": {}
+                                    "meta": {
+                                        "civs": "emIRi",
+                                        "maps": "VSJuZ"
+                                    }
                                 },
                                 {
                                     "id": "2562656786806020004",

@@ -95,7 +95,12 @@ export interface Match {
     civDraft: Draft;
     mapDraft: Draft;
     games: Array<Game>;
-    meta: Object;
+    meta: MatchMeta;
+}
+
+export interface MatchMeta {
+    civs: string;
+    maps: string;
 }
 
 

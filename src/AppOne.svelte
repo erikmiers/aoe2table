@@ -5,11 +5,12 @@
   import { ConicGradient } from '@skeletonlabs/skeleton';
   import { onMount } from 'svelte';
   import { fade, slide } from 'svelte/transition';
-  import { type Member, type StatItem, type Stage, type Match, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
+  import { type Member, type StatItem, type Stage, type Match, type MatchMeta, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
   import { generateNextRound } from "./AppOne";
 
   const BASE_URL = import.meta.env.BASE_URL;
   const DATA_URL = BASE_URL + "A2GS101V1/";
+  const DEVELOPING = false;
 
   let players: Member[] = [];
   let stages: Stage[] = $state([]);
@@ -162,6 +163,13 @@
     openStage = stages[0]
   });
 
+function hasMapDraft(match: Match) {
+  let meta = match.meta
+  if ( meta.maps ) {
+    return true
+  }
+  return false
+}
 
 function checkActive(pid : string, a: any, b:any) {
   if ( hoveredRow ) {
@@ -264,6 +272,7 @@ function rowLeave() {
       </tbody>
     </table>
   </div>
+  {#if DEVELOPING }
   <div class="min-w-max">
     <table class="table table-interactive table-hover">
       <thead>
@@ -292,6 +301,7 @@ function rowLeave() {
       </tbody>
     </table>
   </div>
+  {/if}
 </div>
 
 {#if openMatch !== undefined}
@@ -303,7 +313,17 @@ function rowLeave() {
       <Avatar width="w-12" src={openMatch.opponents[0].image} initials={openMatch.opponents[0].name}/>
       <span class="text-l">{openMatch.opponents[0].name}</span>
     </div>
-    <span class="text-lg">versus</span>
+    <!-- <span class="text-lg">versus</span> -->
+    <div class="flex items-center justify-end">
+      {#if hasMapDraft(openMatch)}
+        <a href="https://aoe2cm.net/draft/{openMatch.meta.maps}" target="_blank"
+        class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Map Draft</a>
+      {/if}
+      {#if openMatch.meta.civs}
+        <a href="https://aoe2cm.net/draft/{openMatch.meta.civs}" target="_blank"
+        class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Civ Draft</a>
+      {/if}
+    </div>
     <div class="flex items-center space-x-4">
       <span class="text-l">{openMatch.opponents[1].name}</span>
       <Avatar width="w-12" src={openMatch.opponents[1].image} initials={openMatch.opponents[1].name}/>

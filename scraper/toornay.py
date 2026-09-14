@@ -82,13 +82,15 @@ import json
 import copy
 import argparse
 import logging
-import requests
+from datetime import datetime, date
+from difflib import SequenceMatcher
 
+import requests
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
 from logging_setup import setup_logging
-from config import TOORNAMENT_API, LINK_TO_METADATA, TOORNAMENT_ID, TOORNAMENT_NAME
+from config import TOORNAMENT_API, LINK_TO_METADATA, TOORNAMENT_ID, TOORNAMENT_NAME, A2GDRAFTS_API
 
 # Disable warning about f-strings in logging
 # pylint: disable=W1203
@@ -152,7 +154,7 @@ def fetch_list_from_toornament(endpoint: str, params: str, initial_range: int) -
 
 
 # ------------------------------------------------------------------------------
-def scrape_toornament() -> list:
+def scrape_toornament() -> dict:
     """
     Go through the toornament page and get all the infos
     """
@@ -317,7 +319,7 @@ def write_data(out_data):
 
 
 # ------------------------------------------------------------------------------
-def print_player(player: object):
+def print_player(player: dict):
     """Print available data of a player"""
     if not player["Name"]:
         rprint(f"[bright_blue]{'noname':<30}", end="")
@@ -428,6 +430,167 @@ def print_table(which: int):
         console.print(table)
 
     print("")
+# ------------------------------------------------------------------------------
+
+
+
+
+# ------------------------------------------------------------------------------
+def get_drafts() -> dict:
+    """Try and get the drafts from the AoE2Germany dashboard"""
+
+    try:
+        with open(DATAFILE, "r", encoding="utf-8") as json_file:
+            data = json.load(json_file)
+    except FileNotFoundError:
+        logging.error(f"Could not open toornay data file {DATAFILE}")
+        data = {}
+
+    try:
+        with open(PLAYERFILE, "r", encoding="utf-8") as player_file:
+            player_data = json.load(player_file)
+    except FileNotFoundError:
+        logging.error(f"Could not open player data file {PLAYERFILE}")
+        player_data = []
+
+    response = requests.get(A2GDRAFTS_API, timeout=5000)
+    status = response.status_code
+    if not status == 200:
+        logging.error(
+            f"Got unexpected response code: {response.status_code} "
+            f"{A2GDRAFTS_API}"
+        )
+        print()
+        return data
+    items = response.json()
+
+
+    # --------------------------------------------------------------------------
+    def get_player_name(player_id: str) -> str:
+        for player in player_data:
+            if player["LeagueID"] == player_id:
+                return player["Name"]
+        return player_id
+
+
+    # --------------------------------------------------------------------------
+    def similarity(a: str, b: str) -> float:
+        """Simple similarity score between 0 and 1."""
+        if not a or not b:
+            return 0.0
+        return SequenceMatcher(None, a.lower().strip(), b.lower().strip()).ratio()
+
+
+    # --------------------------------------------------------------------------
+    def find_draft_ids(
+        hostname: str,
+        guestname: str,
+        played_at: date | str,          # date object or "YYYY-MM-DD"
+        name_threshold: float = 0.6,    # minimum similarity to accept a name match
+        prefer_exact_date: bool = True
+    ) -> dict:
+        """
+        Find Civs and Maps draftIds for a given host/guest + date.
+        
+        Returns:
+            {
+                "Civs": "draftId" or None,
+                "Maps": "draftId" or None,
+            }
+        """
+        # Normalize played_at to a date
+        if isinstance(played_at, str):
+            played_at = datetime.fromisoformat(played_at.replace("Z", "+00:00")).date()
+        elif isinstance(played_at, datetime):
+            played_at = played_at.date()
+
+        candidates = []
+
+        for item in items["items"]:
+            # Parse created timestamp
+            created_dt = datetime.fromisoformat(item["created"].replace("Z", "+00:00"))
+            created_date = created_dt.date()
+
+            # Date filter (primary hint)
+            if prefer_exact_date and created_date != played_at:
+                continue
+
+            # Fuzzy name scores
+            host_score = max(
+                similarity(hostname, item["host"]),
+                similarity(hostname, item["guest"])   # sometimes roles are swapped
+            )
+            guest_score = max(
+                similarity(guestname, item["host"]),
+                similarity(guestname, item["guest"])
+            )
+
+            # Combined score (date already filtered)
+            combined = (host_score + guest_score) / 2
+
+            if host_score >= name_threshold and guest_score >= name_threshold:
+                candidates.append({
+                    "item": item,
+                    "host_score": host_score,
+                    "guest_score": guest_score,
+                    "combined": combined,
+                    "created_dt": created_dt
+                })
+
+        if not candidates:
+            return {"Civs": None, "Maps": None}
+
+        # Sort by best name match, then by closest time
+        candidates.sort(key=lambda c: (-c["combined"], c["created_dt"]))
+
+        # Take the best matching pair of players
+        best = candidates[0]
+        best_host = best["item"]["host"]
+        best_guest = best["item"]["guest"]
+        best_date = best["created_dt"].date()
+
+        # Now collect all drafts (Civs + Maps) for this exact host/guest + date
+        result = {
+            "Civs": None,
+            "Maps": None,
+        }
+
+        for c in candidates:
+            item = c["item"]
+            if (item["host"] == best_host and 
+                item["guest"] == best_guest and 
+                c["created_dt"].date() == best_date):
+
+                draft_type = item["draftTypeName"]
+                if draft_type in ("Civs", "Maps"):
+                    result[draft_type] = item["draftId"]
+
+        return result
+
+    for stage in data["stages"]:
+        for group in stage["groups"]:
+            for groupround in group["rounds"]:
+                for match in groupround["matches"]:
+                    if not match:
+                        continue
+                    if not match["status"] == "completed":
+                        continue
+                    if "civs" in match["meta"] or "maps" in match["meta"]:
+                        continue
+                    host_name = get_player_name(match["opponents"][0]["id"])
+                    guest_name = get_player_name(match["opponents"][1]["id"])
+                    played_at = match["playedAt"]
+                    result = find_draft_ids(host_name, guest_name, played_at)
+                    if result["Civs"]:
+                        match["meta"]["civs"] = result["Civs"]
+                    if result["Maps"]:
+                        match["meta"]["maps"] = result["Maps"]
+                    logging.info(
+                        f"Added drafts for {host_name} vs {guest_name}"
+                        f" [maps:{result["Maps"]}] [civs:{result["Civs"]}]"
+                    )
+    print("")
+    return data
 
 
 # ------------------------------------------------------------------------------
@@ -448,6 +611,8 @@ if __name__ == "__main__":
         action="store_true",
         help="Set logging output to DEBUG level",
     )
+
+    # Log level
     arg_parser.add_argument(
         "--log-level",
         choices=["INFO", "DEBUG", "WARN"],
@@ -463,6 +628,14 @@ if __name__ == "__main__":
         default="0",  # Dont show table
         help="Print a table [N] - which table", 
     )
+
+    # Display the tables
+    arg_parser.add_argument(
+        "--drafts",
+        action="store_true",
+        help="Try to find a draft link for the games",
+    )
+
     args = arg_parser.parse_args()
 
     if args.debug:
@@ -473,6 +646,14 @@ if __name__ == "__main__":
     if show_table:
         print_table(show_table)
         sys.exit(0)
+
+    
+    if args.drafts:
+        draft_data = get_drafts()
+        write_data(draft_data)
+        sys.exit(0)
+
+    
 
     toornay_data = scrape_toornament()
     if not os.path.isdir(TOORNAMENT_NAME):
