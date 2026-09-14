@@ -16,6 +16,14 @@
         "away": "TornardoBriese"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-14",
+        "time": "20:30",
+        "home": "FomerMay",
+        "away": "Mavto"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-15",
@@ -70,6 +78,14 @@
         "time": "19:30",
         "home": "OIDA | Gleipdonir",
         "away": "Wodlapato"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-19",
+        "time": "16:00",
+        "home": "Luki",
+        "away": "Mescal"
     },
     {
         "stage": "Post-Imperial Liga",
