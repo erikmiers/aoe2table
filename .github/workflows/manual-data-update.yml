@@ -27,13 +27,13 @@ jobs:
 
       - name: Copy new data files
         run: |
-          mkdir -p dist/A2GS101V1
-          cp -r main/public/A2GS101V1/* dist/A2GS101V1/
+          mkdir -p A2GS101V1
+          cp -r main/public/A2GS101V1/* A2GS101V1/
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/A2GS101V1/
+          git add A2GS101V1/
           git diff --staged --quiet || git commit -m "Update data files"
           git push origin deploy
