@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'public/A2GS101V1/**'
+      - 'scraper/**'
   workflow_dispatch:
 
 permissions:
