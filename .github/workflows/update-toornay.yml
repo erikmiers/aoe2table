@@ -1,0 +1,63 @@
+name: Daily Toornay Update
+
+on:
+  schedule:
+    # Runs once a day at 00:00 UTC (change the hour if you want a different time)
+    - cron: '0 0 * * *'
+  workflow_dispatch:          # allows manual run from the Actions tab
+
+permissions:
+  contents: write             # needed so the bot can commit & push
+
+jobs:
+  scrape-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          # Add extra packages here if the script needs them and they are not in requirements.txt
+          # pip install requests beautifulsoup4 ...
+
+      - name: Run the scraper
+        # run: python scraper/players.py
+        # If the script must run from inside the scraper folder, use:
+        working-directory: scraper
+        run: |
+          python toornay.py
+          python toornay.py --drafts
+          python matchdates.py
+
+      - name: Copy players.json to public/data
+        run: |
+          mkdir -p public/A2GS101V1
+          # Adjust the source path if the script writes the file somewhere else
+          # Common possibilities:
+          #   cp players.json public/data/players.json
+          #   cp scraper/players.json public/data/players.json
+          cp -f scraper/A2GS101V1/* public/A2GS101V1/
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          
+          # Only commit if there are actual changes
+          if git diff --staged --quiet; then
+            echo "No changes to data – nothing to commit"
+          else
+            git commit -m "chore: update data files from daily scraper"
+            git push
+          fi
