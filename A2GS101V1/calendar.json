@@ -24,6 +24,14 @@
         "away": "Mavto"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-14",
+        "time": "20:30",
+        "home": "iroNistiC",
+        "away": "Therealdrzock"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-15",
@@ -48,12 +56,28 @@
         "away": "OIDA | Brix"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-16",
+        "time": "20:00",
+        "home": "Storm",
+        "away": "[GER] Paeco"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-16",
         "time": "20:30",
         "home": "H\u00f6\u00dfi",
         "away": "Lukas"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-16",
+        "time": "20:30",
+        "home": "ThisDino",
+        "away": "JoJo_Baum"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -70,6 +94,14 @@
         "time": "20:15",
         "home": "Toaster226",
         "away": "KickersEmden_aoe"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-18",
+        "time": "18:00",
+        "home": "Madeen",
+        "away": "Schwenkii"
     },
     {
         "stage": "Ritter Liga",
@@ -94,5 +126,13 @@
         "time": "20:00",
         "home": "LL | ENR1CO",
         "away": "OIDA | onkyox"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "20:00",
+        "home": "MaggieWuerze",
+        "away": "LL | SC-Quatorze"
     }
 ]
