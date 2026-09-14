@@ -1,0 +1,39 @@
+name: Manually Update Data Files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/A2GS101V1/**'     # only when data files change
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deploy branch
+        uses: actions/checkout@v4
+        with:
+          ref: deploy
+
+      - name: Checkout main (to get new data)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Copy new data files
+        run: |
+          mkdir -p dist/A2GS101V1
+          cp -r main/public/A2GS101V1/* dist/A2GS101V1/
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/A2GS101V1/
+          git diff --staged --quiet || git commit -m "Update data files"
+          git push origin deploy
