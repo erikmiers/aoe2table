@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'public/A2GS101V1/**'
       - 'scraper/**'
+      - '.github/**'
   workflow_dispatch:
 
 permissions:
