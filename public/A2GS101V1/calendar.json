@@ -3,9 +3,41 @@
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-15",
+        "time": "09:15",
+        "home": "Thorbo",
+        "away": "golaza"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-15",
+        "time": "15:45",
+        "home": "Lemon",
+        "away": "Reto"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-15",
         "time": "19:00",
         "home": "Bitter Lemon",
         "away": "Dayjay"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-15",
+        "time": "19:00",
+        "home": "Maisternippon",
+        "away": "DJ Pesto"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-15",
+        "time": "21:30",
+        "home": "Ager",
+        "away": "LM | RenLo"
     },
     {
         "stage": "Ritter Liga",
@@ -48,6 +80,22 @@
         "away": "JoJo_Baum"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-16",
+        "time": "21:00",
+        "home": "[NE]Bay Araya",
+        "away": "Vonwegen"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-17",
+        "time": "10:30",
+        "home": "Eljardinero4",
+        "away": "Bardo"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-17",
@@ -64,6 +112,14 @@
         "away": "KickersEmden_aoe"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-17",
+        "time": "20:30",
+        "home": "Basti",
+        "away": "El Blugo"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-18",
@@ -72,12 +128,28 @@
         "away": "Schwenkii"
     },
     {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-18",
+        "time": "18:00",
+        "home": "Butti",
+        "away": "Scol1ng"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-18",
         "time": "19:30",
         "home": "OIDA | Gleipdonir",
         "away": "Wodlapato"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-18",
+        "time": "20:00",
+        "home": "Old Man Willow",
+        "away": "[2ZKA] falling_sky"
     },
     {
         "stage": "Imperial Liga",
@@ -96,12 +168,36 @@
         "away": "Vitalis"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-19",
+        "time": "09:00",
+        "home": "peace_force1",
+        "away": "KarlDerGrausame"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-19",
+        "time": "10:00",
+        "home": "Makrobean",
+        "away": "el mero mero"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-09-19",
         "time": "20:00",
         "home": "Lankabel95",
         "away": "Fritatorface"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "15:00",
+        "home": "kacktuss",
+        "away": "Priest1358"
     },
     {
         "stage": "Ritter Liga",
@@ -115,9 +211,25 @@
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-09-20",
+        "time": "18:00",
+        "home": "dummgl\u00fccklich",
+        "away": "OIDA | Pat_Star"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-20",
         "time": "19:00",
         "home": "SvenVonE \u30c4",
         "away": "Chainy555"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "19:00",
+        "home": "Wellen_Willi",
+        "away": "MaumauFTW"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -134,5 +246,13 @@
         "time": "20:00",
         "home": "MaggieWuerze",
         "away": "LL | SC-Quatorze"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "21:00",
+        "home": "LL | gummibaer",
+        "away": "Waldblume"
     }
 ]
