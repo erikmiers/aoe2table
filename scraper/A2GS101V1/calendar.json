@@ -1,45 +1,5 @@
 [
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-17",
-        "time": "10:30",
-        "home": "Eljardinero4",
-        "away": "Bardo"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-17",
-        "time": "20:00",
-        "home": "LM | Samu",
-        "away": "kango"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-17",
-        "time": "20:00",
-        "home": "Sir deep purple 2",
-        "away": "Locksley"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-17",
-        "time": "20:15",
-        "home": "Toaster226",
-        "away": "KickersEmden_aoe"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-17",
-        "time": "20:30",
-        "home": "Basti",
-        "away": "El Blugo"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-18",
@@ -176,6 +136,14 @@
         "away": "OIDA | Pat_Star"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "18:00",
+        "home": "KeeperOfThePizza",
+        "away": "Secret_jed"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-09-20",
@@ -222,6 +190,14 @@
         "time": "20:00",
         "home": "MaggieWuerze",
         "away": "LL | SC-Quatorze"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "20:00",
+        "home": "FaultierNosta",
+        "away": "Canuck"
     },
     {
         "stage": "Post-Imperial Liga",
