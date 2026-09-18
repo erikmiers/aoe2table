@@ -56,6 +56,14 @@
         "away": "Promiskuitiv"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-18",
+        "time": "22:00",
+        "home": "[NE]Darky",
+        "away": "TornardoBriese"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-09-18",
@@ -70,6 +78,14 @@
         "time": "09:00",
         "home": "peace_force1",
         "away": "KarlDerGrausame"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-19",
+        "time": "09:30",
+        "home": "BernieBlindmann",
+        "away": "GeneralOcto"
     },
     {
         "stage": "Imperial Liga",
@@ -158,14 +174,6 @@
         "time": "19:00",
         "home": "Wellen_Willi",
         "away": "MaumauFTW"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "19:00",
-        "home": "[NE]Darky",
-        "away": "TornardoBriese"
     },
     {
         "stage": "Feudal Liga",
