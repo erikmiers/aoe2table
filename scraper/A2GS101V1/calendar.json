@@ -8,6 +8,14 @@
         "away": "Knastfighter"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "14:00",
+        "home": "rOb",
+        "away": "LordMadlow"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-09-20",
@@ -96,11 +104,35 @@
         "away": "Waldblume"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-20",
+        "time": "21:15",
+        "home": "Hannes77",
+        "away": "KeremS"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-09-20",
         "time": "21:50",
         "home": "GrindyFox Replays",
         "away": "Lynx"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-22",
+        "time": "18:00",
+        "home": "GeneralOcto",
+        "away": "[NE]Cap1983"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-22",
+        "time": "20:00",
+        "home": "SvenVonE \u30c4",
+        "away": "[2ZKA] falling_sky"
     }
 ]
