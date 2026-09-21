@@ -1,125 +1,5 @@
 [
     {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "14:00",
-        "home": "G1NCo",
-        "away": "Knastfighter"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "14:00",
-        "home": "rOb",
-        "away": "LordMadlow"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "15:00",
-        "home": "kacktuss",
-        "away": "Priest1358"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "16:00",
-        "home": "Luki",
-        "away": "Mescal"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "18:00",
-        "home": "dummgl\u00fccklich",
-        "away": "OIDA | Pat_Star"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "18:00",
-        "home": "KeeperOfThePizza",
-        "away": "Secret_jed"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "19:00",
-        "home": "SvenVonE \u30c4",
-        "away": "Chainy555"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "19:00",
-        "home": "Wellen_Willi",
-        "away": "MaumauFTW"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "19:00",
-        "home": "cker",
-        "away": "gilti"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "20:00",
-        "home": "LL | ENR1CO",
-        "away": "OIDA | onkyox"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "20:00",
-        "home": "MaggieWuerze",
-        "away": "LL | SC-Quatorze"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "20:00",
-        "home": "FaultierNosta",
-        "away": "Canuck"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "21:00",
-        "home": "LL | gummibaer",
-        "away": "Waldblume"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "21:15",
-        "home": "Hannes77",
-        "away": "KeremS"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-20",
-        "time": "21:50",
-        "home": "GrindyFox Replays",
-        "away": "Lynx"
-    },
-    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-09-22",
@@ -128,11 +8,35 @@
         "away": "[NE]Cap1983"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-22",
+        "time": "18:00",
+        "home": "LL | gummibaer",
+        "away": "DJ Pesto"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-09-22",
         "time": "20:00",
         "home": "SvenVonE \u30c4",
         "away": "[2ZKA] falling_sky"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-24",
+        "time": "20:30",
+        "home": "CaptainMorgan",
+        "away": "DerHausmeister"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-27",
+        "time": "16:00",
+        "home": "LM | Samu",
+        "away": "Schwenkii"
     }
 ]
