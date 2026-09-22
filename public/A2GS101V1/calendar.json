@@ -1,5 +1,13 @@
 [
     {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-09-22",
+        "time": "17:00",
+        "home": "Dekodie",
+        "away": "Butti"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-09-22",
@@ -40,12 +48,28 @@
         "away": "El Blugo"
     },
     {
-        "stage": "Post-Imperial Liga",
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-09-22",
+        "time": "22:00",
+        "home": "josra_",
+        "away": "[NE]Darky"
+    },
+    {
+        "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-09-23",
-        "time": "18:30",
-        "home": "LL | ENR1CO",
-        "away": "Lemon"
+        "time": "11:00",
+        "home": "Lynx",
+        "away": "gilti"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-23",
+        "time": "14:00",
+        "home": "Eljardinero4",
+        "away": "E-RickRage"
     },
     {
         "stage": "Ritter Liga",
@@ -64,12 +88,28 @@
         "away": "el mero mero"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-23",
+        "time": "20:00",
+        "home": "kacktuss",
+        "away": "BernieBlindmann"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-09-23",
         "time": "20:30",
         "home": "H\u00f6\u00dfi",
         "away": "golaza"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-23",
+        "time": "20:30",
+        "home": "LL | ENR1CO",
+        "away": "Lemon"
     },
     {
         "stage": "Ritter Liga",
@@ -112,12 +152,12 @@
         "away": "Dayjay"
     },
     {
-        "stage": "Ritter Liga",
+        "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-24",
         "time": "20:00",
-        "home": "LordMadlow",
-        "away": "Lukas"
+        "home": "JoJo_Baum",
+        "away": "OIDA | onkyox"
     },
     {
         "stage": "Imperial Liga",
@@ -126,6 +166,14 @@
         "time": "20:30",
         "home": "CaptainMorgan",
         "away": "DerHausmeister"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-24",
+        "time": "20:30",
+        "home": "LordMadlow",
+        "away": "Lukas"
     },
     {
         "stage": "Dunkle Liga",
@@ -142,6 +190,14 @@
         "time": "17:00",
         "home": "Sir deep purple 2",
         "away": "Luki"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-25",
+        "time": "18:00",
+        "home": "Madeen",
+        "away": "Reto"
     },
     {
         "stage": "Imperial Liga",
@@ -198,6 +254,14 @@
         "time": "21:00",
         "home": "Basti",
         "away": "Ager"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-27",
+        "time": "12:00",
+        "home": "Mavto",
+        "away": "Priest1358"
     },
     {
         "stage": "Post-Imperial Liga",
