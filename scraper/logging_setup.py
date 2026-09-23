@@ -1,9 +1,14 @@
 """ The logging setup for the scraper scripts """
 import logging
+import click
 from datetime import datetime
 from rich.logging import RichHandler
 from rich.text import Text
 from rich.style import Style
+from rich.console import Console
+from rich.live import Live
+from rich.panel import Panel
+
 
 # Disable warning about f-strings in logging
 # pylint: disable=W1203
@@ -68,7 +73,46 @@ def setup_logging(log_level):
     logger.setLevel(logging.WARNING)
 # ------------------------------------------------------------------------------
 
+
+
 # ------------------------------------------------------------------------------
 def print_name(name: str) -> str:
     return f"[dim]{name}[/]"
+# ------------------------------------------------------------------------------
+
+
+
+# ------------------------------------------------------------------------------
+console = Console()
+
+def select_menu(items: dict[str, any], title: str = "Select") -> any:
+    """
+    items: { "Display text": value, ... }
+    Returns the corresponding value (or None if cancelled).
+    """
+    options = list(items.keys())
+    values  = list(items.values())
+    index = 0
+
+    def render():
+        text = Text()
+        for i, opt in enumerate(options):
+            prefix = "➤ " if i == index else "  "
+            style = "bold cyan" if i == index else ""
+            text.append(f"{prefix}{opt}\n", style=style)
+        return Panel(text, title=title, border_style="blue", expand=False)
+
+    with Live(render(), console=console, auto_refresh=False, transient=True) as live:
+        while True:
+            live.update(render(), refresh=True)
+            key = click.getchar()
+
+            if key in ("\x1b[A", "k", "w"):          # up
+                index = (index - 1) % len(options)
+            elif key in ("\x1b[B", "j", "s"):         # down
+                index = (index + 1) % len(options)
+            elif key in ("\r", "\n"):                 # enter
+                return values[index]
+            elif key == "\x1b":                       # Esc
+                return None
 # ------------------------------------------------------------------------------

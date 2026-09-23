@@ -19,15 +19,16 @@
   let openMatch : Match | undefined = $state(undefined);
   let openMember : Member | undefined = $state(undefined);
   let hoveredMatch : string | undefined = $state(undefined);
+  let hoveredMatchId : string | undefined = $state(undefined);
   let hoveredPlayer : string | undefined = $state(undefined);
   let hoveredRow : TableRow | undefined = undefined;
 
   const stageIcons: string[] = [
-    "https://www.aoe2insights.com/static/images/ages/dark-age.webp",
-    "https://www.aoe2insights.com/static/images/ages/feudal-age.webp",
-    "https://www.aoe2insights.com/static/images/ages/castle-age.webp",
-    "https://www.aoe2insights.com/static/images/ages/imperial-age.webp",
-    "https://www.aoe2insights.com/static/images/tech/icons/629.641af65d455e.jpg",]
+    "dark-age.webp",
+    "feudal-age.webp",
+    "castle-age.webp",
+    "imperial-age.webp",
+    "post-imp.jpg",]
 
   const dayNames = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
 
@@ -105,13 +106,76 @@
     return "bg-gray-500"
   }
 
-  function formatResult(rnd: TableRowRound): string {
-    if ( rnd.result[0] === 0 && rnd.result[1] === 0 ) {
-      const name = nameLookUp(rnd.opponent)
-      const matchdate = calendar.find((date: CalendarItem) => date.home === name || date.away === name)
+  function findMatchById(matchId: string): Match | undefined {
+    return stages
+      .flatMap(stage => stage.groups)
+      .flatMap(group => group.rounds)
+      .flatMap(round => round.matches)
+      .find(match => match.id === matchId);
+  }
+
+
+  function formatMatchResult(match: Match | undefined): string {
+    if ( match === undefined ) {
+      return "0 : 0"
+    }
+
+    let tableRowRound: TableRowRound | undefined = undefined
+    for ( const stage of stages ) {
+      for ( const table of stage.table ) {
+        for ( const round of table[1].rounds ) {
+          if ( round[1].match === match.id ) {
+            tableRowRound = round[1]
+            break
+          }
+        }
+      }
+    }
+
+    if ( tableRowRound === undefined ) {
+      return "0 : 0"
+    }
+
+    if ( match.opponents[0].id === tableRowRound.opponent ) {
+      return tableRowRound.result[1] + " : " + tableRowRound.result[0]
+    }
+    
+    return tableRowRound.result[0] + " : " + tableRowRound.result[1]
+  }
+
+
+  function formatMatchDate(match: Match | undefined, fullDate: boolean = false): string {
+    if ( match !== undefined ) {
+      if ( match.status === "completed" ) {
+        let date = new Date(match.playedAt)
+        return date.toDateString()
+      }
+
+      const name1 = nameLookUp(match.opponents[0].id)
+      const name2 = nameLookUp(match.opponents[1].id)
+      const matchdate1 = calendar.find((date: CalendarItem) => date.home === name1 || date.away === name1)
+      const matchdate2 = calendar.find((date: CalendarItem) => date.home === name2 || date.away === name2)
+      const matchdate = matchdate1? matchdate1 : matchdate2;
       if ( matchdate ) {
         let date = new Date(matchdate.date)
+        if ( fullDate ) {
+          return date.toDateString() + " " + matchdate.time
+        }
+
         return dayNames[date.getDay()] + "  " + matchdate.time
+      }
+    }
+
+    return ""
+  }
+
+
+  function formatResult(rnd: TableRowRound): string {
+    if ( rnd.result[0] === 0 && rnd.result[1] === 0 ) {
+      const match = findMatchById(rnd.match)
+      const matchDate = formatMatchDate(match)
+      if ( matchDate !== "" ) {
+        return matchDate
       }
     }
 
@@ -205,7 +269,7 @@ function rowLeave() {
     <div class="logo-cloud grid-cols-1 lg:!grid-cols-5 gap-1">
       {#each stages as stage}
       <a class="logo-item" href="#" onclick={(e) => openStage=stage}>
-        <img class="h-8" src="{stageIcons[stage.number-1]}" alt="">
+        <img class="h-8" src="{BASE_URL}{stageIcons[stage.number-1]}" alt="">
         <span>{stage.name}</span>
       </a>
       {/each}
@@ -255,10 +319,12 @@ function rowLeave() {
             <td class:activeRow><span class="font-bold">{row.pts}</span></td>
             {#each row.rounds as [rid, rnd]}
               <td onclick={() => toggleMatch(rnd.match)}
-                  onmouseenter={() => hoveredMatch = rnd.opponent}
-                  onmouseleave={() => hoveredMatch = undefined}>
+                  onmouseenter={() => {hoveredMatch = rnd.opponent; hoveredMatchId = rnd.match}}
+                  onmouseleave={() => {hoveredMatch = undefined; hoveredMatchId = undefined}}
+                  class="{openMatch?.id === rnd.match? 'border border-gray-300':''}
+                         {hoveredMatchId === rnd.match? 'border border-yellow-300':''}">
                 <div
-                  class:bg-opacity-80={hoveredMatch === rnd.opponent || hoveredPlayer === rnd.opponent} 
+                  class:bg-opacity-80={hoveredMatch === rnd.opponent || hoveredPlayer === rnd.opponent || hoveredMatchId === rnd.match} 
                   class="w-auto h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
                   {nameLookUp(rnd.opponent)}<br>
                   <span class="text-surface-400">{formatResult(rnd)}</span>
@@ -313,8 +379,19 @@ function rowLeave() {
       <Avatar width="w-12" src={openMatch.opponents[0].image} initials={openMatch.opponents[0].name}/>
       <span class="text-l">{openMatch.opponents[0].name}</span>
     </div>
-    <!-- <span class="text-lg">versus</span> -->
-    <div class="flex items-center justify-end">
+    <div class="flex justify-end">
+      <div class="flex flex-col items-center">
+        <span>{formatMatchResult(openMatch)}</span>
+        <small>{formatMatchDate(openMatch, true)}</small>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="text-l">{openMatch.opponents[1].name}</span>
+      <Avatar width="w-12" src={openMatch.opponents[1].image} initials={openMatch.opponents[1].name}/>
+    </div>
+  </section>
+  <section class="flex items-center justify-between w-full p-0 mt-6">
+    <div class="flex items-center justify-end m-auto">
       {#if hasMapDraft(openMatch)}
         <a href="https://aoe2cm.net/draft/{openMatch.meta.maps}" target="_blank"
         class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Map Draft</a>
@@ -324,15 +401,7 @@ function rowLeave() {
         class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Civ Draft</a>
       {/if}
     </div>
-    <div class="flex items-center space-x-4">
-      <span class="text-l">{openMatch.opponents[1].name}</span>
-      <Avatar width="w-12" src={openMatch.opponents[1].image} initials={openMatch.opponents[1].name}/>
-    </div>
-    
-    
-   
   </section>
-
  
 
   </section>

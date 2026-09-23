@@ -23,21 +23,19 @@
 #     ]
 import sys
 import json
-from json import JSONDecodeError
 import re
 import argparse
 import logging
 import requests
 from requests import RequestException
 from rich import print as rprint
-from playwright.sync_api import sync_playwright, Route
-from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
-from playwright.sync_api import Error as PlaywrightError
+from rich.prompt import Prompt
 
 from logging_setup import setup_logging, print_name as _n
+from logging_setup import select_menu
 from config import TOORNAMENT_API, TOORNAMENT_ID, TOORNAMENT_NAME
 from config import WORLDSEDGE_API
-from config import STEAM_AVATARS, INSIGHTS_NOAVATAR, INSIGHTS_ELO1V1, INSIGHTS_ELOTEAM
+from config import STEAM_AVATARS, INSIGHTS_NOAVATAR
 
 # Disable warning about f-strings in logging
 # pylint: disable=W1203
@@ -76,6 +74,8 @@ def extract_insights_id(profile_string):
 # ------------------------------------------------------------------------------
 
 
+
+
 # ------------------------------------------------------------------------------
 def scrape_insights_one(data: list, names: list) -> list:
     """
@@ -85,220 +85,126 @@ def scrape_insights_one(data: list, names: list) -> list:
     logging.info("Getting 1v1 stats from aoe2insights")
     logging.info("===================================")
 
-    path_to_civ_tab = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
-        'div[5]/div/div[1]/div/div/div/table/tbody'
-    path_to_civ_tab2 = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
-        'div[5]/div/div[2]/div/div/div/table/tbody'
-    path_to_map_tab = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
-        'div[6]/div/div[1]/div/table/tbody'
-    path_to_map_tab2 = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
-        'div[6]/div/div[2]/div/table/tbody'
+    # path_to_civ_tab = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
+    #     'div[5]/div/div[1]/div/div/div/table/tbody'
+    # path_to_civ_tab2 = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
+    #     'div[5]/div/div[2]/div/div/div/table/tbody'
+    # path_to_map_tab = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
+    #     'div[6]/div/div[1]/div/table/tbody'
+    # path_to_map_tab2 = '//*[@id="app"]/div[3]/div/div/div/div/div/div[2]/div/'\
+    #     'div[6]/div/div[2]/div/table/tbody'
 
-    with sync_playwright() as playwirght:
-        browser = playwirght.chromium.launch(
-            timeout=20000, headless=True, handle_sigint=False, handle_sigterm=False
-        )
-        page = browser.new_page()
+    # with sync_playwright() as playwirght:
+    #     browser = playwirght.chromium.launch(
+    #         timeout=20000, headless=True, handle_sigint=False, handle_sigterm=False
+    #     )
+    #     page = browser.new_page()
 
-        # ----------------------------------------------------------------------
-        def extract_player_data(player: dict):
-            logging.info(f"Checking Player {player['Name']}{player['InsightsLink']}")
-            if len(player["InsightsLink"]) <= 0:
-                logging.warning(f"Skipping {player['Name']}, no InsightsLink")
-                return
+    #     # ----------------------------------------------------------------------
+    #     def extract_player_data(player: dict):
+    #         logging.info(f"Checking Player {player['Name']}{player['InsightsLink']}")
+    #         if len(player["InsightsLink"]) <= 0:
+    #             logging.warning(f"Skipping {player['Name']}, no InsightsLink")
+    #             return
 
-            page.set_default_timeout(10000)
-            try:
-                response = page.goto(player["InsightsLink"] + "stats/3")
-            except PlaywrightError:
-                logging.error(f"Could not navigate to {player['InsightsLink']}stats/3")
-                return
+    #         page.set_default_timeout(10000)
+    #         try:
+    #             response = page.goto(player["InsightsLink"] + "stats/3")
+    #         except PlaywrightError:
+    #             logging.error(f"Could not navigate to {player['InsightsLink']}stats/3")
+    #             return
 
-            if response.status != 200:
-                logging.error(f"Could not navigate to {player['InsightsLink']}stats/3")
-                return
+    #         if response.status != 200:
+    #             logging.error(f"Could not navigate to {player['InsightsLink']}stats/3")
+    #             return
 
-            try:
-                page.wait_for_selector(path_to_civ_tab)
-            except PlaywrightTimeoutError:
-                logging.error("Could not find the civ tab")
-                return
+    #         try:
+    #             page.wait_for_selector(path_to_civ_tab)
+    #         except PlaywrightTimeoutError:
+    #             logging.error("Could not find the civ tab")
+    #             return
 
-            civtab = page.query_selector_all(f"{path_to_civ_tab}//tr")
-            one_civs = []
-            for row in civtab:
-                tdname = row.query_selector("//td[1]/strong")
-                name = tdname.inner_text() if tdname else "None"
-                tdmatches = row.query_selector("//td[2]/div")
-                matches = tdmatches.inner_text() if tdname else "0"
-                tdwins = row.query_selector("//td[3]/div")
-                wins = tdwins.inner_text() if tdname else "0"
-                tdrate = row.query_selector("//td[4]/strong")
-                rate = tdrate.inner_text() if tdname else "0.0%"
-                rate = float(rate[:-1])
-                one_civs.append(
-                    {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
-                )
+    #         civtab = page.query_selector_all(f"{path_to_civ_tab}//tr")
+    #         one_civs = []
+    #         for row in civtab:
+    #             tdname = row.query_selector("//td[1]/strong")
+    #             name = tdname.inner_text() if tdname else "None"
+    #             tdmatches = row.query_selector("//td[2]/div")
+    #             matches = tdmatches.inner_text() if tdname else "0"
+    #             tdwins = row.query_selector("//td[3]/div")
+    #             wins = tdwins.inner_text() if tdname else "0"
+    #             tdrate = row.query_selector("//td[4]/strong")
+    #             rate = tdrate.inner_text() if tdname else "0.0%"
+    #             rate = float(rate[:-1])
+    #             one_civs.append(
+    #                 {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
+    #             )
 
-            player["Civs1v1"] = one_civs
-            civtab = page.query_selector_all(f"{path_to_civ_tab2}//tr")
-            one_civs = []
-            for row in civtab:
-                tdname = row.query_selector("//td[1]/strong")
-                name = tdname.inner_text() if tdname else "None"
-                tdmatches = row.query_selector("//td[2]/div")
-                matches = tdmatches.inner_text() if tdname else "0"
-                tdwins = row.query_selector("//td[3]/div")
-                wins = tdwins.inner_text() if tdname else "0"
-                tdrate = row.query_selector("//td[4]/strong")
-                rate = tdrate.inner_text() if tdname else "0.0%"
-                rate = float(rate[:-1])
-                one_civs.append(
-                    {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
-                )
+    #         player["Civs1v1"] = one_civs
+    #         civtab = page.query_selector_all(f"{path_to_civ_tab2}//tr")
+    #         one_civs = []
+    #         for row in civtab:
+    #             tdname = row.query_selector("//td[1]/strong")
+    #             name = tdname.inner_text() if tdname else "None"
+    #             tdmatches = row.query_selector("//td[2]/div")
+    #             matches = tdmatches.inner_text() if tdname else "0"
+    #             tdwins = row.query_selector("//td[3]/div")
+    #             wins = tdwins.inner_text() if tdname else "0"
+    #             tdrate = row.query_selector("//td[4]/strong")
+    #             rate = tdrate.inner_text() if tdname else "0.0%"
+    #             rate = float(rate[:-1])
+    #             one_civs.append(
+    #                 {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
+    #             )
 
-            player["CivsOp1v1"] = one_civs
-            maptab = page.query_selector_all(f"{path_to_map_tab}//tr")
-            one_maps = []
-            for row in maptab:
-                tdname = row.query_selector("//td[1]/strong")
-                name = tdname.inner_text() if tdname else "None"
-                tdmatches = row.query_selector("//td[2]/div")
-                matches = tdmatches.inner_text() if tdname else "0"
-                tdwins = row.query_selector("//td[3]/div")
-                wins = tdwins.inner_text() if tdname else "0"
-                tdrate = row.query_selector("//td[4]/strong")
-                rate = tdrate.inner_text() if tdname else "0.0%"
-                rate = float(rate[:-1])
-                one_maps.append(
-                    {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
-                )
+    #         player["CivsOp1v1"] = one_civs
+    #         maptab = page.query_selector_all(f"{path_to_map_tab}//tr")
+    #         one_maps = []
+    #         for row in maptab:
+    #             tdname = row.query_selector("//td[1]/strong")
+    #             name = tdname.inner_text() if tdname else "None"
+    #             tdmatches = row.query_selector("//td[2]/div")
+    #             matches = tdmatches.inner_text() if tdname else "0"
+    #             tdwins = row.query_selector("//td[3]/div")
+    #             wins = tdwins.inner_text() if tdname else "0"
+    #             tdrate = row.query_selector("//td[4]/strong")
+    #             rate = tdrate.inner_text() if tdname else "0.0%"
+    #             rate = float(rate[:-1])
+    #             one_maps.append(
+    #                 {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
+    #             )
 
-            maptab = page.query_selector_all(f"{path_to_map_tab2}//tr")
-            for row in maptab:
-                tdname = row.query_selector("//td[1]/strong")
-                name = tdname.inner_text() if tdname else "None"
-                tdmatches = row.query_selector("//td[2]/div")
-                matches = tdmatches.inner_text() if tdname else "0"
-                tdwins = row.query_selector("//td[3]/div")
-                wins = tdwins.inner_text() if tdname else "0"
-                tdrate = row.query_selector("//td[4]/strong")
-                rate = tdrate.inner_text() if tdname else "0.0%"
-                rate = float(rate[:-1])
-                one_maps.append(
-                    {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
-                )
+    #         maptab = page.query_selector_all(f"{path_to_map_tab2}//tr")
+    #         for row in maptab:
+    #             tdname = row.query_selector("//td[1]/strong")
+    #             name = tdname.inner_text() if tdname else "None"
+    #             tdmatches = row.query_selector("//td[2]/div")
+    #             matches = tdmatches.inner_text() if tdname else "0"
+    #             tdwins = row.query_selector("//td[3]/div")
+    #             wins = tdwins.inner_text() if tdname else "0"
+    #             tdrate = row.query_selector("//td[4]/strong")
+    #             rate = tdrate.inner_text() if tdname else "0.0%"
+    #             rate = float(rate[:-1])
+    #             one_maps.append(
+    #                 {"Name": name, "Matches": matches, "Wins": wins, "Rate": rate}
+    #             )
 
-            player["Maps1v1"] = one_maps
+    #         player["Maps1v1"] = one_maps
 
-        # ----------------------------------------------------------------------
-        for participant in data:
-            if not check_name(participant, names):
-                continue
+    #     # ----------------------------------------------------------------------
+    #     for participant in data:
+    #         if not check_name(participant, names):
+    #             continue
 
-            if "Members" in participant:
-                logging.info(f"Checking team {participant['Name']}")
-                for member in participant["Members"]:
-                    extract_player_data(member)
-            else:
-                extract_player_data(participant)
+    #         if "Members" in participant:
+    #             logging.info(f"Checking team {participant['Name']}")
+    #             for member in participant["Members"]:
+    #                 extract_player_data(member)
+    #         else:
+    #             extract_player_data(participant)
 
-        page.close()
-        print("")
-    return data
-
-
-# ------------------------------------------------------------------------------
-def scrape_insights_elos(data: list, names: list) -> list:
-    """
-    Go through the participants on aoe2insights and get their elos
-    """
-    logging.info("======================================")
-    logging.info("Getting player elos from aoe2insights")
-    logging.info("======================================")
-
-    # --------------------------------------------------------------------------
-    def calculate_team_elo(team: dict):
-        """
-        The formula for calculating the team elo might change from toornay to toornay
-        """
-        elos = []
-        for member in team["Members"]:
-            tourney_elo = (member["Elo1v1"] + member["Ath1v1"]) / 2
-            elos.append(tourney_elo)
-        elos.sort(reverse=True)
-        highest = elos[0]
-        second = elos[1]
-        team_elo = (highest + second) / 2 + ((highest - second) / 100) * 20
-        team["TeamElo"] = team_elo
-
-    # --------------------------------------------------------------------------
-
-    # --------------------------------------------------------------------------
-    def get_elos(url):
-        """Unpack the elo list"""
-        try:
-            response = requests.get(url, timeout=10000)
-            status = response.status_code
-        except RequestException as e:
-            logging.error(f"Could not fetch elos: {e} ")
-            return(0, 0)
-
-        if status != 200:
-            logging.error(
-                f"Got unexpected response code: {response.status_code} "
-                f"from url:{url}"
-            )
-
-        try:
-            elos = response.json()
-        except JSONDecodeError as e:
-            logging.error(f"Could not fetch elos: {e} ")
-            return(0, 0)
-
-        current = 0
-        high = 0
-        for elo in elos:
-            current = int(elo['y'])
-            high = max(high, current)
-
-        return (current, high)
-
-    # ---------------------------------------------------------------------------
-
-    # ----------------------------------------------------------------------
-    def fetch_elos(participant: dict):
-        if len(participant["InsightsLink"]) <= 0:
-            logging.warning(f"Skipping {participant['Name']}, no InsightsLink")
-            onev_elo = onev_ath = team_elo = team_ath = 0
-        else:
-            logging.info(
-                f"Getting elos for {_n(participant['Name'])} "
-                f"{participant['InsightsLink']}"
-            )
-            base_url = participant["InsightsLink"]
-            (onev_elo, onev_ath) = get_elos(f"{base_url}{INSIGHTS_ELO1V1}")
-            (team_elo, team_ath) = get_elos(f"{base_url}{INSIGHTS_ELOTEAM}")
- 
-        participant["Elo1v1"] = onev_elo
-        participant["Ath1v1"] = onev_ath
-        participant["EloTeam"] = team_elo
-        participant["AthTeam"] = team_ath
-
-    # ----------------------------------------------------------------------
-
-    for participant in data:
-        if not check_name(participant, names):
-            continue
-
-        if "Members" in participant:
-            logging.info(f"Checking team {participant['Name']}")
-            for member in participant["Members"]:
-                fetch_elos(member)
-            calculate_team_elo(participant)
-        else:
-            fetch_elos(participant)
-    print("")
+    #     page.close()
+    #     print("")
     return data
 # ------------------------------------------------------------------------------
 
@@ -361,6 +267,11 @@ def lookup_player_elos(data: list, names: list) -> list:
             logging.warning(f"Did not find any members for alias {participant['Name']}")
             print(data)
             return
+
+        member = data['statGroups'][0]['members'][0]
+        participant['SteamID'] = member['name']
+        participant['Clan'] = member['clanlist_name']
+        participant['Statgroup'] = member['personal_statgroup_id']
 
         stats1v1, statsTeam = {}, {}
         for s in data['leaderboardStats']:
@@ -510,7 +421,7 @@ def icons_from_steamids(data: list, names: list) -> list:
 
 
 # ------------------------------------------------------------------------------
-def lookup_player_ids(data: list) -> list:
+def lookup_player_ids(data: list, names: list) -> list:
     """
     Try to get the RelicIDs from the worldsedge api
     """
@@ -521,6 +432,13 @@ def lookup_player_ids(data: list) -> list:
     worldsedge_url = (
         f"{WORLDSEDGE_API}getPersonalStat?title=age2&aliases"
     )
+
+    def ask_custom_id(player: dict):
+        player_id = Prompt.ask(f"Enter Relic-ID for {player['Name']}")
+        if not player_id:
+            return
+        player['RelicID'] = player_id
+
 
     def lookup_player_id(player: dict):
         if 'RelicID' in player and player['RelicID']:
@@ -540,15 +458,30 @@ def lookup_player_ids(data: list) -> list:
         member = {}
         if 'statGroups' in data and 'members' in data['statGroups'][0]:
             if len(data['statGroups']) > 1:
-                logging.warning(f"Found multiple members for alias {player['Name']}")
+                logging.warning(f"Found multiple members for alias {player['Name']}"
+                                f"\n{player['InsightsLink']}")
+                entries = {"Skip":"skip", "Custom":"custom"}
                 for group in data['statGroups']:
                     member = group['members'][0]
-                    print(f"{member['alias']} >> {member['profile_id']} [{member['country']}]")
-                return
-            member = data['statGroups'][0]['members'][0]
+                    entry = f"{member['alias']} >> {member['profile_id']} [{member['country']}]"
+                    entries[entry] = member
+                    # print(f"{member['alias']} >> {member['profile_id']} [{member['country']}]")
+                
+                # ---------- Usage ----------
+                choice = select_menu(entries, title=player['Name'])
+                if choice == "skip":
+                    return
+                if choice == "custom":
+                    ask_custom_id(player)
+                    return
+                member = choice
+            else:
+                member = data['statGroups'][0]['members'][0]
         else:
-            logging.warning(f"Did not find any members for alias {player['Name']}")
-            print(data)
+            logging.warning(f"Did not find any members for alias {player['Name']}"
+                            f"\n{player['InsightsLink']}")
+            logging.debug(data)
+            ask_custom_id(player)
             return
 
         logging.info(f"Updating {player['Name']} / {member['alias']}")
@@ -571,7 +504,11 @@ def lookup_player_ids(data: list) -> list:
         player['AthTeam'] = statsTeam['highestrating'] if statsTeam else ""
         print_player(player)
 
+
     for participant in data:
+        if not check_name(participant, names):
+            continue
+
         if "Members" in participant:
             logging.info(f"Checking team {participant['Name']}")
             for member in participant["Members"]:
@@ -759,9 +696,9 @@ def print_player(player: object):
         rprint(f"[bright_blue]{player['Name']:<30}", end="")
 
     if 'RelicID' in player and player['RelicID']:
-        rprint("🟢", end=" ")
+        rprint(f"🟢 [green]{player['RelicID']}", end=" ")
     else: 
-        rprint("🔴[red]ID", end=" ")
+        rprint("🔴 [red]ID", end=" ")
 
     try:
         rprint(
@@ -846,6 +783,7 @@ if __name__ == "__main__":
         action="store_true",
         help="Set logging output to DEBUG level",
     )
+
     arg_parser.add_argument(
         "--log-level",
         choices=["INFO", "DEBUG", "WARN"],
@@ -853,42 +791,50 @@ if __name__ == "__main__":
         help="Set logging level\n\n",
     )
 
+
     # Select individual scrapers
     arg_parser.add_argument(
         "--check",
         action="store_true",
         help="Update the player-list from toornament page",
     )
+
     arg_parser.add_argument(
         "--ids",
         action="store_true",
         help="Try and get the RelicId from the worldsedge API using the names",
     )
+
     arg_parser.add_argument(
         "--elos",
         action="store_true",
-        help="Will scrape the aoe2insights page for elos",
+        help="Will use the relic API to update elos",
     )
+
     arg_parser.add_argument(
         "--icon",
         action="store_true",
         help="Will scrape the aoe2insights page for player icons",
     )
+
     arg_parser.add_argument(
         "--one",
         action="store_true",
         help="Will scrape the 1v1 stats on aoe2insights",
     )
+
     arg_parser.add_argument(
         "--team",
         action="store_true",
         help="Will scrape the teams stats on aoe2insights",
     )
+
     arg_parser.add_argument(
         "--all",
         action="store_true",
         help="Will run all the scrapers",
     )
+
     arg_parser.add_argument(
         "--names",
         nargs="+",
@@ -901,6 +847,7 @@ if __name__ == "__main__":
         action="store_true",
         help="List players",
     )
+
     args = arg_parser.parse_args()
     if not any([args.check, args.ids, args.elos, args.icon, args.team, args.one, args.all]):
         # args.all = True
@@ -931,8 +878,8 @@ if __name__ == "__main__":
         write_data(player_data)
 
 
-    if (args.ids or args.all) and not args.names:
-        player_data = lookup_player_ids(player_data)
+    if args.ids or args.all:
+        player_data = lookup_player_ids(player_data, args.names)
         write_data(player_data)
 
 

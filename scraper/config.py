@@ -21,7 +21,7 @@ TOORNAMENT_API = "https://play.toornament.com/api/"
 
 WORLDSEDGE_API = "https://aoe-api.worldsedgelink.com/community/leaderboard/"
 
-A2GDRAFTS_API = "https://api.aoe2germany.de/dashboard/drafts/search?page=0&pageSize=50"
+A2GDRAFTS_API = "https://api.aoe2germany.de/dashboard/drafts/search?pageSize=50&page="
 
 
 

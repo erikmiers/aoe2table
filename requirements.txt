@@ -1,5 +1,6 @@
 certifi==2025.7.14
 charset-normalizer==3.4.2
+click==8.5.0
 greenlet==3.2.3
 idna==3.10
 markdown-it-py==3.0.0
@@ -8,6 +9,7 @@ playwright==1.53.0
 pyee==13.0.0
 Pygments==2.19.2
 requests==2.32.4
-rich==14.0.0
+rich==13.9.4
+rich-menu==0.3.0
 typing_extensions==4.14.1
 urllib3==2.5.0

@@ -82,7 +82,7 @@ import json
 import copy
 import argparse
 import logging
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from difflib import SequenceMatcher
 
 import requests
@@ -90,7 +90,7 @@ from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
 from logging_setup import setup_logging
-from config import TOORNAMENT_API, LINK_TO_METADATA, TOORNAMENT_ID, TOORNAMENT_NAME, A2GDRAFTS_API
+from config import TOORNAMENT_API, TOORNAMENT_ID, TOORNAMENT_NAME, A2GDRAFTS_API
 
 # Disable warning about f-strings in logging
 # pylint: disable=W1203
@@ -164,7 +164,7 @@ def scrape_toornament() -> dict:
 
     stages = fetch_list_from_toornament("stages", f"?tournament_ids={TOORNAMENT_ID}", 29)
 
-    meta_data = requests.get(LINK_TO_METADATA, timeout=5000).json()
+    # meta_data = requests.get(LINK_TO_METADATA, timeout=5000).json()
 
     trny_data = {"id": TOORNAMENT_ID, "stages": []}
     for stage in stages:
@@ -223,9 +223,9 @@ def scrape_toornament() -> dict:
                     )
 
                     match["opponents"] = [opponent_one, opponent_two]
-                    match["meta"] = (
-                        meta_data[match["id"]] if match["id"] in meta_data else {}
-                    )
+                    # match["meta"] = (
+                    #     meta_data[match["id"]] if match["id"] in meta_data else {}
+                    # )
                     stripped_matches.append(match)
                     # if match["status"] != "completed":
                     #     continue
@@ -453,16 +453,21 @@ def get_drafts() -> dict:
         logging.error(f"Could not open player data file {PLAYERFILE}")
         player_data = []
 
-    response = requests.get(A2GDRAFTS_API, timeout=5000)
-    status = response.status_code
-    if not status == 200:
-        logging.error(
-            f"Got unexpected response code: {response.status_code} "
-            f"{A2GDRAFTS_API}"
-        )
-        print()
-        return data
-    items = response.json()
+    items = []
+    for page in range(0,50):
+        response = requests.get(f"{A2GDRAFTS_API}{page}", timeout=5000)
+        status = response.status_code
+        if not status == 200:
+            logging.error(
+                f"Got unexpected response code: {response.status_code} "
+                f"{A2GDRAFTS_API}"
+            )
+            print()
+            return data
+        response_data = response.json()
+        if len(response_data["items"]) == 0:
+            break
+        items.extend(response_data["items"])
 
 
     # --------------------------------------------------------------------------
@@ -486,8 +491,6 @@ def get_drafts() -> dict:
         hostname: str,
         guestname: str,
         played_at: date | str,          # date object or "YYYY-MM-DD"
-        name_threshold: float = 0.6,    # minimum similarity to accept a name match
-        prefer_exact_date: bool = True
     ) -> dict:
         """
         Find Civs and Maps draftIds for a given host/guest + date.
@@ -498,6 +501,8 @@ def get_drafts() -> dict:
                 "Maps": "draftId" or None,
             }
         """
+        threshold: float = 0.68
+
         # Normalize played_at to a date
         if isinstance(played_at, str):
             played_at = datetime.fromisoformat(played_at.replace("Z", "+00:00")).date()
@@ -505,15 +510,25 @@ def get_drafts() -> dict:
             played_at = played_at.date()
 
         candidates = []
+        refused = []
 
-        for item in items["items"]:
+        logging.info(f"Looking for {hostname} vs. "
+                        f"{guestname} - {played_at}"
+                    )
+
+        for item in items:
             # Parse created timestamp
             created_dt = datetime.fromisoformat(item["created"].replace("Z", "+00:00"))
             created_date = created_dt.date()
 
             # Date filter (primary hint)
-            if prefer_exact_date and created_date != played_at:
-                continue
+            date_score = 1.0
+            if created_date != played_at:
+                for day in range(1, 6):
+                    date_score -= 0.1
+                    next_day = created_date + timedelta(days=day)
+                    if next_day == played_at:
+                        break
 
             # Fuzzy name scores
             host_score = max(
@@ -525,19 +540,26 @@ def get_drafts() -> dict:
                 similarity(guestname, item["guest"])
             )
 
-            # Combined score (date already filtered)
-            combined = (host_score + guest_score) / 2
+            # Combined score / ignoring date score for now
+            combined = (host_score + guest_score + date_score) / 3
 
-            if host_score >= name_threshold and guest_score >= name_threshold:
-                candidates.append({
-                    "item": item,
-                    "host_score": host_score,
-                    "guest_score": guest_score,
-                    "combined": combined,
-                    "created_dt": created_dt
-                })
+            candidate = {
+                "item": item,
+                "host_score": host_score,
+                "guest_score": guest_score,
+                "combined": combined,
+                "created_dt": created_dt
+            }
+
+            if combined > threshold:
+                candidates.append(candidate)
+            else:
+                refused.append(candidate)
 
         if not candidates:
+            refused.sort(key=lambda c: (-c["combined"], c["created_dt"]))
+            best = refused[0]
+            logging.debug(f"Best refused candidate (score {best['combined']}): {best['item']}")
             return {"Civs": None, "Maps": None}
 
         # Sort by best name match, then by closest time
@@ -557,8 +579,8 @@ def get_drafts() -> dict:
 
         for c in candidates:
             item = c["item"]
-            if (item["host"] == best_host and 
-                item["guest"] == best_guest and 
+            if (item["host"] == best_host and
+                item["guest"] == best_guest and
                 c["created_dt"].date() == best_date):
 
                 draft_type = item["draftTypeName"]
@@ -575,20 +597,32 @@ def get_drafts() -> dict:
                         continue
                     if not match["status"] == "completed":
                         continue
-                    if "civs" in match["meta"] or "maps" in match["meta"]:
-                        continue
                     host_name = get_player_name(match["opponents"][0]["id"])
                     guest_name = get_player_name(match["opponents"][1]["id"])
+                    if "civs" in match["meta"] or "maps" in match["meta"]:
+                        logging.info(f"Skipping match {host_name} vs. "
+                                     f"{guest_name} - already has drafts"
+                                    )
+                        continue
+
                     played_at = match["playedAt"]
                     result = find_draft_ids(host_name, guest_name, played_at)
+                        
                     if result["Civs"]:
                         match["meta"]["civs"] = result["Civs"]
                     if result["Maps"]:
                         match["meta"]["maps"] = result["Maps"]
-                    logging.info(
-                        f"Added drafts for {host_name} vs {guest_name}"
-                        f" [maps:{result["Maps"]}] [civs:{result["Civs"]}]"
-                    )
+
+                    if not result["Civs"] or not result["Maps"]:
+                        logging.info(
+                            f"Could not find drafts for {host_name} (vs) {guest_name}"
+                            f" (maps:{result['Maps']} civs:{result['Civs']})"
+                        )
+                    else:
+                        logging.info(
+                            f"Added drafts for {host_name} (vs) {guest_name}"
+                            f" (maps:{result['Maps']} civs:{result['Civs']})"
+                        )
     print("")
     return data
 
@@ -647,13 +681,13 @@ if __name__ == "__main__":
         print_table(show_table)
         sys.exit(0)
 
-    
+
     if args.drafts:
         draft_data = get_drafts()
         write_data(draft_data)
         sys.exit(0)
 
-    
+
 
     toornay_data = scrape_toornament()
     if not os.path.isdir(TOORNAMENT_NAME):
