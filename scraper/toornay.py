@@ -76,6 +76,7 @@ toornay = { id: "8544694639084077056",
 #     ]
 """
 
+from encodings import undefined
 import os
 import sys
 import json
@@ -154,6 +155,28 @@ def fetch_list_from_toornament(endpoint: str, params: str, initial_range: int) -
 
 
 # ------------------------------------------------------------------------------
+def find_by_id(a_dict: dict | undefined, index: str, id: str) -> dict | undefined:
+    if a_dict is undefined or not isinstance(a_dict, dict):
+        return undefined
+
+    if not index in a_dict:
+        return undefined
+
+    a_list = a_dict[index]
+    if not isinstance(a_list, list):
+        return undefined
+
+    for element in a_list:
+        if not isinstance(element, dict):
+            continue
+        if "id" in element and element["id"] == id:
+            return element
+    return undefined
+# ------------------------------------------------------------------------------
+
+
+
+# ------------------------------------------------------------------------------
 def scrape_toornament() -> dict:
     """
     Go through the toornament page and get all the infos
@@ -162,20 +185,103 @@ def scrape_toornament() -> dict:
     logging.info("Getting infos from toornament")
     logging.info("=============================")
 
+
+    #---------------------------------------------------------------------    
+    def build_table(table: dict, match: dict):
+        """
+            Build table
+            - find opponent one in table or create new
+            - add match to rounds using current round data
+            - find opponent two in table or create new
+            - add match to rounds using current round data
+        """
+        table_entry = {"wins": 0, "losses": 0, "diff": 0, "pts": 0, "rounds": {}}
+
+        opponent_one = match["opponents"][0]
+        opponent_one_id = opponent_one["id"]
+        # opponent_one_name = opponent_one["participant"]["name"]
+
+        opponent_two = match["opponents"][1]
+        opponent_two_id = opponent_two["id"]
+        # opponent_two_name = opponent_two["participant"]["name"]
+
+        opponent_one_score = (
+            opponent_one["score"] if opponent_one["score"] else 0
+        )
+        opponent_two_score = (
+            opponent_two["score"] if opponent_two["score"] else 0
+        )
+        table_entry_one = (
+            table[opponent_one_id]
+            if opponent_one_id in table
+            else copy.deepcopy(table_entry)
+        )
+        table_entry_one["wins"] = (
+            table_entry_one["wins"] + opponent_one_score
+        )
+        table_entry_one["losses"] = (
+            table_entry_one["losses"] + opponent_two_score
+        )
+        table_entry_one["rounds"][this_round["id"]] = {
+            "number": this_round["number"],
+            "opponent": opponent_two_id,
+            "result": [opponent_one_score, opponent_two_score],
+            "match": match["id"],
+        }
+        table[opponent_one_id] = table_entry_one
+        logging.debug(
+            f"Table Entry One: {opponent_one_id}:"
+            f"[{table_entry_one['wins']}:{table_entry_one['losses']}] "
+        )
+
+        table_entry_two = (
+            table[opponent_two_id]
+            if opponent_two_id in table
+            else copy.deepcopy(table_entry)
+        )
+        table_entry_two["wins"] = (
+            table_entry_two["wins"] + opponent_two_score
+        )
+        table_entry_two["losses"] = (
+            table_entry_two["losses"] + opponent_one_score
+        )
+        table_entry_two["rounds"][this_round["id"]] = {
+            "number": this_round["number"],
+            "opponent": opponent_one_id,
+            "result": [opponent_two_score, opponent_one_score],
+            "match": match["id"],
+        }
+        table[opponent_two_id] = table_entry_two
+        logging.debug(
+            f"Table Entry Two: {opponent_two_id}:"
+            f"[{table_entry_two['wins']}:{table_entry_two['losses']}] "
+        )
+    #---------------------------------------------------------------------
+
+
+
     stages = fetch_list_from_toornament("stages", f"?tournament_ids={TOORNAMENT_ID}", 29)
 
-    # meta_data = requests.get(LINK_TO_METADATA, timeout=5000).json()
+    try:
+        with open(DATAFILE, "r", encoding="utf-8") as json_file:
+            trny_data = json.load(json_file)
+    except FileNotFoundError:
+        logging.error(f"Could not open toornay data file {DATAFILE}")
+        trny_data = {"id": TOORNAMENT_ID, "stages": []}
 
-    trny_data = {"id": TOORNAMENT_ID, "stages": []}
+    final_data = {"id": TOORNAMENT_ID, "stages": []}
     for stage in stages:
         stage = filter_dict(stage, STAGE_ELEMENTS)
+        trny_stage = find_by_id(trny_data, "stages", stage["id"])
         logging.info(
             f"Checking stage [{stage['number']}] {stage['name']} with id {stage['id']}"
         )
+
         groups = fetch_list_from_toornament("groups", f"?stage_ids={stage['id']}", 49)
         stage["groups"] = []
         for group in groups:
             group = filter_dict(group, GROUP_ELEMENTS)
+            trny_group = find_by_id(trny_stage, "groups", group["id"])
             logging.info(
                 f"Checking group [{group['number']}] {group['name']} with id {group['id']}"
             )
@@ -185,9 +291,9 @@ def scrape_toornament() -> dict:
             group["rounds"] = []
 
             table = {}
-            table_entry = {"wins": 0, "losses": 0, "diff": 0, "pts": 0, "rounds": {}}
             for this_round in rounds:
                 this_round = filter_dict(this_round, ROUND_ELEMENTS)
+                trny_round = find_by_id(trny_group, "rounds", this_round["id"])
                 logging.info(
                     f"Checking round [{this_round['number']}] "
                     f"{this_round['name']} with id {this_round['id']}"
@@ -205,8 +311,6 @@ def scrape_toornament() -> dict:
                         continue
                     opponent_one_id = opponent_one["participant"]["id"]
                     opponent_one_name = opponent_one["participant"]["name"]
-                    opponent_one = filter_dict(opponent_one, OPPONENT_ELMTS)
-                    opponent_one["id"] = opponent_one_id
 
                     opponent_two = match["opponents"][1]
                     if not opponent_two or not opponent_two["participant"]:
@@ -214,77 +318,29 @@ def scrape_toornament() -> dict:
                         continue
                     opponent_two_id = opponent_two["participant"]["id"]
                     opponent_two_name = opponent_two["participant"]["name"]
+
+                    trny_match = find_by_id(trny_round, "matches", match["id"])
+                    if trny_match is not undefined and trny_match["status"] == "completed":
+                        logging.info(
+                            f"Skipping completed match: {opponent_one_name} - {opponent_two_name} "
+                            f"[{opponent_one['score']}:{opponent_two['score']}]"
+                        )
+                        stripped_matches.append(trny_match)
+                        build_table(table, trny_match)
+                        continue
+
+                    opponent_one = filter_dict(opponent_one, OPPONENT_ELMTS)
+                    opponent_one["id"] = opponent_one_id
+
                     opponent_two = filter_dict(opponent_two, OPPONENT_ELMTS)
                     opponent_two["id"] = opponent_two_id
 
-                    logging.debug(
-                        f"Match: {opponent_one_name} - {opponent_two_name} "
-                        f"[{opponent_one['score']}:{opponent_two['score']}]"
-                    )
+                    logging.info(f"Unfinished match: {opponent_one_name} - {opponent_two_name} ")
 
                     match["opponents"] = [opponent_one, opponent_two]
-                    # match["meta"] = (
-                    #     meta_data[match["id"]] if match["id"] in meta_data else {}
-                    # )
+                    match["meta"] = {}
                     stripped_matches.append(match)
-                    # if match["status"] != "completed":
-                    #     continue
-                    # Build table
-                    # - find opponent one in table or create new
-                    # - add match to rounds using current round data
-                    # - find opponent two in table or create new
-                    # - add match to rounds using current round data
-                    opponent_one_score = (
-                        opponent_one["score"] if opponent_one["score"] else 0
-                    )
-                    opponent_two_score = (
-                        opponent_two["score"] if opponent_two["score"] else 0
-                    )
-                    table_entry_one = (
-                        table[opponent_one_id]
-                        if opponent_one_id in table
-                        else copy.deepcopy(table_entry)
-                    )
-                    table_entry_one["wins"] = (
-                        table_entry_one["wins"] + opponent_one_score
-                    )
-                    table_entry_one["losses"] = (
-                        table_entry_one["losses"] + opponent_two_score
-                    )
-                    table_entry_one["rounds"][this_round["id"]] = {
-                        "number": this_round["number"],
-                        "opponent": opponent_two_id,
-                        "result": [opponent_one_score, opponent_two_score],
-                        "match": match["id"],
-                    }
-                    table[opponent_one_id] = table_entry_one
-                    logging.debug(
-                        f"Table Entry One: {opponent_one_name}:"
-                        f"[{table_entry_one['wins']}:{table_entry_one['losses']}] "
-                    )
-
-                    table_entry_two = (
-                        table[opponent_two_id]
-                        if opponent_two_id in table
-                        else copy.deepcopy(table_entry)
-                    )
-                    table_entry_two["wins"] = (
-                        table_entry_two["wins"] + opponent_two_score
-                    )
-                    table_entry_two["losses"] = (
-                        table_entry_two["losses"] + opponent_one_score
-                    )
-                    table_entry_two["rounds"][this_round["id"]] = {
-                        "number": this_round["number"],
-                        "opponent": opponent_one_id,
-                        "result": [opponent_two_score, opponent_one_score],
-                        "match": match["id"],
-                    }
-                    table[opponent_two_id] = table_entry_two
-                    logging.debug(
-                        f"Table Entry Two: {opponent_two_name}:"
-                        f"[{table_entry_two['wins']}:{table_entry_two['losses']}] "
-                    )
+                    build_table(table, match)
 
                 this_round["matches"] = stripped_matches
                 group["rounds"].append(this_round)
@@ -302,13 +358,14 @@ def scrape_toornament() -> dict:
             sorted_table = sorted(
                 table.items(), key=lambda x: (-x[1]["wins"], -x[1]["pts"])
             )
+
             stage["table"] = dict(sorted_table)
             stage["groups"].append(group)
             break
-        trny_data["stages"].append(stage)
+        final_data["stages"].append(stage)
 
     print()
-    return trny_data
+    return final_data
 
 
 # ------------------------------------------------------------------------------
@@ -437,7 +494,14 @@ def print_table(which: int):
 
 # ------------------------------------------------------------------------------
 def get_drafts() -> dict:
-    """Try and get the drafts from the AoE2Germany dashboard"""
+    """
+    Try and get the drafts from the AoE2Germany dashboard
+    """
+    logging.info("=========================================")
+    logging.info("Getting drafts from AoE2Germany dashboard")
+    logging.info("=========================================")
+
+
 
     try:
         with open(DATAFILE, "r", encoding="utf-8") as json_file:
