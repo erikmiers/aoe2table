@@ -155,7 +155,7 @@ def fetch_list_from_toornament(endpoint: str, params: str, initial_range: int) -
 
 
 # ------------------------------------------------------------------------------
-def find_by_id(a_dict, index, id) -> dict | undefined:
+def find_by_id(a_dict, index, id):
     if a_dict is undefined or not isinstance(a_dict, dict):
         return undefined
 
