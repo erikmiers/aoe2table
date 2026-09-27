@@ -1,29 +1,5 @@
 [
     {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-26",
-        "time": "16:00",
-        "home": "peace_force1",
-        "away": "Vonwegen"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-26",
-        "time": "19:00",
-        "home": "Wellen_Willi",
-        "away": "KarlDerGrausame"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-09-26",
-        "time": "21:00",
-        "home": "Basti",
-        "away": "Ager"
-    },
-    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-09-27",
