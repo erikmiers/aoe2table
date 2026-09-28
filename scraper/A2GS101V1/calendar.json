@@ -1,58 +1,50 @@
 [
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-29",
+        "time": "19:00",
+        "home": "Toaster226",
+        "away": "rOb"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
-        "date": "2026-09-27",
-        "time": "11:00",
-        "home": "Chainy555",
-        "away": "m24stefan"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-27",
-        "time": "12:00",
-        "home": "Mavto",
-        "away": "Priest1358"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-27",
-        "time": "15:00",
-        "home": "iroNistiC",
-        "away": "Bardo"
+        "date": "2026-09-29",
+        "time": "19:00",
+        "home": "Gelga",
+        "away": "G1NCo"
     },
     {
         "stage": "Post-Imperial Liga",
         "number": 0,
-        "date": "2026-09-27",
-        "time": "16:00",
+        "date": "2026-09-29",
+        "time": "20:00",
+        "home": "JoJo_Baum",
+        "away": "[GER] Paeco"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-09-30",
+        "time": "19:00",
         "home": "LM | Samu",
-        "away": "Schwenkii"
+        "away": "Madeen"
     },
     {
         "stage": "Imperial Liga",
         "number": 0,
-        "date": "2026-09-27",
-        "time": "18:00",
-        "home": "Gelga",
-        "away": "Knastfighter"
+        "date": "2026-09-30",
+        "time": "20:00",
+        "home": "Makrobean",
+        "away": "Scol1ng"
     },
     {
-        "stage": "Ritter Liga",
+        "stage": "Post-Imperial Liga",
         "number": 0,
-        "date": "2026-09-27",
-        "time": "20:30",
-        "home": "Wodlapato",
-        "away": "Hannes77"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-27",
+        "date": "2026-10-01",
         "time": "21:00",
-        "home": "FomerMay",
-        "away": "Therealdrzock"
+        "home": "LL | gummibaer",
+        "away": "LL | ENR1CO"
     }
 ]
