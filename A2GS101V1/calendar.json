@@ -24,6 +24,22 @@
         "away": "[GER] Paeco"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-29",
+        "time": "20:00",
+        "home": "matphant",
+        "away": "golaza"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-29",
+        "time": "21:30",
+        "home": "FomerMay",
+        "away": "Vitalis"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-30",
@@ -40,11 +56,171 @@
         "away": "Scol1ng"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-30",
+        "time": "20:15",
+        "home": "Thorbo",
+        "away": "Lukas"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-09-30",
+        "time": "21:00",
+        "home": "[NE]Cap1983",
+        "away": "Eljardinero4"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-30",
+        "time": "21:00",
+        "home": "FaultierNosta",
+        "away": "Hannes77"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-09-30",
+        "time": "21:00",
+        "home": "OIDA | Gleipdonir",
+        "away": "4k1m"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "19:00",
+        "home": "Canuck",
+        "away": "Twtis"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "19:00",
+        "home": "fanalhb",
+        "away": "kacktuss"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "19:00",
+        "home": "dummgl\u00fccklich",
+        "away": "IchbinGroo7"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-10-01",
         "time": "21:00",
         "home": "LL | gummibaer",
         "away": "LL | ENR1CO"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "21:00",
+        "home": "[NE]Bay Araya",
+        "away": "Basti"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "21:00",
+        "home": "Schwenkii",
+        "away": "Storm"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-02",
+        "time": "18:00",
+        "home": "Lynx",
+        "away": "Secret_jed"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-02",
+        "time": "20:00",
+        "home": "SvenVonE \u30c4",
+        "away": "DerHausmeister"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-02",
+        "time": "21:30",
+        "home": "cker",
+        "away": "GrindyFox Replays"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "14:00",
+        "home": "peace_force1",
+        "away": "MaumauFTW"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "14:00",
+        "home": "OIDA | Tasty",
+        "away": "ThisDino"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "19:30",
+        "home": "Wodlapato",
+        "away": "Sir deep purple 2"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "20:30",
+        "home": "H\u00f6\u00dfi",
+        "away": "KickersEmden_aoe"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "10:30",
+        "home": "OIDA | Pat_Star",
+        "away": "Old Man Willow"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "19:00",
+        "home": "gilti",
+        "away": "[NE]Darky"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:00",
+        "home": "Luki",
+        "away": "LM | CoMa"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:15",
+        "home": "SilasU",
+        "away": "KeeperOfThePizza"
     }
 ]
