@@ -1,45 +1,5 @@
 [
     {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-29",
-        "time": "19:00",
-        "home": "Toaster226",
-        "away": "rOb"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-09-29",
-        "time": "19:00",
-        "home": "Gelga",
-        "away": "G1NCo"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-29",
-        "time": "20:00",
-        "home": "JoJo_Baum",
-        "away": "[GER] Paeco"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-29",
-        "time": "20:00",
-        "home": "matphant",
-        "away": "golaza"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-29",
-        "time": "21:30",
-        "home": "FomerMay",
-        "away": "Vitalis"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-09-30",
@@ -112,6 +72,22 @@
         "away": "IchbinGroo7"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "20:00",
+        "home": "Ager",
+        "away": "TornardoBriese"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "20:30",
+        "home": "Fritatorface",
+        "away": "Priest1358"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-10-01",
@@ -142,6 +118,14 @@
         "time": "18:00",
         "home": "Lynx",
         "away": "Secret_jed"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-02",
+        "time": "19:00",
+        "home": "Gelga",
+        "away": "G1NCo"
     },
     {
         "stage": "Imperial Liga",
@@ -200,6 +184,14 @@
         "away": "Old Man Willow"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "15:30",
+        "home": "Revenge",
+        "away": "Bardo"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-04",
@@ -214,6 +206,14 @@
         "time": "20:00",
         "home": "Luki",
         "away": "LM | CoMa"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:00",
+        "home": "Locksley",
+        "away": "Mescal"
     },
     {
         "stage": "Feudal Liga",
