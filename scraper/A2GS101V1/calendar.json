@@ -24,12 +24,28 @@
         "away": "IchbinGroo7"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "19:00",
+        "home": "kango",
+        "away": "Waldblume"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-01",
         "time": "20:00",
         "home": "Ager",
         "away": "TornardoBriese"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "20:00",
+        "home": "josra_",
+        "away": "KarlDerGrausame"
     },
     {
         "stage": "Dunkle Liga",
@@ -99,9 +115,25 @@
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-02",
+        "time": "20:00",
+        "home": "Vonwegen",
+        "away": "Wellen_Willi"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-02",
         "time": "21:30",
         "home": "cker",
         "away": "GrindyFox Replays"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "11:00",
+        "home": "iroNistiC",
+        "away": "GeneralOcto"
     },
     {
         "stage": "Feudal Liga",
@@ -118,6 +150,14 @@
         "time": "14:00",
         "home": "OIDA | Tasty",
         "away": "ThisDino"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-03",
+        "time": "14:00",
+        "home": "Chainy555",
+        "away": "Dekodie"
     },
     {
         "stage": "Ritter Liga",
@@ -142,14 +182,6 @@
         "time": "10:30",
         "home": "OIDA | Pat_Star",
         "away": "Old Man Willow"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-04",
-        "time": "18:00",
-        "home": "Mavto",
-        "away": "BernieBlindmann"
     },
     {
         "stage": "Feudal Liga",
@@ -198,6 +230,14 @@
         "time": "20:30",
         "home": "Knastfighter",
         "away": "CaptainMorgan"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:30",
+        "home": "Mavto",
+        "away": "BernieBlindmann"
     },
     {
         "stage": "Imperial Liga",
