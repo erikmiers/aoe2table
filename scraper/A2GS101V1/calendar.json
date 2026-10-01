@@ -1,53 +1,5 @@
 [
     {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "19:00",
-        "home": "LM | Samu",
-        "away": "Madeen"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "20:00",
-        "home": "Makrobean",
-        "away": "Scol1ng"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "20:15",
-        "home": "Thorbo",
-        "away": "Lukas"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "21:00",
-        "home": "[NE]Cap1983",
-        "away": "Eljardinero4"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "21:00",
-        "home": "FaultierNosta",
-        "away": "Hannes77"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-09-30",
-        "time": "21:00",
-        "home": "OIDA | Gleipdonir",
-        "away": "4k1m"
-    },
-    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-01",
@@ -110,6 +62,14 @@
         "time": "21:00",
         "home": "Schwenkii",
         "away": "Storm"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-01",
+        "time": "22:30",
+        "home": "Ned Stark's Bastard",
+        "away": "el mero mero"
     },
     {
         "stage": "Feudal Liga",
@@ -187,9 +147,9 @@
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-04",
-        "time": "15:30",
-        "home": "Revenge",
-        "away": "Bardo"
+        "time": "18:00",
+        "home": "Mavto",
+        "away": "BernieBlindmann"
     },
     {
         "stage": "Feudal Liga",
@@ -216,11 +176,43 @@
         "away": "Mescal"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:00",
+        "home": "OIDA | Gleipdonir",
+        "away": "4k1m"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-04",
         "time": "20:15",
         "home": "SilasU",
         "away": "KeeperOfThePizza"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "20:30",
+        "home": "Knastfighter",
+        "away": "CaptainMorgan"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "21:45",
+        "home": "Promiskuitiv",
+        "away": "Butti"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-05",
+        "time": "21:30",
+        "home": "LM | RenLo",
+        "away": "El Blugo"
     }
 ]
