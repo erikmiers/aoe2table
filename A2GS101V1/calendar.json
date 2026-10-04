@@ -1,59 +1,19 @@
 [
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "11:00",
-        "home": "iroNistiC",
-        "away": "GeneralOcto"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "14:00",
-        "home": "peace_force1",
-        "away": "MaumauFTW"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "14:00",
-        "home": "OIDA | Tasty",
-        "away": "ThisDino"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "14:00",
-        "home": "Chainy555",
-        "away": "Dekodie"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "19:30",
-        "home": "Wodlapato",
-        "away": "Sir deep purple 2"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-03",
-        "time": "20:30",
-        "home": "H\u00f6\u00dfi",
-        "away": "KickersEmden_aoe"
-    },
-    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-04",
         "time": "10:30",
         "home": "OIDA | Pat_Star",
         "away": "Old Man Willow"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-04",
+        "time": "13:00",
+        "home": "Lankabel95",
+        "away": "E-RickRage"
     },
     {
         "stage": "Feudal Liga",
