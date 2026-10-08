@@ -1,45 +1,5 @@
 [
     {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-07",
-        "time": "19:00",
-        "home": "KickersEmden_aoe",
-        "away": "Canuck"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-07",
-        "time": "20:00",
-        "home": "e1sTea",
-        "away": "sILVER"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-07",
-        "time": "20:00",
-        "home": "Priest1358",
-        "away": "Therealdrzock"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-07",
-        "time": "20:30",
-        "home": "Butti",
-        "away": "OIDA | Pat_Star"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-07",
-        "time": "21:45",
-        "home": "Promiskuitiv",
-        "away": "Old Man Willow"
-    },
-    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-08",
@@ -54,6 +14,22 @@
         "time": "19:30",
         "home": "IchbinGroo7",
         "away": "Dekodie"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-08",
+        "time": "20:00",
+        "home": "Revenge",
+        "away": "Mavto"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-08",
+        "time": "20:30",
+        "home": "[GER] Paeco",
+        "away": "ThisDino"
     },
     {
         "stage": "Ritter Liga",
@@ -78,6 +54,14 @@
         "time": "21:00",
         "home": "Schwenkii",
         "away": "DJ Pesto"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-08",
+        "time": "21:00",
+        "home": "Locksley",
+        "away": "Lukas"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -142,6 +126,14 @@
         "time": "18:00",
         "home": "Running",
         "away": "JorDan_AoE"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "19:00",
+        "home": "gilti",
+        "away": "Secret_jed"
     },
     {
         "stage": "Ritter Liga",
