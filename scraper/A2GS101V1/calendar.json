@@ -1,69 +1,5 @@
 [
     {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "19:00",
-        "home": "cker",
-        "away": "Basti"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "19:30",
-        "home": "IchbinGroo7",
-        "away": "Dekodie"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "20:00",
-        "home": "Revenge",
-        "away": "Mavto"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "20:30",
-        "home": "[GER] Paeco",
-        "away": "ThisDino"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "21:00",
-        "home": "Toaster226",
-        "away": "OIDA | Gleipdonir"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "21:00",
-        "home": "[NE]Darky",
-        "away": "[NE]Bay Araya"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "21:00",
-        "home": "Schwenkii",
-        "away": "DJ Pesto"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-08",
-        "time": "21:00",
-        "home": "Locksley",
-        "away": "Lukas"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-10-10",
@@ -96,6 +32,14 @@
         "away": "H\u00f6\u00dfi"
     },
     {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "11:00",
+        "home": "FreakinAndy",
+        "away": "Target331"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-11",
@@ -118,6 +62,14 @@
         "time": "16:00",
         "home": "Luki",
         "away": "rOb"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "16:00",
+        "home": "peace_force1",
+        "away": "Wellen_Willi"
     },
     {
         "stage": "Division 1",
@@ -152,11 +104,51 @@
         "away": "SilasU"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "21:30",
+        "home": "Eljardinero4",
+        "away": "BernieBlindmann"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-12",
+        "time": "19:00",
+        "home": "Madtomski",
+        "away": "kingofthrowing123"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-12",
         "time": "20:00",
         "home": "MaumauFTW",
         "away": "Ager"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-12",
+        "time": "20:00",
+        "home": "shiXo",
+        "away": "TheViper"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-19",
+        "time": "18:00",
+        "home": "TheViper",
+        "away": "JorDan_AoE"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-19",
+        "time": "20:00",
+        "home": "chaos_2_win",
+        "away": "Madtomski"
     }
 ]
