@@ -8,14 +8,6 @@
         "away": "Target331"
     },
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-11",
-        "time": "11:00",
-        "home": "Vitalis",
-        "away": "E-RickRage"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-10-11",
@@ -88,12 +80,28 @@
         "away": "Thorbo"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "20:00",
+        "home": "4k1m",
+        "away": "KeremS"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-11",
         "time": "20:15",
         "home": "Lynx",
         "away": "SilasU"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "20:30",
+        "home": "KarlDerGrausame",
+        "away": "TornardoBriese"
     },
     {
         "stage": "Feudal Liga",
@@ -110,6 +118,14 @@
         "time": "21:30",
         "home": "Eljardinero4",
         "away": "BernieBlindmann"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-11",
+        "time": "21:30",
+        "home": "Vitalis",
+        "away": "E-RickRage"
     },
     {
         "stage": "Division 1",
@@ -150,6 +166,22 @@
         "time": "20:00",
         "home": "shiXo",
         "away": "TheViper"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-13",
+        "time": "19:00",
+        "home": "G1NCo",
+        "away": "Dekodie"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "20:00",
+        "home": "Wodlapato",
+        "away": "FaultierNosta"
     },
     {
         "stage": "Division 1",
