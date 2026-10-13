@@ -20,14 +20,6 @@
         "number": 0,
         "date": "2026-10-13",
         "time": "20:00",
-        "home": "matphant",
-        "away": "LordMadlow"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-13",
-        "time": "20:00",
         "home": "golaza",
         "away": "KickersEmden_aoe"
     },
@@ -48,12 +40,28 @@
         "away": "Makrobean"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-14",
+        "time": "18:30",
+        "home": "Madeen",
+        "away": "[GER] Paeco"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-14",
         "time": "19:00",
         "home": "Canuck",
         "away": "Toaster226"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-14",
+        "time": "19:00",
+        "home": "Molle",
+        "away": "kingofthrowing123"
     },
     {
         "stage": "Ritter Liga",
@@ -72,12 +80,28 @@
         "away": "GeneralOcto"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-15",
+        "time": "19:00",
+        "home": "cker",
+        "away": "Lynx"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-15",
         "time": "20:00",
         "home": "OIDA | Pat_Star",
         "away": "DerHausmeister"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-15",
+        "time": "21:30",
+        "home": "Priest1358",
+        "away": "Vitalis"
     },
     {
         "stage": "Division 1",
@@ -91,9 +115,41 @@
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-16",
+        "time": "16:00",
+        "home": "matphant",
+        "away": "LordMadlow"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-16",
         "time": "20:00",
         "home": "Thorbo",
         "away": "Locksley"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "21:00",
+        "home": "[NE]Cap1983",
+        "away": "BernieBlindmann"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "21:00",
+        "home": "Schwenkii",
+        "away": "LL | gummibaer"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "21:15",
+        "home": "SilasU",
+        "away": "LM | RenLo"
     },
     {
         "stage": "Division 1",
@@ -120,12 +176,36 @@
         "away": "SvenVonE \u30c4"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "21:45",
+        "home": "GrindyFox Replays",
+        "away": "josra_"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "12:00",
+        "home": "Knastfighter",
+        "away": "Ned Stark's Bastard"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-18",
         "time": "14:00",
         "home": "Revenge",
         "away": "Eljardinero4"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "17:00",
+        "home": "LM | Samu",
+        "away": "Reto"
     },
     {
         "stage": "Imperial Liga",
@@ -144,11 +224,43 @@
         "away": "FaultierNosta"
     },
     {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "20:00",
+        "home": "el mero mero",
+        "away": "[2ZKA] falling_sky"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "20:00",
+        "home": "gilti",
+        "away": "Ager"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "20:00",
+        "home": "El Blugo",
+        "away": "Wellen_Willi"
+    },
+    {
         "stage": "Division 2",
         "number": 0,
         "date": "2026-10-19",
         "time": "20:00",
         "home": "chaos_2_win",
         "away": "Madtomski"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-26",
+        "time": "19:30",
+        "home": "sILVER",
+        "away": "kingofthrowing123"
     }
 ]
