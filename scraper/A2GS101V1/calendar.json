@@ -1,45 +1,5 @@
 [
     {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-12",
-        "time": "18:30",
-        "home": "FreakinAndy",
-        "away": "Wean Dinchester"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-12",
-        "time": "19:00",
-        "home": "Madtomski",
-        "away": "kingofthrowing123"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-12",
-        "time": "19:00",
-        "home": "Running",
-        "away": "Terz"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-12",
-        "time": "20:00",
-        "home": "MaumauFTW",
-        "away": "Ager"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-12",
-        "time": "20:00",
-        "home": "shiXo",
-        "away": "TheViper"
-    },
-    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-13",
@@ -48,20 +8,140 @@
         "away": "Dekodie"
     },
     {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-13",
+        "time": "19:30",
+        "home": "IchbinGroo7",
+        "away": "Chainy555"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-13",
+        "time": "20:00",
+        "home": "matphant",
+        "away": "LordMadlow"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-13",
+        "time": "20:00",
+        "home": "golaza",
+        "away": "KickersEmden_aoe"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-13",
+        "time": "20:00",
+        "home": "LL | ENR1CO",
+        "away": "Storm"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-14",
+        "time": "18:00",
+        "home": "Butti",
+        "away": "Makrobean"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-14",
+        "time": "19:00",
+        "home": "Canuck",
+        "away": "Toaster226"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-14",
+        "time": "20:30",
+        "home": "rOb",
+        "away": "Dayjay"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-15",
+        "time": "16:00",
+        "home": "Lankabel95",
+        "away": "GeneralOcto"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-15",
+        "time": "20:00",
+        "home": "OIDA | Pat_Star",
+        "away": "DerHausmeister"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "12:30",
+        "home": "Benanji",
+        "away": "Target331"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "20:00",
+        "home": "Thorbo",
+        "away": "Locksley"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "10:00",
+        "home": "TheViper",
+        "away": "JorDan_AoE"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "20:15",
+        "home": "Fritatorface",
+        "away": "Mavto"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "21:45",
+        "home": "Promiskuitiv",
+        "away": "SvenVonE \u30c4"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "14:00",
+        "home": "Revenge",
+        "away": "Eljardinero4"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "18:00",
+        "home": "Scol1ng",
+        "away": "Gelga"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-18",
         "time": "20:00",
         "home": "Wodlapato",
         "away": "FaultierNosta"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-19",
-        "time": "18:00",
-        "home": "TheViper",
-        "away": "JorDan_AoE"
     },
     {
         "stage": "Division 2",
