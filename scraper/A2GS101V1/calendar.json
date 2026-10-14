@@ -2,38 +2,6 @@
     {
         "stage": "Imperial Liga",
         "number": 0,
-        "date": "2026-10-13",
-        "time": "19:00",
-        "home": "G1NCo",
-        "away": "Dekodie"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-13",
-        "time": "19:30",
-        "home": "IchbinGroo7",
-        "away": "Chainy555"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-13",
-        "time": "20:00",
-        "home": "golaza",
-        "away": "KickersEmden_aoe"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-13",
-        "time": "20:00",
-        "home": "LL | ENR1CO",
-        "away": "Storm"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
         "date": "2026-10-14",
         "time": "18:00",
         "home": "Butti",
@@ -96,6 +64,14 @@
         "away": "DerHausmeister"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-15",
+        "time": "21:00",
+        "home": "[NE]Bay Araya",
+        "away": "Secret_jed"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-15",
@@ -150,6 +126,14 @@
         "time": "21:15",
         "home": "SilasU",
         "away": "LM | RenLo"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "21:30",
+        "home": "FomerMay",
+        "away": "kacktuss"
     },
     {
         "stage": "Division 1",
