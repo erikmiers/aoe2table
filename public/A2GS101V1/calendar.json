@@ -1,45 +1,5 @@
 [
     {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-14",
-        "time": "18:00",
-        "home": "Butti",
-        "away": "Makrobean"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-14",
-        "time": "18:30",
-        "home": "Madeen",
-        "away": "[GER] Paeco"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-14",
-        "time": "19:00",
-        "home": "Canuck",
-        "away": "Toaster226"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-14",
-        "time": "19:00",
-        "home": "Molle",
-        "away": "kingofthrowing123"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-14",
-        "time": "20:30",
-        "home": "rOb",
-        "away": "Dayjay"
-    },
-    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-15",
@@ -96,12 +56,12 @@
         "away": "LordMadlow"
     },
     {
-        "stage": "Ritter Liga",
+        "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-16",
-        "time": "20:00",
-        "home": "Thorbo",
-        "away": "Locksley"
+        "time": "16:00",
+        "home": "Bardo",
+        "away": "fanalhb"
     },
     {
         "stage": "Dunkle Liga",
@@ -118,6 +78,14 @@
         "time": "21:00",
         "home": "Schwenkii",
         "away": "LL | gummibaer"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "21:00",
+        "home": "LL | gummibaer",
+        "away": "Schwenkii"
     },
     {
         "stage": "Feudal Liga",
@@ -150,6 +118,22 @@
         "time": "20:15",
         "home": "Fritatorface",
         "away": "Mavto"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "20:30",
+        "home": "Old Man Willow",
+        "away": "CaptainMorgan"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "20:30",
+        "home": "H\u00f6\u00dfi",
+        "away": "4k1m"
     },
     {
         "stage": "Imperial Liga",
