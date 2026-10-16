@@ -19,9 +19,17 @@
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-16",
-        "time": "16:00",
+        "time": "17:00",
         "home": "Bardo",
         "away": "fanalhb"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-16",
+        "time": "18:00",
+        "home": "JoJo_Baum",
+        "away": "Maisternippon"
     },
     {
         "stage": "Feudal Liga",
@@ -59,17 +67,17 @@
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-16",
-        "time": "21:30",
-        "home": "FomerMay",
-        "away": "kacktuss"
+        "time": "21:15",
+        "home": "Revenge",
+        "away": "Eljardinero4"
     },
     {
         "stage": "Dunkle Liga",
         "number": 0,
-        "date": "2026-10-17",
-        "time": "09:00",
-        "home": "Lankabel95",
-        "away": "GeneralOcto"
+        "date": "2026-10-16",
+        "time": "21:30",
+        "home": "FomerMay",
+        "away": "kacktuss"
     },
     {
         "stage": "Division 1",
@@ -78,6 +86,14 @@
         "time": "10:00",
         "home": "TheViper",
         "away": "JorDan_AoE"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-17",
+        "time": "19:30",
+        "home": "iroNistiC",
+        "away": "Luis13Lord"
     },
     {
         "stage": "Ritter Liga",
@@ -144,12 +160,12 @@
         "away": "kango"
     },
     {
-        "stage": "Dunkle Liga",
+        "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-10-18",
-        "time": "14:00",
-        "home": "Revenge",
-        "away": "Eljardinero4"
+        "time": "13:00",
+        "home": "Basti",
+        "away": "KeeperOfThePizza"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -174,6 +190,14 @@
         "time": "18:00",
         "home": "Scol1ng",
         "away": "Gelga"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "18:00",
+        "home": "Lankabel95",
+        "away": "GeneralOcto"
     },
     {
         "stage": "Ritter Liga",
