@@ -8,10 +8,18 @@
         "away": "Ned Stark's Bastard"
     },
     {
-        "stage": "Post-Imperial Liga",
+        "stage": "Division 2",
         "number": 0,
         "date": "2026-10-18",
         "time": "12:00",
+        "home": "Molle",
+        "away": "kelar"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "12:30",
         "home": "ThisDino",
         "away": "kango"
     },
@@ -22,14 +30,6 @@
         "time": "13:00",
         "home": "Basti",
         "away": "KeeperOfThePizza"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "17:00",
-        "home": "LM | Samu",
-        "away": "Reto"
     },
     {
         "stage": "Ritter Liga",
@@ -54,6 +54,30 @@
         "time": "18:00",
         "home": "Lankabel95",
         "away": "GeneralOcto"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "18:00",
+        "home": "E-RickRage",
+        "away": "Therealdrzock"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "18:30",
+        "home": "LM | Samu",
+        "away": "Reto"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "18:45",
+        "home": "Lemon",
+        "away": "LL | SC-Quatorze"
     },
     {
         "stage": "Feudal Liga",
@@ -126,6 +150,22 @@
         "time": "20:00",
         "home": "Mescal",
         "away": "Bitter Lemon"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-19",
+        "time": "20:00",
+        "home": "kelar",
+        "away": "sILVER"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-21",
+        "time": "16:00",
+        "home": "Terz",
+        "away": "TheViper"
     },
     {
         "stage": "Division 2",
