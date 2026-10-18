@@ -1,69 +1,5 @@
 [
     {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "10:00",
-        "home": "TheViper",
-        "away": "JorDan_AoE"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "19:30",
-        "home": "iroNistiC",
-        "away": "Luis13Lord"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "20:00",
-        "home": "OIDA | Gleipdonir",
-        "away": "KeremS"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "20:15",
-        "home": "Fritatorface",
-        "away": "Mavto"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "20:30",
-        "home": "Old Man Willow",
-        "away": "CaptainMorgan"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "20:30",
-        "home": "H\u00f6\u00dfi",
-        "away": "4k1m"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "21:45",
-        "home": "Promiskuitiv",
-        "away": "SvenVonE \u30c4"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-17",
-        "time": "21:45",
-        "home": "GrindyFox Replays",
-        "away": "josra_"
-    },
-    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-18",
@@ -120,6 +56,14 @@
         "away": "GeneralOcto"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "19:00",
+        "home": "peace_force1",
+        "away": "TornardoBriese"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-18",
@@ -152,6 +96,14 @@
         "away": "Wellen_Willi"
     },
     {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-18",
+        "time": "20:30",
+        "home": "Old Man Willow",
+        "away": "CaptainMorgan"
+    },
+    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-19",
@@ -166,6 +118,14 @@
         "time": "20:00",
         "home": "chaos_2_win",
         "away": "Madtomski"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-19",
+        "time": "20:00",
+        "home": "Mescal",
+        "away": "Bitter Lemon"
     },
     {
         "stage": "Division 2",
