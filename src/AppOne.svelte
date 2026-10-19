@@ -280,7 +280,8 @@ function rowLeave() {
 
     <!-- Responsive Container (recommended) -->
 <div class="flex gap-6 overflow-x-auto pb-4">
-  <div class="min-w-max">
+  <div class="overflow-x-auto">
+  <!-- <div class="min-w-max"> -->
     <table class="table table-interactive table-hover">
       <thead>
         <tr>
@@ -300,8 +301,9 @@ function rowLeave() {
       <tbody>
         {#if openStage !== undefined}
         {#each openStage.table as [pid, row], i}
-          {@const activeRow= checkActive(pid, hoveredMatch, hoveredPlayer)}
-          <tr>
+          {@const activeRow = checkActive(pid, hoveredMatch, hoveredPlayer)}
+          {@const openedRow = openMember?.LeagueID === pid}
+          <tr class={openedRow? 'shadow-[inset_4px_0_0_0_theme(colors.primary.500)] outline outline-1 outline-slate-500 -outline-offset-1':''}>
             <td class:activeRow><span class="font-bold">{i+1}</span></td>
             <td class:activeRow
               class="hover:bg-sky-700 hover:bg-opacity-20" 
@@ -325,7 +327,7 @@ function rowLeave() {
                          {hoveredMatchId === rnd.match? 'border border-yellow-300':''}">
                 <div
                   class:bg-opacity-80={hoveredMatch === rnd.opponent || hoveredPlayer === rnd.opponent || hoveredMatchId === rnd.match} 
-                  class="w-auto h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
+                  class="truncate max-w-24 h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
                   {nameLookUp(rnd.opponent)}<br>
                   <span class="text-surface-400">{formatResult(rnd)}</span>
                   <!-- <span class:text-surface-400={rnd.result[0] === 0 && rnd.result[1] === 0} >{formatResult(rnd)}</span> -->
