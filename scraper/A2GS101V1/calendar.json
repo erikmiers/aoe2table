@@ -1,133 +1,5 @@
 [
     {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "12:00",
-        "home": "Knastfighter",
-        "away": "Ned Stark's Bastard"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "12:00",
-        "home": "Molle",
-        "away": "kelar"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "12:30",
-        "home": "ThisDino",
-        "away": "kango"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "13:00",
-        "home": "Basti",
-        "away": "KeeperOfThePizza"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "17:00",
-        "home": "LM | CoMa",
-        "away": "Twtis"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "18:00",
-        "home": "Scol1ng",
-        "away": "Gelga"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "18:00",
-        "home": "Lankabel95",
-        "away": "GeneralOcto"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "18:00",
-        "home": "E-RickRage",
-        "away": "Therealdrzock"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "18:30",
-        "home": "LM | Samu",
-        "away": "Reto"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "18:45",
-        "home": "Lemon",
-        "away": "LL | SC-Quatorze"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "19:00",
-        "home": "peace_force1",
-        "away": "TornardoBriese"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "20:00",
-        "home": "Wodlapato",
-        "away": "FaultierNosta"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "20:00",
-        "home": "el mero mero",
-        "away": "[2ZKA] falling_sky"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "20:00",
-        "home": "gilti",
-        "away": "Ager"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "20:00",
-        "home": "El Blugo",
-        "away": "Wellen_Willi"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-18",
-        "time": "20:30",
-        "home": "Old Man Willow",
-        "away": "CaptainMorgan"
-    },
-    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-19",
@@ -155,9 +27,17 @@
         "stage": "Division 2",
         "number": 0,
         "date": "2026-10-19",
-        "time": "20:00",
+        "time": "20:30",
         "home": "kelar",
         "away": "sILVER"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-20",
+        "time": "20:00",
+        "home": "Scol1ng",
+        "away": "[2ZKA] falling_sky"
     },
     {
         "stage": "Division 1",
@@ -166,6 +46,30 @@
         "time": "16:00",
         "home": "Terz",
         "away": "TheViper"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-22",
+        "time": "18:30",
+        "home": "Makrobean",
+        "away": "SvenVonE \u30c4"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-24",
+        "time": "19:30",
+        "home": "[NE]Cap1983",
+        "away": "Revenge"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-25",
+        "time": "21:30",
+        "home": "Promiskuitiv",
+        "away": "CaptainMorgan"
     },
     {
         "stage": "Division 2",
