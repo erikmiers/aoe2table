@@ -2,11 +2,11 @@
   import "./app.css";
 
   import { Avatar } from '@skeletonlabs/skeleton';
-  import { ConicGradient } from '@skeletonlabs/skeleton';
   import { onMount } from 'svelte';
-  import { fade, slide } from 'svelte/transition';
   import { type Member, type StatItem, type Stage, type Match, type MatchMeta, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
   import { generateNextRound } from "./AppOne";
+
+  import PlayerStats from "./lib/PlayerStats.svelte";
 
   const BASE_URL = import.meta.env.BASE_URL;
   const DATA_URL = BASE_URL + "A2GS101V1/";
@@ -278,15 +278,12 @@ function rowLeave() {
 
     <h2 class="mb-8 text-2xl">{openStage?.name}</h2>
 
-    <!-- Responsive Container (recommended) -->
-<div class="flex gap-6 overflow-x-auto pb-4">
-  <div class="overflow-x-auto">
-  <!-- <div class="min-w-max"> -->
-    <table class="table table-interactive table-hover">
+  <div class="overflow-x-auto w-full">
+    <table class="table table-interactive table-hover overflow-visible min-w-max w-full border-collapse">
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
+          <th class= "sticky left-0 z-20 bg-surface-700">Name</th>
           <th>Wins</th>
           <th>Losses</th>
           <th>Diff</th>
@@ -306,7 +303,8 @@ function rowLeave() {
           <tr class={openedRow? 'shadow-[inset_4px_0_0_0_theme(colors.primary.500)] outline outline-1 outline-slate-500 -outline-offset-1':''}>
             <td class:activeRow><span class="font-bold">{i+1}</span></td>
             <td class:activeRow
-              class="hover:bg-sky-700 hover:bg-opacity-20" 
+              class="hover:bg-sky-700 hover:bg-opacity-20 sticky left-0 z-20
+                    { i%2? 'bg-slate-800/80':'bg-surface-800/80' }" 
               onclick={(e) => toggleMember(pid)}
               onmouseenter={() => rowEnter(pid, row)}
               onmouseleave={() => rowLeave()}>
@@ -327,7 +325,7 @@ function rowLeave() {
                          {hoveredMatchId === rnd.match? 'border border-yellow-300':''}">
                 <div
                   class:bg-opacity-80={hoveredMatch === rnd.opponent || hoveredPlayer === rnd.opponent || hoveredMatchId === rnd.match} 
-                  class="truncate max-w-24 h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
+                  class="truncate max-w-[140px] h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
                   {nameLookUp(rnd.opponent)}<br>
                   <span class="text-surface-400">{formatResult(rnd)}</span>
                   <!-- <span class:text-surface-400={rnd.result[0] === 0 && rnd.result[1] === 0} >{formatResult(rnd)}</span> -->
@@ -370,7 +368,6 @@ function rowLeave() {
     </table>
   </div>
   {/if}
-</div>
 
 {#if openMatch !== undefined}
 
@@ -410,119 +407,7 @@ function rowLeave() {
 
 {/if}
 
-{#if openMember !== undefined}
-
- <!-- Member header ---------------------------------------------------->
- <section class="mb-4 mt-8 small-p rounded-lg border border-surface-500 bg-surface-900/50">
-  <section class="flex items-center justify-between w-full p-0">
-    <div class="flex items-center space-x-4">
-      <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>
-      <span class="text-l">{openMember.Name}</span>
-    </div>
-    
-    
-    <!-- <a href="https://play.toornament.com/de/tournaments/8544694639084077056/participants/{player.ID}" target="_blank"
-    class="btn variant-ghost-surface" data-sveltekit-preload-data="hover">Toornament</a> -->
-    <div class="flex items-center justify-end">
-      <a href="{openMember.InsightsLink}" target="_blank"
-      class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Insights</a>
-      {#if openMember.RelicID}
-        <a href="https://aoe2.gg/profile/{openMember.RelicID}" target="_blank"
-        class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">aoe2.gg</a>
-        <a href="https://www.aoe2companion.com/players/{openMember.RelicID}" target="_blank"
-        class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">companion</a>
-      {/if}
-      <a href="https://play.toornament.com/de/tournaments/8544694639084077056/participants/{openMember.LeagueID}" target="_blank"
-      class="btn-icon btn-sm variant-ghost-primary ms-2 me-auto p-2" data-sveltekit-preload-data="hover">
-        <img src="https://play.toornament.com/media/7603294581977661440/original" alt="">
-      </a>
-
-      <span class="badge variant-ghost-surface me-2 ms-2">1v1</span>
-      <div class="card small-p items-center">
-        <span class="text-m">{openMember.Elo1v1}</span>
-        <span class="text-m text-primary-100/50">&nbsp;{openMember.Ath1v1}</span>
-      </div>
-        <span class="badge variant-ghost-surface me-2 ms-2">Team</span>
-        <div class="card small-p items-center">
-          <span class="text-m">{openMember.EloTeam}</span>
-          <span class="text-m text-primary-100/50">&nbsp;{openMember.AthTeam}</span>
-        </div>
-        <!-- <button type="button" class="btn-icon variant-ghost m-4 font-medium text-2xl"
-         on:click={() => toggleMembers(player.Name)}> {openMembers.includes(player.Name)?"-":"+"}</button> -->
-    </div>
-  </section>
-
-  <!-- 1v1 maps and civs ------------------------------------------------>
-  <section class="flex items-center justify-between w-full p-2 mt-2 bg-surface-900/60 rounded-lg"
-  transition:slide={{ duration: 300 }}
-  >
-    <span class="gradient-heading">
-        1v1 Maps
-    </span>
-    {#each openMember.Maps1v1.slice(0, 7) as map}
-    <div class="justify-center p-1 rounded-lg">
-      <span class="text-sm">{map.Name}</span>
-      <div class="flex items-center relative rounded-lg border border-surface-500">
-        <img class="h-14 me-2" src="{getMapUrl(map.Name)}" alt="">
-        <ConicGradient width="w-12" stops=
-        {[{color:'rgba(0,255,0,.17)',start:0,end:map.Rate},
-              {color:'rgba(255,0,0,.17)',start:map.Rate,end:100}]}>
-        </ConicGradient>
-        <div class="absolute inset-y-1/2 inset-x-1/4">
-          <span class="badge variant-soft-surface">{map.Matches}</span>
-        </div>
-      </div>
-    </div>
-    {/each}
-  </section>
-
-  <section class="flex items-center w-full p-2 mb-2 bg-surface-900/60 rounded-lg"
-  transition:slide={{ duration: 300 }}
-  >
-    <span class="gradient-heading">
-        1v1 Civs
-    </span>
-
-    <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth overflow-x-auto">
-      <div class="flex items-center justify-between w-full">
-        {#each openMember.Civs1v1.slice(0, 20) as civ}
-        <div class="justify-center p-1 rounded-lg">
-          <span class="text-sm text-primary-100/50">{civ.Name}</span>
-          <div class="flex items-center justify-between p-1 rounded-lg bg-surface-900 w-28">
-            <img class="h-6 me-2" src="{getCivUrl(civ.Name)}" alt="">
-            <span class="badge variant-soft-surface">{civ.Matches}</span>
-            <ConicGradient width="w-6 ms-2" stops=
-            {[{color:'rgba(0,255,0,.17)',start:0,end:civ.Rate},
-                  {color:'rgba(255,0,0,.17)',start:civ.Rate,end:100}]}>
-            </ConicGradient>
-          </div>
-        </div>
-        {/each}
-      </div>
-
-      <div class="flex items-center justify-between">
-        {#each openMember.CivsOp1v1.slice(0, 20) as civ}
-        <div class="justify-center p-1 rounded-lg">
-          <div class="flex items-center justify-between p-1 rounded-lg bg-surface-800/30 w-28">
-            <img class="h-6 me-2" src="{getCivUrl(civ.Name)}" alt="">
-            <span class="badge variant-soft-surface">{civ.Matches}</span>
-            <ConicGradient width="w-6 ms-2" stops=
-            {[{color:'rgba(0,255,0,.17)',start:0,end:civ.Rate},
-                {color:'rgba(255,0,0,.17)',start:civ.Rate,end:100}]}>
-          </ConicGradient>
-          </div>
-          <span class="text-sm text-primary-100/50">{civ.Name}</span>
-        </div>
-        {/each}
-      </div>
-
-    </div>
-  </section>   
- <!--------------------------------------------------------------------->
-
-  </section>
-
-{/if}
+<PlayerStats {openMember} {stages}/>
 
 
 

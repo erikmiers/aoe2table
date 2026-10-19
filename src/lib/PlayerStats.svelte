@@ -1,0 +1,312 @@
+<script lang="ts">
+
+    import { type DraftAnalysis, type Stage, type Match, type Member } from '../types';
+    
+    import { Avatar } from '@skeletonlabs/skeleton';
+    import { fade, slide } from 'svelte/transition';
+    import { ConicGradient } from '@skeletonlabs/skeleton';
+    
+    export interface Props {
+        openMember : Member | undefined;
+        stages : Stage[]
+    }
+
+    let {openMember, stages} : Props = $props()
+    let draftAnalysis: Array<DraftAnalysis> | undefined = $state(undefined)
+
+    $effect(() => {
+        draftAnalysis = openMember?.Analysis;
+    });
+    
+    const isProVersion = window.location.hash === "#pro";
+
+    const mapIcons: Record<string,string> = {
+        Badlands: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Badlands.png",
+        Basmo: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Basmo.png",
+        Copenhagen: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Copenhagen.png",
+        Moats: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Moats.png",
+        "Monte Pascoal": "https://files.aoe2germany.de/files/maps-draft/1v1_10_Monte_Pascoal.png",
+        Nomad: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Nomad.png",
+        Seychelles: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Seychelles.png",
+        Shoals: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Shoals.png",
+        Typhoon: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Typhoon.png",
+        Valley: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Valley.png",
+        Vulpine: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Vulpine.png",
+        ZeWall: "https://files.aoe2germany.de/files/maps-draft/1v1_10_ZeWall.png"
+     }
+
+//  <!-- 1v1 maps and civs ------------------------------------------------>
+//   <section class="flex items-center justify-between w-full p-2 mt-2 bg-surface-900/60 rounded-lg"
+//   transition:slide={{ duration: 300 }}
+//   >
+//     <span class="gradient-heading">
+//         1v1 Maps
+//     </span>
+//     {#each openMember.Maps1v1.slice(0, 7) as map}
+//     <div class="justify-center p-1 rounded-lg">
+//       <span class="text-sm">{map.Name}</span>
+//       <div class="flex items-center relative rounded-lg border border-surface-500">
+//         <img class="h-14 me-2" src="{getMapUrl(map.Name)}" alt="">
+//         <ConicGradient width="w-12" stops=
+//         {[{color:'rgba(0,255,0,.17)',start:0,end:map.Rate},
+//               {color:'rgba(255,0,0,.17)',start:map.Rate,end:100}]}>
+//         </ConicGradient>
+//         <div class="absolute inset-y-1/2 inset-x-1/4">
+//           <span class="badge variant-soft-surface">{map.Matches}</span>
+//         </div>
+//       </div>
+//     </div>
+//     {/each}
+//   </section>
+
+//   <section class="flex items-center w-full p-2 mb-2 bg-surface-900/60 rounded-lg"
+//   transition:slide={{ duration: 300 }}
+//   >
+//     <span class="gradient-heading">
+//         1v1 Civs
+//     </span>
+
+//     <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth overflow-x-auto">
+//       <div class="flex items-center justify-between w-full">
+//         {#each openMember.Civs1v1.slice(0, 20) as civ}
+//         <div class="justify-center p-1 rounded-lg">
+//           <span class="text-sm text-primary-100/50">{civ.Name}</span>
+//           <div class="flex items-center justify-between p-1 rounded-lg bg-surface-900 w-28">
+//             <img class="h-6 me-2" src="{getCivUrl(civ.Name)}" alt="">
+//             <span class="badge variant-soft-surface">{civ.Matches}</span>
+//             <ConicGradient width="w-6 ms-2" stops=
+//             {[{color:'rgba(0,255,0,.17)',start:0,end:civ.Rate},
+//                   {color:'rgba(255,0,0,.17)',start:civ.Rate,end:100}]}>
+//             </ConicGradient>
+//           </div>
+//         </div>
+//         {/each}
+//       </div>
+
+//       <div class="flex items-center justify-between">
+//         {#each openMember.CivsOp1v1.slice(0, 20) as civ}
+//         <div class="justify-center p-1 rounded-lg">
+//           <div class="flex items-center justify-between p-1 rounded-lg bg-surface-800/30 w-28">
+//             <img class="h-6 me-2" src="{getCivUrl(civ.Name)}" alt="">
+//             <span class="badge variant-soft-surface">{civ.Matches}</span>
+//             <ConicGradient width="w-6 ms-2" stops=
+//             {[{color:'rgba(0,255,0,.17)',start:0,end:civ.Rate},
+//                 {color:'rgba(255,0,0,.17)',start:civ.Rate,end:100}]}>
+//           </ConicGradient>
+//           </div>
+//           <span class="text-sm text-primary-100/50">{civ.Name}</span>
+//         </div>
+//         {/each}
+//       </div>
+
+//     </div>
+//   </section>   
+//  <!--------------------------------------------------------------------->    
+
+let isLoading : boolean = $state(false);
+
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+function findMatchesByPlayerId(playerId: string): Match[] {
+  const matches = stages
+    .flatMap(stage => stage.groups)
+    .flatMap(group => group.rounds)
+    .flatMap(round => round.matches)
+    .filter(match =>
+      match.opponents.some(opponent => opponent.id === playerId)
+    );
+
+  return [...new Map(matches.map(match => [match.id, match])).values()];
+}      
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+async function fetchDrafts(matches: Match[]): Promise<Map<string, Draft>> {
+  const draftIds = new Set<string>();
+
+  for (const match of matches) {
+    if ( match.meta ) {
+      if (match.meta.civs) draftIds.add(match.meta.civs);  
+      if (match.meta.maps) draftIds.add(match.meta.maps);  
+    }
+  }
+
+  const drafts = await Promise.all(
+    [...draftIds].map(async id => {
+      const response = await fetch(
+        `https://aoe2cm.net/api/draft/${encodeURIComponent(id)}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch draft ${id}: ${response.status}`);
+      }
+
+      return [id, await response.json() as Draft] as const;
+    })
+  );
+
+  return new Map(drafts);
+}
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+function getDraftEvents(events: Array<DraftEvents>, player: string, action: string): Array<string> {
+    let draftEvents: Array<string> = [];
+    events.forEach( event => {
+        if ( event.player === player && event.actionType === action ) {
+            draftEvents.push(event.chosenOptionId)
+        }
+    });
+
+    return draftEvents;
+}
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+async function loadDrafts() {
+    if ( !openMember ) {
+        return
+    }
+
+    isLoading = true;
+
+    const matches = findMatchesByPlayerId(openMember.LeagueID);
+    const drafts = await fetchDrafts(matches);
+
+    draftAnalysis = [];
+    for (const match of matches) {
+        if ( match.meta ) {
+            let analysis = {} as DraftAnalysis;
+            if (match.meta.maps) {
+                const mapDraft = drafts.get(match.meta.maps);
+                analysis.hostName = mapDraft.nameHost;
+                analysis.guestName = mapDraft.nameGuest;
+                analysis.hostMaps = getDraftEvents(mapDraft.events, "HOST", "pick");
+                analysis.guestMaps = getDraftEvents(mapDraft.events, "GUEST", "pick");
+                analysis.hostMapSnipes = getDraftEvents(mapDraft.events, "HOST", "snipe");
+                analysis.guestMapSnipes = getDraftEvents(mapDraft.events, "GUEST", "snipe");
+            }
+
+            if (match.meta.civs) {
+                const civDraft = drafts.get(match.meta.civs);
+                analysis.hostCivs = getDraftEvents(civDraft.events, "HOST", "pick");
+                analysis.guestCivs = getDraftEvents(civDraft.events, "GUEST", "pick");
+            }
+            draftAnalysis.push(analysis);
+        }
+    }
+
+    isLoading = false;
+    console.log(draftAnalysis)
+    openMember.Analysis = draftAnalysis
+}
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+</script>
+<!----------------------------------------------------------------------------->
+
+
+
+
+<!----------------------------------------------------------------------------->
+{#if openMember !== undefined}
+
+ <!-- Member header ---------------------------------------------------->
+<section class="mb-4 mt-8 p-[1em] overflow-x-auto rounded-lg border border-surface-500 bg-surface-900/50">
+    <section class="flex items-center justify-between w-full p-0">
+        <div class="flex items-center space-x-4">
+            <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>
+            <span class="text-l">{openMember.Name}</span>
+        </div>
+        
+        
+        <!-- <a href="https://play.toornament.com/de/tournaments/8544694639084077056/participants/{player.ID}" target="_blank"
+        class="btn variant-ghost-surface" data-sveltekit-preload-data="hover">Toornament</a> -->
+        <div class="flex items-center justify-end">
+            <a href="{openMember.InsightsLink}" target="_blank"
+            class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Insights</a>
+        {#if openMember.RelicID}
+            <a href="https://aoe2.gg/profile/{openMember.RelicID}" target="_blank"
+            class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">aoe2.gg</a>
+            <a href="https://www.aoe2companion.com/players/{openMember.RelicID}" target="_blank"
+            class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">companion</a>
+        {/if}
+            <a href="https://play.toornament.com/de/tournaments/8544694639084077056/participants/{openMember.LeagueID}" target="_blank"
+                class="btn-icon btn-sm variant-ghost-primary ms-2 me-auto p-2" data-sveltekit-preload-data="hover">
+                <img src="https://play.toornament.com/media/7603294581977661440/original" alt="">
+            </a>
+
+        <span class="badge variant-ghost-surface me-2 ms-2">1v1</span>
+        <div class="card !p-[1em] items-center">
+            <span class="text-m">{openMember.Elo1v1}</span>
+            <span class="text-m text-primary-100/50">&nbsp;{openMember.Ath1v1}</span>
+        </div>
+            <span class="badge variant-ghost-surface me-2 ms-2">Team</span>
+            <div class="card !p-[1em] items-center">
+                <span class="text-m">{openMember.EloTeam}</span>
+                <span class="text-m text-primary-100/50">&nbsp;{openMember.AthTeam}</span>
+            </div>
+            <!-- <button type="button" class="btn-icon variant-ghost m-4 font-medium text-2xl"
+            on:click={() => toggleMembers(player.Name)}> {openMembers.includes(player.Name)?"-":"+"}</button> -->
+        </div>        
+    </section>
+    {#if isProVersion && !draftAnalysis}
+    <button type="button" class="btn btn-sm variant-ghost-primary ms-2 me-auto" onclick={(e) => loadDrafts()}>
+        {#if isLoading}
+            <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        {:else}
+            <span>Load drafts</span>
+        {/if}
+        </button>
+    {/if}
+    {#if isProVersion && draftAnalysis}
+        <section class="flex items-center justify-between w-full p-0">
+        {#each draftAnalysis as draft}
+            <div class="card !p-[1em] items-center !w-[400px] m-1">
+                <div class="flex justify-content-between w-[300px]">
+                    <span class="badge variant-ghost-surface me-auto">{draft.hostName}</span>
+                    <span class="badge variant-ghost-surface ms-auto">{draft.guestName}</span>
+                </div>
+                <div class="flex justify-content-between ms-0">
+                    {#each draft.hostMaps as map}
+                    <div class="relative me-auto ms-0">
+                        <img class="size-14 overflow-hidden rounded-full {draft.guestMapSnipes.includes(map)?'grayscale':''}" src={mapIcons[map]} alt="Avatar" />
+                        <span class="absolute bottom-0 left-0 w-full text-center text-xs bg-surface-800/50">{map}</span>
+                    </div>
+                    {/each}
+                    {#each draft.guestMaps as map}
+                    <div class="relative ms-auto me-0">
+                        <img class="size-14 overflow-hidden rounded-full {draft.hostMapSnipes.includes(map)?'grayscale':''}" src={mapIcons[map]} alt="Avatar" />
+                        <span class="absolute bottom-0 left-0 w-full text-center text-xs bg-surface-800/50">{map}</span>
+                    </div>
+                    {/each}
+                </div>
+                <!-- <div>{draft.hostMaps} {draft.guestMaps} </div>
+                <div>{draft.hostMapSnipes} {draft.guestMapSnipes} </div> -->
+                <div>{draft.hostCivs} {draft.guestCivs}</div>
+            </div>           
+        {/each}
+        </section>
+    {/if}
+</section>
+{/if}

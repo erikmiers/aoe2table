@@ -29,6 +29,7 @@ export interface Member {
     Maps1v1: Array<StatItem>;
     MapsTeam: Array<StatItem>;
     TeamMates: Array<StatItem>;
+    Analysis: Array<DraftAnalysis> | undefined;
 }
 
 
@@ -154,4 +155,15 @@ export interface CalendarItem {
     time:  string;
     home:  string;
     away:  string;
+}
+
+export interface DraftAnalysis {
+    hostName: string;
+    guestName: string;
+    hostMaps: Array<string>;
+    guestMaps: Array<string>;
+    hostMapSnipes: Array<string>;
+    guestMapSnipes: Array<string>;
+    hostCivs: Array<string>;
+    guestCivs: Array<string>;
 }
