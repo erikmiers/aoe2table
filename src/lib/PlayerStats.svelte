@@ -1,6 +1,7 @@
 <script lang="ts">
 
-    import { type DraftAnalysis, type Stage, type Match, type Member } from '../types';
+    import { type DraftAnalysis, type Stage, type Match, type Member, type MatchAnalysis, type Game } from '../types';
+    import { draftCache } from './draftCache';
     
     import { Avatar } from '@skeletonlabs/skeleton';
     import { fade, slide } from 'svelte/transition';
@@ -8,14 +9,15 @@
     
     export interface Props {
         openMember : Member | undefined;
-        stages : Stage[]
+        stages : Stage[];
+        lookup: (lid: string) => Member | undefined;
     }
 
-    let {openMember, stages} : Props = $props()
+    let {openMember, stages, lookup} : Props = $props()
     let draftAnalysis: Array<DraftAnalysis> | undefined = $state(undefined)
 
     $effect(() => {
-        draftAnalysis = openMember?.Analysis;
+        draftAnalysis = openMember ? draftCache.get(openMember.LeagueID) : undefined;
     });
     
     const isProVersion = window.location.hash === "#pro";
@@ -145,7 +147,8 @@ async function fetchDrafts(matches: Match[]): Promise<Map<string, Draft>> {
       );
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch draft ${id}: ${response.status}`);
+        console.log(`Failed to fetch draft ${id}: ${response.status}`);
+        return [id, {} as Draft] as const;
       }
 
       return [id, await response.json() as Draft] as const;
@@ -160,8 +163,55 @@ async function fetchDrafts(matches: Match[]): Promise<Map<string, Draft>> {
 
 
 //----------------------------------------------------------------------------->    
+async function fetchGames(matches: Match[]): Promise<Array<Game>> {
+  const playerIds = new Set<[string, string]>();
+
+//   const homeId = openMember?.RelicID ?? "";
+
+  for (const match of matches) {
+    const host = match.opponents[0]
+    const guest = match.opponents[1]
+    const hostId = lookup(host?.id ?? "")?.RelicID ?? "";
+    const guestId = lookup(guest?.id ?? "")?.RelicID ?? "";
+    playerIds.add([hostId, guestId])
+  }
+  
+  const games = await Promise.all(
+    [...playerIds].map(async ([hostId, guestId]) => {
+        
+        if ( !hostId || !guestId ) {
+            console.log("Skipping game fetching for ids", hostId, guestId)
+            return {} as Games;
+        } 
+
+      const response = await fetch(
+        `https://data.aoe2companion.com/api/matches?profile_ids=${encodeURIComponent(hostId)}&with_profile_ids=${encodeURIComponent(guestId)}&language=en`
+      );
+
+      
+      if (!response.ok) {
+          console.log(`Failed to fetch games for ${hostId} vs ${guestId}: ${response.status}`);
+          return {} as Games;
+        }
+        
+      return await response.json() as Games;
+    })
+  );
+
+  return games;
+}
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
 function getDraftEvents(events: Array<DraftEvents>, player: string, action: string): Array<string> {
     let draftEvents: Array<string> = [];
+    if ( !events || events.length <= 0 ) {
+        return draftEvents
+    }
+
     events.forEach( event => {
         if ( event.player === player && event.actionType === action ) {
             draftEvents.push(event.chosenOptionId)
@@ -185,33 +235,102 @@ async function loadDrafts() {
 
     const matches = findMatchesByPlayerId(openMember.LeagueID);
     const drafts = await fetchDrafts(matches);
+    const games = await fetchGames(matches);
 
     draftAnalysis = [];
-    for (const match of matches) {
-        if ( match.meta ) {
-            let analysis = {} as DraftAnalysis;
-            if (match.meta.maps) {
-                const mapDraft = drafts.get(match.meta.maps);
-                analysis.hostName = mapDraft.nameHost;
-                analysis.guestName = mapDraft.nameGuest;
-                analysis.hostMaps = getDraftEvents(mapDraft.events, "HOST", "pick");
-                analysis.guestMaps = getDraftEvents(mapDraft.events, "GUEST", "pick");
-                analysis.hostMapSnipes = getDraftEvents(mapDraft.events, "HOST", "snipe");
-                analysis.guestMapSnipes = getDraftEvents(mapDraft.events, "GUEST", "snipe");
-            }
-
-            if (match.meta.civs) {
-                const civDraft = drafts.get(match.meta.civs);
-                analysis.hostCivs = getDraftEvents(civDraft.events, "HOST", "pick");
-                analysis.guestCivs = getDraftEvents(civDraft.events, "GUEST", "pick");
-            }
-            draftAnalysis.push(analysis);
+    for (const [index, match] of matches.entries()) {
+        if ( !match.meta ) {
+            continue;
         }
+
+        let analysis = {} as DraftAnalysis;
+        if (match.meta.maps) {
+            const mapDraft = drafts.get(match.meta.maps);
+            analysis.hostName = mapDraft.nameHost;
+            analysis.guestName = mapDraft.nameGuest;
+            analysis.hostMaps = getDraftEvents(mapDraft.events, "HOST", "pick");
+            analysis.guestMaps = getDraftEvents(mapDraft.events, "GUEST", "pick");
+            analysis.hostMapSnipes = getDraftEvents(mapDraft.events, "HOST", "snipe");
+            analysis.guestMapSnipes = getDraftEvents(mapDraft.events, "GUEST", "snipe");
+        }
+
+        if (match.meta.civs) {
+            const civDraft = drafts.get(match.meta.civs);
+            analysis.hostCivs = getDraftEvents(civDraft.events, "HOST", "pick");
+            analysis.guestCivs = getDraftEvents(civDraft.events, "GUEST", "pick");
+        }
+
+        const gameData = games[index];
+        if ( !gameData || !gameData.matches || gameData.matches.length <= 0) {
+            console.log("Skipping gameData", gameData)
+            draftAnalysis.push(analysis);
+            continue;
+        }
+
+        if ( !analysis.hostMaps || !analysis.guestMaps ) {
+            console.log("Skipping map draft")
+            draftAnalysis.push(analysis);
+            continue;
+        }
+
+        let playedHostMaps = analysis.hostMaps.flatMap((map) => 
+            (analysis.guestMapSnipes.includes(map)?[]:[map]));
+
+        let playedGuestMaps = analysis.guestMaps.flatMap((map) => 
+            (analysis.hostMapSnipes.includes(map)?[]:[map]));
+
+        const playedMaps = [...playedHostMaps, ...playedGuestMaps];
+
+        const matchEntries : Array<MatchAnalysis> = []
+        for( const match of gameData.matches ) {
+            const mapName : string = match.mapName;
+            const homePlayer = match.teams[0].players[0];
+            const guestPlayer = match.teams[1].players[0];
+            const started = new Date(match.started);
+            const finished = new Date(match.finished);
+            const durationMs = finished.getTime() - started.getTime();
+            const totalMinutes = Math.floor(durationMs / 60_000);
+
+            const map = playedMaps.find(map => mapName.includes(map));
+
+            if ( map ) {
+                const entry : MatchAnalysis = {
+                    map: map,
+                    hostCiv: homePlayer.civName,
+                    guestCiv: guestPlayer.civName,
+                    hostCivImage: homePlayer.civImageUrl,
+                    guestCivImage: guestPlayer.civImageUrl,
+                    winner: homePlayer.won? homePlayer.name : guestPlayer.name,
+                    looser: homePlayer.won? guestPlayer.name : homePlayer.name,
+                    hostWin: homePlayer.won,
+                    startTime: started,
+                    duration: totalMinutes
+                }
+
+                matchEntries.push(entry)
+            }
+        }
+
+        analysis.matches = matchEntries;
+        draftAnalysis.push(analysis);
     }
 
     isLoading = false;
     console.log(draftAnalysis)
-    openMember.Analysis = draftAnalysis
+    draftCache.set(openMember.LeagueID, draftAnalysis)
+}
+//----------------------------------------------------------------------------->    
+
+
+
+
+//----------------------------------------------------------------------------->    
+function sortedMatches(matches: Array<MatchAnalysis>): Array<MatchAnalysis> {
+    if ( !matches || matches.length <=0 ) {
+        return []
+    }
+
+    return [...matches].sort((a,b) => a.startTime.getTime() - b.startTime.getTime())
 }
 //----------------------------------------------------------------------------->    
 
@@ -230,7 +349,7 @@ async function loadDrafts() {
 
  <!-- Member header ---------------------------------------------------->
 <section class="mb-4 mt-8 p-[1em] overflow-x-auto rounded-lg border border-surface-500 bg-surface-900/50">
-    <section class="flex items-center justify-between w-full p-0">
+    <section class="flex items-center justify-between w-full p-0 pb-8">
         <div class="flex items-center space-x-4">
             <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>
             <span class="text-l">{openMember.Name}</span>
@@ -267,7 +386,7 @@ async function loadDrafts() {
             on:click={() => toggleMembers(player.Name)}> {openMembers.includes(player.Name)?"-":"+"}</button> -->
         </div>        
     </section>
-    {#if isProVersion && !draftAnalysis}
+    {#if isProVersion}
     <button type="button" class="btn btn-sm variant-ghost-primary ms-2 me-auto" onclick={(e) => loadDrafts()}>
         {#if isLoading}
             <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -282,6 +401,7 @@ async function loadDrafts() {
     {#if isProVersion && draftAnalysis}
         <section class="flex items-center justify-between w-full p-0">
         {#each draftAnalysis as draft}
+
             <div class="card !p-[1em] items-center !w-[400px] m-1">
                 <div class="flex justify-content-between w-[300px]">
                     <span class="badge variant-ghost-surface me-auto">{draft.hostName}</span>
@@ -290,20 +410,49 @@ async function loadDrafts() {
                 <div class="flex justify-content-between ms-0">
                     {#each draft.hostMaps as map}
                     <div class="relative me-auto ms-0">
-                        <img class="size-14 overflow-hidden rounded-full {draft.guestMapSnipes.includes(map)?'grayscale':''}" src={mapIcons[map]} alt="Avatar" />
-                        <span class="absolute bottom-0 left-0 w-full text-center text-xs bg-surface-800/50">{map}</span>
+                        <img class="size-14 overflow-hidden rounded-full {draft.guestMapSnipes.includes(map)?'grayscale':''}" 
+                            src={mapIcons[map]} alt={map} />
+                        <span class="absolute bottom-0 left-0 w-full truncate text-center text-xs bg-surface-800/50">{map}</span>
                     </div>
                     {/each}
                     {#each draft.guestMaps as map}
                     <div class="relative ms-auto me-0">
-                        <img class="size-14 overflow-hidden rounded-full {draft.hostMapSnipes.includes(map)?'grayscale':''}" src={mapIcons[map]} alt="Avatar" />
-                        <span class="absolute bottom-0 left-0 w-full text-center text-xs bg-surface-800/50">{map}</span>
+                        <img class="size-14 overflow-hidden rounded-full {draft.hostMapSnipes.includes(map)?'grayscale':''}" 
+                            src={mapIcons[map]} alt={map} />
+                        <span class="absolute bottom-0 left-0 w-full truncate text-center text-xs bg-surface-800/50">{map}</span>
                     </div>
                     {/each}
                 </div>
+                <div class="flex justify-content-between ms-0 pt-2">
+                    {#each draft.hostCivs as civ} 
+                        <img class="size-8 overflow-hidden rounded-full ms-0 me-auto" 
+                        src="https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/{civ.toLowerCase()}.png" alt={civ} />
+                    {/each}
+                    {#each draft.guestCivs as civ} 
+                        <img class="size-8 overflow-hidden rounded-full ms-auto me-0" 
+                        src="https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/{civ.toLowerCase()}.png" alt={civ} />
+                    {/each}
+                </div>
+
+                {#each sortedMatches(draft.matches) as match}
+                <div class="flex justify-content-between ms-0 pt-4">
+                    
+                    <img class="size-10 overflow-hidden rounded-full m-auto {match.hostWin?'':'grayscale'}" 
+                        src={match.hostCivImage} alt={match.hostCiv} />
+
+                    <div class="relative m-auto">
+                        <img class="size-14 overflow-hidden rounded-full" src={mapIcons[match.map]} alt={match.map} />
+                        <span class="absolute top-0 left-0 w-full truncate text-center text-xs bg-surface-800/80">{match.duration}m</span>
+                        <span class="absolute bottom-0 left-0 w-full truncate text-center text-xs bg-surface-800/50">{match.map}</span>
+                    </div>
+
+                    <img class="size-10 overflow-hidden rounded-full m-auto {match.hostWin?'grayscale':''}" 
+                        src={match.guestCivImage} alt={match.guestCiv} />                   
+                </div>
+                {/each}
                 <!-- <div>{draft.hostMaps} {draft.guestMaps} </div>
                 <div>{draft.hostMapSnipes} {draft.guestMapSnipes} </div> -->
-                <div>{draft.hostCivs} {draft.guestCivs}</div>
+                <!-- <div>{draft.hostCivs} {draft.guestCivs}</div> -->
             </div>           
         {/each}
         </section>

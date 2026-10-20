@@ -166,4 +166,18 @@ export interface DraftAnalysis {
     guestMapSnipes: Array<string>;
     hostCivs: Array<string>;
     guestCivs: Array<string>;
+    matches: Array<MatchAnalysis>;
+}
+
+export interface MatchAnalysis {
+    map: string;
+    hostCiv: string;
+    guestCiv: string;
+    hostCivImage: string;
+    guestCivImage: string;
+    winner: string;
+    looser: string;
+    hostWin: boolean;
+    startTime: Date;
+    duration: int;
 }

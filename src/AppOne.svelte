@@ -407,8 +407,7 @@ function rowLeave() {
 
 {/if}
 
-<PlayerStats {openMember} {stages}/>
-
+<PlayerStats {openMember} {stages} lookup={playerLookUp}/>
 
 
 </main>
