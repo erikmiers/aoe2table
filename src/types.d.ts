@@ -157,6 +157,21 @@ export interface CalendarItem {
     away:  string;
 }
 
+
+
+
+export interface DraftObject {
+    nameHost: string;
+    nameGuest: string;
+    events: Array<DraftEvent>;
+}
+
+export interface DraftEvent {
+    player: string;
+    actionType: string;
+    chosenOptionId: string;
+}
+
 export interface DraftAnalysis {
     hostName: string;
     guestName: string;
@@ -166,10 +181,27 @@ export interface DraftAnalysis {
     guestMapSnipes: Array<string>;
     hostCivs: Array<string>;
     guestCivs: Array<string>;
-    matches: Array<MatchAnalysis>;
+    games: Array<GameAnalysis>;
 }
 
-export interface MatchAnalysis {
+
+export interface CompanionGameObject {
+    matches: Array<CompanionGame>;
+    [key: string]: unknown;
+}
+
+export interface CompanionGame {
+    matchId: string;
+    started: string;
+    finished: string;
+    mapName: string;
+    teams: Array<CompanionTeam>;
+}
+
+export interface GameAnalysis {
+    companionId: string;
+    companionLink: string;
+    downloadLink: string;
     map: string;
     hostCiv: string;
     guestCiv: string;

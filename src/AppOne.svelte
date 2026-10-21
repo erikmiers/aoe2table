@@ -3,7 +3,7 @@
 
   import { Avatar } from '@skeletonlabs/skeleton';
   import { onMount } from 'svelte';
-  import { type Member, type StatItem, type Stage, type Match, type MatchMeta, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
+  import { type Member, type StatItem, type Stage, type Match, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
   import { generateNextRound } from "./AppOne";
 
   import PlayerStats from "./lib/PlayerStats.svelte";
@@ -32,7 +32,7 @@
 
   const dayNames = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
 
-  let nextRoundEntries = $derived(Object.entries(openStage?.nextRound ?? {}));
+  // let nextRoundEntries = $derived(Object.entries(openStage?.nextRound ?? {}));
 
 
   function getMapUrl(name: string): string {
@@ -309,7 +309,7 @@ function rowLeave() {
               onmouseenter={() => rowEnter(pid, row)}
               onmouseleave={() => rowLeave()}>
               <div class="ms-2 flex items-center space-x-2">
-                <Avatar width="w-6" initials="{nameLookUp(pid)}" src={imageLookUp(pid)}/>
+                <Avatar width="w-6" initials={nameLookUp(pid)} src={imageLookUp(pid)}/>
                 <span>{nameLookUp(pid)}</span>
               </div>
             </td>
