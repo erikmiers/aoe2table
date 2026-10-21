@@ -1,37 +1,5 @@
 [
     {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-20",
-        "time": "17:30",
-        "home": "LL | gummibaer",
-        "away": "Reto"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-20",
-        "time": "20:00",
-        "home": "Scol1ng",
-        "away": "[2ZKA] falling_sky"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-20",
-        "time": "21:15",
-        "home": "LM | RenLo",
-        "away": "peace_force1"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-20",
-        "time": "21:45",
-        "home": "SilasU",
-        "away": "GrindyFox Replays"
-    },
-    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-21",
@@ -56,6 +24,14 @@
         "away": "OIDA | Pat_Star"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-21",
+        "time": "19:00",
+        "home": "Schwenkii",
+        "away": "OIDA | onkyox"
+    },
+    {
         "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-21",
@@ -64,12 +40,68 @@
         "away": "Dayjay"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-21",
+        "time": "21:15",
+        "home": "LM | CoMa",
+        "away": "rOb"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-22",
         "time": "18:30",
         "home": "Makrobean",
         "away": "SvenVonE \u30c4"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-22",
+        "time": "20:00",
+        "home": "[NE]Darky",
+        "away": "Secret_jed"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-22",
+        "time": "20:00",
+        "home": "MaumauFTW",
+        "away": "El Blugo"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-22",
+        "time": "20:00",
+        "home": "matphant",
+        "away": "Lukas"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-22",
+        "time": "21:00",
+        "home": "Benanji",
+        "away": "shiXo"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-23",
+        "time": "16:15",
+        "home": "Eljardinero4",
+        "away": "GeneralOcto"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-23",
+        "time": "18:00",
+        "home": "Butti",
+        "away": "Gelga"
     },
     {
         "stage": "Ritter Liga",
@@ -96,12 +128,36 @@
         "away": "golaza"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-23",
+        "time": "20:00",
+        "home": "Lynx",
+        "away": "Basti"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-24",
+        "time": "19:00",
+        "home": "cker",
+        "away": "josra_"
+    },
+    {
         "stage": "Dunkle Liga",
         "number": 0,
         "date": "2026-10-24",
         "time": "19:30",
         "home": "[NE]Cap1983",
         "away": "Revenge"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-24",
+        "time": "20:30",
+        "home": "FaultierNosta",
+        "away": "OIDA | Gleipdonir"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -118,6 +174,14 @@
         "time": "19:15",
         "home": "LM | Samu",
         "away": "LL | SC-Quatorze"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-25",
+        "time": "20:30",
+        "home": "H\u00f6\u00dfi",
+        "away": "Twtis"
     },
     {
         "stage": "Dunkle Liga",
