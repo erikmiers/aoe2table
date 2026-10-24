@@ -1,51 +1,11 @@
 [
     {
-        "stage": "Dunkle Liga",
+        "stage": "Post-Imperial Liga",
         "number": 0,
-        "date": "2026-10-23",
-        "time": "16:15",
-        "home": "Eljardinero4",
-        "away": "GeneralOcto"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-23",
-        "time": "18:00",
-        "home": "Butti",
-        "away": "Gelga"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-23",
-        "time": "19:00",
-        "home": "Wodlapato",
-        "away": "Canuck"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-23",
-        "time": "20:00",
-        "home": "G1NCo",
-        "away": "Old Man Willow"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-23",
-        "time": "20:00",
-        "home": "KeremS",
-        "away": "golaza"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-23",
-        "time": "20:00",
-        "home": "Lynx",
-        "away": "Basti"
+        "date": "2026-10-24",
+        "time": "11:00",
+        "home": "kango",
+        "away": "Lemon"
     },
     {
         "stage": "Post-Imperial Liga",
@@ -54,14 +14,6 @@
         "time": "12:00",
         "home": "Madeen",
         "away": "ThisDino"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "18:00",
-        "home": "kango",
-        "away": "Lemon"
     },
     {
         "stage": "Feudal Liga",
@@ -90,18 +42,26 @@
     {
         "stage": "Post-Imperial Liga",
         "number": 0,
+        "date": "2026-10-24",
+        "time": "21:00",
+        "home": "MaggieWuerze",
+        "away": "Waldblume"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
         "date": "2026-10-25",
         "time": "18:00",
         "home": "LL | ENR1CO",
         "away": "OIDA | Tasty"
     },
     {
-        "stage": "Feudal Liga",
+        "stage": "Ritter Liga",
         "number": 0,
         "date": "2026-10-25",
-        "time": "20:00",
-        "home": "Basti",
-        "away": "KeeperOfThePizza"
+        "time": "19:00",
+        "home": "Mescal",
+        "away": "KickersEmden_aoe"
     },
     {
         "stage": "Post-Imperial Liga",
