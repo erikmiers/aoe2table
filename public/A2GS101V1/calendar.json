@@ -2,54 +2,6 @@
     {
         "stage": "Post-Imperial Liga",
         "number": 0,
-        "date": "2026-10-24",
-        "time": "11:00",
-        "home": "kango",
-        "away": "Lemon"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "12:00",
-        "home": "Madeen",
-        "away": "ThisDino"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "19:00",
-        "home": "cker",
-        "away": "josra_"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "19:30",
-        "home": "[NE]Cap1983",
-        "away": "Revenge"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "20:30",
-        "home": "FaultierNosta",
-        "away": "OIDA | Gleipdonir"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-24",
-        "time": "21:00",
-        "home": "MaggieWuerze",
-        "away": "Waldblume"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
         "date": "2026-10-25",
         "time": "18:00",
         "home": "LL | ENR1CO",
@@ -78,6 +30,14 @@
         "time": "20:00",
         "home": "gilti",
         "away": "[NE]Bay Araya"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-25",
+        "time": "20:00",
+        "home": "KeeperOfThePizza",
+        "away": "Ager"
     },
     {
         "stage": "Ritter Liga",
