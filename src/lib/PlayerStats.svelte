@@ -410,7 +410,7 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
         </button>
     {/if}
     {#if isProVersion && draftAnalysis}
-        <section class="flex items-center justify-between w-full p-0">
+        <section class="flex items-start justify-between w-full p-0">
         {#each draftAnalysis as draft, round}
 
             <div class="card !p-[1em] items-center !w-[400px] m-1">

@@ -174,7 +174,7 @@
     if ( rnd.result[0] === 0 && rnd.result[1] === 0 ) {
       const match = findMatchById(rnd.match)
       const matchDate = formatMatchDate(match)
-      if ( matchDate !== "" ) {
+      if ( matchDate !== "" && match?.status !== "completed" ) {
         return matchDate
       }
     }
