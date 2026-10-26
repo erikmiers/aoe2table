@@ -1,5 +1,13 @@
 [
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-26",
+        "time": "16:30",
+        "home": "Lankabel95",
+        "away": "Luis13Lord"
+    },
+    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-10-26",
@@ -24,6 +32,14 @@
         "away": "kingofthrowing123"
     },
     {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-26",
+        "time": "20:00",
+        "home": "Sir deep purple 2",
+        "away": "OIDA | Gleipdonir"
+    },
+    {
         "stage": "Division 2",
         "number": 0,
         "date": "2026-10-26",
@@ -32,11 +48,107 @@
         "away": "Madtomski"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-26",
+        "time": "21:00",
+        "home": "[NE]Bay Araya",
+        "away": "Wellen_Willi"
+    },
+    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-27",
         "time": "09:00",
         "home": "Terz",
         "away": "TheViper"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "18:15",
+        "home": "shiXo",
+        "away": "JorDan_AoE"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "18:30",
+        "home": "Bitter Lemon",
+        "away": "rOb"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "19:00",
+        "home": "SvenVonE \u30c4",
+        "away": "Dekodie"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "19:30",
+        "home": "Makrobean",
+        "away": "G1NCo"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "20:00",
+        "home": "Toaster226",
+        "away": "KeremS"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "20:00",
+        "home": "LordMadlow",
+        "away": "Mescal"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "21:30",
+        "home": "IchbinGroo7",
+        "away": "Promiskuitiv"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "20:00",
+        "home": "Hansdampf",
+        "away": "e1sTea"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-30",
+        "time": "13:00",
+        "home": "Running",
+        "away": "Target331"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-11-01",
+        "time": "18:00",
+        "home": "peace_force1",
+        "away": "El Blugo"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-11-01",
+        "time": "20:00",
+        "home": "chaos_2_win",
+        "away": "Molle"
     }
 ]
