@@ -2,74 +2,18 @@
     {
         "stage": "Post-Imperial Liga",
         "number": 0,
-        "date": "2026-10-25",
-        "time": "18:00",
-        "home": "LL | ENR1CO",
-        "away": "OIDA | Tasty"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "19:00",
-        "home": "Mescal",
-        "away": "KickersEmden_aoe"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "20:00",
-        "home": "LM | Samu",
-        "away": "LL | SC-Quatorze"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "20:00",
-        "home": "gilti",
-        "away": "[NE]Bay Araya"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "20:00",
-        "home": "KeeperOfThePizza",
-        "away": "Ager"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "20:30",
-        "home": "H\u00f6\u00dfi",
-        "away": "Twtis"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "21:00",
-        "home": "kacktuss",
-        "away": "Vitalis"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-25",
-        "time": "21:30",
-        "home": "Promiskuitiv",
-        "away": "CaptainMorgan"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
         "date": "2026-10-26",
         "time": "17:00",
         "home": "[GER] Paeco",
         "away": "Maisternippon"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-10-26",
+        "time": "18:30",
+        "home": "Target331",
+        "away": "Wean Dinchester"
     },
     {
         "stage": "Division 2",
@@ -91,7 +35,7 @@
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-27",
-        "time": "10:00",
+        "time": "09:00",
         "home": "Terz",
         "away": "TheViper"
     }
