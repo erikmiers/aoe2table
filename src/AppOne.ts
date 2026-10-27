@@ -16,6 +16,21 @@ export interface PreliminaryStats {
     pts: number;
 }
 
+/** Playoff slots by stage number. Unlisted stages default to 6. */
+export const PLAYOFF_SPOTS: Record<number, number> = {
+    // 1: 6, // Dunkle Liga
+    // 2: 6, // Feudal Liga
+    3: 8, // Ritter Liga
+    // 4: 6, // Imperial Liga
+    // 5: 6, // Post-Imperial Liga
+};
+
+export function getPlayoffSpots(stage: Stage): number {
+    return PLAYOFF_SPOTS[stage.number] ?? 6;
+}
+
+const ROUND_OUTCOMES: ScoreOverride[] = [[2, 0], [1, 1], [0, 2]];
+
 /** Cycle from clicking player's view: 2:0 → 1:1 → 0:2 → clear. Stored in Match.opponents order. */
 export function cycleOverrideFromPlayerView(
     current: ScoreOverride | undefined,
@@ -123,6 +138,153 @@ export function recomputePreliminaryTable(
         if (b.pts !== a.pts) return b.pts - a.pts;
         return aid.localeCompare(bid);
     });
+}
+
+function getLastRoundNumber(table: Map<string, TableRow>): number | undefined {
+    let maxRound: number | undefined;
+    for (const [, row] of table) {
+        for (const [, rnd] of row.rounds) {
+            if (maxRound === undefined || rnd.number > maxRound) {
+                maxRound = rnd.number;
+            }
+        }
+    }
+    return maxRound;
+}
+
+/** Last-round matches that still have no official result and no provisional override. */
+export function getUndecidedLastRoundMatches(
+    table: Map<string, TableRow>,
+    overrides: Map<string, ScoreOverride>,
+): string[] {
+    const lastRound = getLastRoundNumber(table);
+    if (lastRound === undefined) {
+        return [];
+    }
+
+    const matchIds = new Set<string>();
+    for (const [, row] of table) {
+        for (const [, rnd] of row.rounds) {
+            if (rnd.number !== lastRound) continue;
+            const decided = overrides.has(rnd.match) || !isPendingResult(rnd.result);
+            if (!decided) {
+                matchIds.add(rnd.match);
+            }
+        }
+    }
+    return [...matchIds];
+}
+
+function hasAnyDecidedLastRoundResult(
+    table: Map<string, TableRow>,
+    overrides: Map<string, ScoreOverride>,
+): boolean {
+    const lastRound = getLastRoundNumber(table);
+    if (lastRound === undefined) {
+        return false;
+    }
+    for (const [, row] of table) {
+        for (const [, rnd] of row.rounds) {
+            if (rnd.number !== lastRound) continue;
+            if (overrides.has(rnd.match) || !isPendingResult(rnd.result)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+export function canComputePlayoffProbabilities(
+    table: Map<string, TableRow>,
+    overrides: Map<string, ScoreOverride>,
+): boolean {
+    return hasAnyDecidedLastRoundResult(table, overrides);
+}
+
+function abortError(): DOMException {
+    return new DOMException('Playoff odds calculation aborted', 'AbortError');
+}
+
+async function yieldToMain(signal?: AbortSignal): Promise<void> {
+    if (signal?.aborted) {
+        throw abortError();
+    }
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+    if (signal?.aborted) {
+        throw abortError();
+    }
+}
+
+/**
+ * Exact playoff odds for the final round: enumerate remaining undecided matches
+ * (each 2:0 / 1:1 / 0:2 equally likely), treating completed + provisional results as fixed.
+ * Only runs once at least one last-round result is known (official or provisional).
+ * Yields to the event loop so the UI can stay responsive; pass AbortSignal to cancel.
+ */
+export async function computePlayoffProbabilities(
+    table: Map<string, TableRow>,
+    overrides: Map<string, ScoreOverride>,
+    matchesById: Map<string, Match>,
+    playoffSpots: number,
+    signal?: AbortSignal,
+): Promise<Map<string, number>> {
+    const probs = new Map<string, number>();
+    if (!hasAnyDecidedLastRoundResult(table, overrides)) {
+        return probs;
+    }
+    if (signal?.aborted) {
+        throw abortError();
+    }
+
+    const undecided = getUndecidedLastRoundMatches(table, overrides);
+    const playerIds = [...table.keys()];
+
+    if (undecided.length === 0) {
+        const standing = recomputePreliminaryTable(table, overrides, matchesById);
+        for (let i = 0; i < standing.length; i++) {
+            probs.set(standing[i][0], i < playoffSpots ? 100 : 0);
+        }
+        return probs;
+    }
+
+    // Cap extreme cases (e.g. full round open): 3^8 = 6561, 3^10 = 59049
+    if (undecided.length > 10) {
+        console.warn(`Playoff odds: ${undecided.length} undecided matches, skipping exact enum`);
+        return probs;
+    }
+
+    const totals = new Map<string, number>();
+    for (const pid of playerIds) {
+        totals.set(pid, 0);
+    }
+
+    const n = undecided.length;
+    const totalScenarios = Math.pow(ROUND_OUTCOMES.length, n);
+    const chunkSize = Math.max(8, Math.min(64, Math.ceil(totalScenarios / 40)));
+
+    for (let scenario = 0; scenario < totalScenarios; scenario++) {
+        if (scenario > 0 && scenario % chunkSize === 0) {
+            await yieldToMain(signal);
+        }
+
+        const scenarioOverrides = new Map(overrides);
+        let code = scenario;
+        for (let i = 0; i < n; i++) {
+            scenarioOverrides.set(undecided[i], ROUND_OUTCOMES[code % ROUND_OUTCOMES.length]);
+            code = Math.floor(code / ROUND_OUTCOMES.length);
+        }
+
+        const standing = recomputePreliminaryTable(table, scenarioOverrides, matchesById);
+        for (let i = 0; i < playoffSpots && i < standing.length; i++) {
+            const pid = standing[i][0];
+            totals.set(pid, (totals.get(pid) ?? 0) + 1);
+        }
+    }
+
+    for (const pid of playerIds) {
+        probs.set(pid, ((totals.get(pid) ?? 0) / totalScenarios) * 100);
+    }
+    return probs;
 }
 
 function playedAgainst(player1: TableRow, opponent: string) {

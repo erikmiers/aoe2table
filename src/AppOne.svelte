@@ -4,7 +4,14 @@
   import { Avatar } from '@skeletonlabs/skeleton';
   import { onMount } from 'svelte';
   import { type Member, type StatItem, type Stage, type Match, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
-  import { recomputePreliminaryTable, cycleOverrideFromPlayerView, type ScoreOverride } from "./AppOne";
+  import {
+    recomputePreliminaryTable,
+    cycleOverrideFromPlayerView,
+    computePlayoffProbabilities,
+    canComputePlayoffProbabilities,
+    getPlayoffSpots,
+    type ScoreOverride,
+  } from "./AppOne";
 
   import PlayerStats from "./lib/PlayerStats.svelte";
 
@@ -22,6 +29,9 @@
   let hoveredPlayer : string | undefined = $state(undefined);
   let hoveredRow : TableRow | undefined = undefined;
   let provisionalOverrides: Map<string, ScoreOverride> = $state(new Map());
+  let showPreliminaryTable = $state(false);
+  let playoffProbs: Map<string, number> = $state(new Map());
+  let playoffProbsLoading = $state(false);
 
   const stageIcons: string[] = [
     "dark-age.webp",
@@ -54,11 +64,61 @@
 
   let preliminaryTable = $derived.by(() => {
     const stage = openStage;
-    if (stage === undefined || provisionalOverrides.size === 0) {
+    if (stage === undefined || !showPreliminaryTable) {
       return [] as ReturnType<typeof recomputePreliminaryTable>;
     }
     return recomputePreliminaryTable(stage.table, provisionalOverrides, matchesById);
   });
+
+  // Async playoff odds: table stays interactive; abort in-flight work when inputs change.
+  $effect(() => {
+    const stage = openStage;
+    const overrides = provisionalOverrides;
+    const matches = matchesById;
+
+    if (stage === undefined || !canComputePlayoffProbabilities(stage.table, overrides)) {
+      playoffProbs = new Map();
+      playoffProbsLoading = false;
+      return;
+    }
+
+    const ac = new AbortController();
+    playoffProbsLoading = true;
+    playoffProbs = new Map(); // clear stale % while recalculating
+
+    computePlayoffProbabilities(
+      stage.table,
+      overrides,
+      matches,
+      getPlayoffSpots(stage),
+      ac.signal,
+    ).then((probs) => {
+      if (ac.signal.aborted) return;
+      playoffProbs = probs;
+      playoffProbsLoading = false;
+    }).catch((err) => {
+      if (err?.name === 'AbortError') return;
+      console.error(err);
+      if (!ac.signal.aborted) {
+        playoffProbsLoading = false;
+      }
+    });
+
+    return () => {
+      ac.abort();
+    };
+  });
+
+  function formatPlayoffProb(pid: string): string {
+    if (playoffProbsLoading) return "…";
+    const p = playoffProbs.get(pid);
+    if (p === undefined) return "";
+    if (p === 0) return "0%";
+    if (p === 100) return "100%";
+    if (p < 1) return "<1%";
+    if (p > 99 && p < 100) return ">99%";
+    return `${Math.round(p)}%`;
+  }
 
 
   function getMapUrl(name: string): string {
@@ -244,6 +304,7 @@
       updated.delete(rnd.match);
     } else {
       updated.set(rnd.match, next);
+      showPreliminaryTable = true; // open on first provisional pick; stay open if cleared via cycle
     }
     provisionalOverrides = updated;
   }
@@ -252,9 +313,14 @@
     provisionalOverrides = new Map();
   }
 
+  function togglePreliminaryTable() {
+    showPreliminaryTable = !showPreliminaryTable;
+  }
+
   function onStageSelect(stage: Stage) {
     openStage = stage;
     provisionalOverrides = new Map();
+    showPreliminaryTable = false;
     openMatch = undefined;
   }
 
@@ -349,7 +415,16 @@ function rowLeave() {
     </div>
     <br>
 
-    <h2 class="mb-8 text-2xl">{openStage?.name}</h2>
+    <div class="relative mb-8">
+      <h2 class="text-2xl m-0 text-center">{openStage?.name}</h2>
+      <button
+        type="button"
+        class="btn btn-sm absolute right-0 top-1/2 -translate-y-1/2 {showPreliminaryTable ? 'variant-filled-primary' : 'variant-ghost-primary'}"
+        onclick={togglePreliminaryTable}>
+        Preview
+        <!-- {showPreliminaryTable ? 'Hide preliminary' : 'Show preliminary'} -->
+      </button>
+    </div>
   </div>
 
   <!-- Content-sized tables; can use full viewport width before scrolling -->
@@ -419,39 +494,45 @@ function rowLeave() {
     </table>
   </div>
 
-  {#if preliminaryTable.length > 0}
+  {#if showPreliminaryTable && preliminaryTable.length > 0}
   <div class="max-w-full overflow-x-auto xl:overflow-visible xl:shrink-0">
     <table class="table table-interactive table-hover border-collapse min-w-max">
       <thead>
         <tr>
           <th>
-            <button type="button" class="btn btn-sm variant-ghost-surface" onclick={clearProvisionalOverrides}>Clear</button>
+            <button type="button" class="btn btn-sm variant-ghost-surface" onclick={clearProvisionalOverrides} disabled={provisionalOverrides.size === 0}>Clear</button>
           </th>
           <th>Name</th>
           <th>W</th>
           <th>L</th>
           <th>D</th>
           <th>Bhlz</th>
+          <th title="Playoff probability after the current round">PO%</th>
         </tr>
       </thead>
       <tbody>
         {#each preliminaryTable as [pid, row], i}
+          {@const activeRow = checkActive(pid, hoveredMatch, hoveredPlayer)}
           {@const openedRow = openMember?.LeagueID === pid}
           <tr class={openedRow? 'shadow-[inset_4px_0_0_0_theme(colors.primary.500)] outline outline-1 outline-slate-500 -outline-offset-1':''}>
-            <td><span class="font-bold">{i+1}</span></td>
+            <td class:activeRow><span class="font-bold">{i+1}</span></td>
             <td
+              class:activeRow
               class="hover:bg-sky-700 hover:bg-opacity-20 cursor-pointer
                     { i%2? 'bg-slate-800/80':'bg-surface-800/80' }"
-              onclick={() => toggleMember(pid)}>
+              onclick={() => toggleMember(pid)}
+              onmouseenter={() => rowEnter(pid, openStage?.table.get(pid))}
+              onmouseleave={() => rowLeave()}>
               <div class="ms-2 flex items-center space-x-2 h-10">
                 <Avatar width="w-6" initials={nameLookUp(pid)} src={imageLookUp(pid)}/>
                 <span class="truncate max-w-[140px]">{nameLookUp(pid)}</span>
               </div>
             </td>
-            <td><span class="font-bold">{row.wins}</span></td>
-            <td>{row.losses}</td>
-            <td>{row.diff}</td>
-            <td><span class="font-bold">{row.pts}</span></td>
+            <td class:activeRow><span class="font-bold">{row.wins}</span></td>
+            <td class:activeRow>{row.losses}</td>
+            <td class:activeRow>{row.diff}</td>
+            <td class:activeRow><span class="font-bold">{row.pts}</span></td>
+            <td class:activeRow><span class="font-bold">{formatPlayoffProb(pid)}</span></td>
           </tr>
         {/each}
       </tbody>
