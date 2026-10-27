@@ -1,61 +1,5 @@
 [
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "16:30",
-        "home": "Lankabel95",
-        "away": "Luis13Lord"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "17:00",
-        "home": "[GER] Paeco",
-        "away": "Maisternippon"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "18:30",
-        "home": "Target331",
-        "away": "Wean Dinchester"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "19:30",
-        "home": "sILVER",
-        "away": "kingofthrowing123"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "20:00",
-        "home": "Sir deep purple 2",
-        "away": "OIDA | Gleipdonir"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "20:30",
-        "home": "e1sTea",
-        "away": "Madtomski"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-26",
-        "time": "21:00",
-        "home": "[NE]Bay Araya",
-        "away": "Wellen_Willi"
-    },
-    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-27",
@@ -112,12 +56,68 @@
         "away": "Mescal"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "21:00",
+        "home": "LM | Samu",
+        "away": "LL | ENR1CO"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-10-27",
         "time": "21:30",
         "home": "IchbinGroo7",
         "away": "Promiskuitiv"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-27",
+        "time": "21:35",
+        "home": "GrindyFox Replays",
+        "away": "Basti"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-28",
+        "time": "20:15",
+        "home": "SilasU",
+        "away": "gilti"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "11:00",
+        "home": "fanalhb",
+        "away": "FomerMay"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "18:00",
+        "home": "DerHausmeister",
+        "away": "Scol1ng"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "19:00",
+        "home": "Wodlapato",
+        "away": "LM | CoMa"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "19:00",
+        "home": "4k1m",
+        "away": "Canuck"
     },
     {
         "stage": "Division 2",
@@ -128,12 +128,36 @@
         "away": "e1sTea"
     },
     {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "20:00",
+        "home": "cker",
+        "away": "LM | RenLo"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-10-29",
+        "time": "20:00",
+        "home": "golaza",
+        "away": "Dayjay"
+    },
+    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-30",
         "time": "13:00",
         "home": "Running",
         "away": "Target331"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-31",
+        "time": "14:00",
+        "home": "iroNistiC",
+        "away": "Eljardinero4"
     },
     {
         "stage": "Feudal Liga",
@@ -150,5 +174,13 @@
         "time": "20:00",
         "home": "chaos_2_win",
         "away": "Molle"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-11-01",
+        "time": "20:00",
+        "home": "Madeen",
+        "away": "Maisternippon"
     }
 ]
