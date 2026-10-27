@@ -4,13 +4,12 @@
   import { Avatar } from '@skeletonlabs/skeleton';
   import { onMount } from 'svelte';
   import { type Member, type StatItem, type Stage, type Match, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
-  import { generateNextRound } from "./AppOne";
+  import { recomputePreliminaryTable, cycleOverrideFromPlayerView, type ScoreOverride } from "./AppOne";
 
   import PlayerStats from "./lib/PlayerStats.svelte";
 
   const BASE_URL = import.meta.env.BASE_URL;
   const DATA_URL = BASE_URL + "A2GS101V1/";
-  const DEVELOPING = false;
 
   let players: Member[] = [];
   let stages: Stage[] = $state([]);
@@ -22,6 +21,7 @@
   let hoveredMatchId : string | undefined = $state(undefined);
   let hoveredPlayer : string | undefined = $state(undefined);
   let hoveredRow : TableRow | undefined = undefined;
+  let provisionalOverrides: Map<string, ScoreOverride> = $state(new Map());
 
   const stageIcons: string[] = [
     "dark-age.webp",
@@ -32,7 +32,27 @@
 
   const dayNames = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
 
-  // let nextRoundEntries = $derived(Object.entries(openStage?.nextRound ?? {}));
+  let matchesById = $derived.by(() => {
+    const map = new Map<string, Match>();
+    for (const stage of stages) {
+      for (const group of stage.groups) {
+        for (const round of group.rounds) {
+          for (const match of round.matches) {
+            map.set(match.id, match);
+          }
+        }
+      }
+    }
+    return map;
+  });
+
+  let preliminaryTable = $derived.by(() => {
+    const stage = openStage;
+    if (stage === undefined || provisionalOverrides.size === 0) {
+      return [] as ReturnType<typeof recomputePreliminaryTable>;
+    }
+    return recomputePreliminaryTable(stage.table, provisionalOverrides, matchesById);
+  });
 
 
   function getMapUrl(name: string): string {
@@ -170,8 +190,9 @@
   }
 
 
-  function formatResult(rnd: TableRowRound): string {
-    if ( rnd.result[0] === 0 && rnd.result[1] === 0 ) {
+  function formatResult(rnd: TableRowRound, displayResult?: Array<number>): string {
+    const result = displayResult ?? rnd.result;
+    if ( result[0] === 0 && result[1] === 0 ) {
       const match = findMatchById(rnd.match)
       const matchDate = formatMatchDate(match)
       if ( matchDate !== "" && match?.status !== "completed" ) {
@@ -179,7 +200,56 @@
       }
     }
 
-    return rnd.result[0] + ":" + rnd.result[1]
+    return result[0] + ":" + result[1]
+  }
+
+  function isEditableRound(rnd: TableRowRound): boolean {
+    return (rnd.result[0] === 0 && rnd.result[1] === 0) || provisionalOverrides.has(rnd.match);
+  }
+
+  function displayRoundResult(pid: string, rnd: TableRowRound): Array<number> {
+    const override = provisionalOverrides.get(rnd.match);
+    if (override === undefined) {
+      return rnd.result;
+    }
+    const match = matchesById.get(rnd.match);
+    if (match === undefined) {
+      return rnd.result;
+    }
+    if (match.opponents[0].id === pid) {
+      return override;
+    }
+    return [override[1], override[0]];
+  }
+
+  function cycleProvisional(pid: string, rnd: TableRowRound) {
+    if (!isEditableRound(rnd)) {
+      toggleMatch(rnd.match);
+      return;
+    }
+    const match = matchesById.get(rnd.match);
+    if (match === undefined) {
+      return;
+    }
+    const playerIsOpponent0 = match.opponents[0].id === pid;
+    const next = cycleOverrideFromPlayerView(provisionalOverrides.get(rnd.match), playerIsOpponent0);
+    const updated = new Map(provisionalOverrides);
+    if (next === undefined) {
+      updated.delete(rnd.match);
+    } else {
+      updated.set(rnd.match, next);
+    }
+    provisionalOverrides = updated;
+  }
+
+  function clearProvisionalOverrides() {
+    provisionalOverrides = new Map();
+  }
+
+  function onStageSelect(stage: Stage) {
+    openStage = stage;
+    provisionalOverrides = new Map();
+    openMatch = undefined;
   }
 
 
@@ -268,7 +338,7 @@ function rowLeave() {
 
     <div class="logo-cloud grid-cols-1 lg:!grid-cols-5 gap-1">
       {#each stages as stage}
-      <a class="logo-item" href="#" onclick={(e) => openStage=stage}>
+      <a class="logo-item" href="#" onclick={(e) => onStageSelect(stage)}>
         <img class="h-8" src="{BASE_URL}{stageIcons[stage.number-1]}" alt="">
         <span>{stage.name}</span>
       </a>
@@ -278,7 +348,8 @@ function rowLeave() {
 
     <h2 class="mb-8 text-2xl">{openStage?.name}</h2>
 
-  <div class="overflow-x-auto w-full">
+  <div class="flex flex-col xl:flex-row gap-4 items-start w-full">
+  <div class="overflow-x-auto w-full min-w-0">
     <table class="table table-interactive table-hover overflow-visible min-w-max w-full border-collapse">
       <thead>
         <tr>
@@ -318,17 +389,21 @@ function rowLeave() {
             <td class:activeRow>{row.diff}</td>
             <td class:activeRow><span class="font-bold">{row.pts}</span></td>
             {#each row.rounds as [rid, rnd]}
-              <td onclick={() => toggleMatch(rnd.match)}
+              {@const shown = displayRoundResult(pid, rnd)}
+              {@const overridden = provisionalOverrides.has(rnd.match)}
+              {@const editable = isEditableRound(rnd)}
+              <td onclick={() => editable ? cycleProvisional(pid, rnd) : toggleMatch(rnd.match)}
                   onmouseenter={() => {hoveredMatch = rnd.opponent; hoveredMatchId = rnd.match}}
                   onmouseleave={() => {hoveredMatch = undefined; hoveredMatchId = undefined}}
                   class="{openMatch?.id === rnd.match? 'border border-gray-300':''}
-                         {hoveredMatchId === rnd.match? 'border border-yellow-300':''}">
+                         {hoveredMatchId === rnd.match? 'border border-yellow-300':''}
+                         {overridden ? 'outline outline-1 outline-dashed outline-sky-400 -outline-offset-1':''}
+                         {editable ? 'cursor-pointer':''}">
                 <div
                   class:bg-opacity-80={hoveredMatch === rnd.opponent || hoveredPlayer === rnd.opponent || hoveredMatchId === rnd.match} 
-                  class="truncate max-w-[140px] h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(rnd.result)}" style="font-size: smaller;">
+                  class="truncate max-w-[140px] h-10 bg-opacity-30 text-s hover:bg-opacity-50 {getBgColor(shown)}" style="font-size: smaller;">
                   {nameLookUp(rnd.opponent)}<br>
-                  <span class="text-surface-400">{formatResult(rnd)}</span>
-                  <!-- <span class:text-surface-400={rnd.result[0] === 0 && rnd.result[1] === 0} >{formatResult(rnd)}</span> -->
+                  <span class="text-surface-400">{formatResult(rnd, shown)}</span>
                 </div>
               </td>
             {/each}
@@ -338,36 +413,47 @@ function rowLeave() {
       </tbody>
     </table>
   </div>
-  {#if DEVELOPING }
-  <div class="min-w-max">
-    <table class="table table-interactive table-hover">
+
+  {#if preliminaryTable.length > 0}
+  <div class="min-w-max shrink-0">
+    <table class="table table-interactive table-hover border-collapse">
       <thead>
-        <tr><th>
-          Next Round
-            <span 
-              onclick={(e) => generateNextRound(openStage)}
-              class="xs-4 cursor-pointer font-bold">&#x21bb;</span>
-        </th></tr>
+        <tr>
+          <th>
+            <button type="button" class="btn btn-sm variant-ghost-surface" onclick={clearProvisionalOverrides}>Clear</button>
+          </th>
+          <th>Name</th>
+          <th>W</th>
+          <th>L</th>
+          <th>D</th>
+          <th>Bhlz</th>
+        </tr>
       </thead>
       <tbody>
-        <!-- {#if openStage !== undefined && openStage.nextRound !== undefined} -->
-        {#each nextRoundEntries as [i, pid] }
-          <tr>
+        {#each preliminaryTable as [pid, row], i}
+          {@const openedRow = openMember?.LeagueID === pid}
+          <tr class={openedRow? 'shadow-[inset_4px_0_0_0_theme(colors.primary.500)] outline outline-1 outline-slate-500 -outline-offset-1':''}>
+            <td><span class="font-bold">{i+1}</span></td>
             <td
-              onclick={(e) => toggleMember(pid)}
-              class="hover:bg-sky-700 hover:bg-opacity-20">
+              class="hover:bg-sky-700 hover:bg-opacity-20 cursor-pointer
+                    { i%2? 'bg-slate-800/80':'bg-surface-800/80' }"
+              onclick={() => toggleMember(pid)}>
               <div class="ms-2 flex items-center space-x-2 h-10">
-                <Avatar width="w-6" initials="{nameLookUp(pid)}" src={imageLookUp(pid)}/>
+                <Avatar width="w-6" initials={nameLookUp(pid)} src={imageLookUp(pid)}/>
                 <span>{nameLookUp(pid)}</span>
               </div>
             </td>
+            <td><span class="font-bold">{row.wins}</span></td>
+            <td>{row.losses}</td>
+            <td>{row.diff}</td>
+            <td><span class="font-bold">{row.pts}</span></td>
           </tr>
         {/each}
-        <!-- {/if} -->
       </tbody>
     </table>
   </div>
   {/if}
+  </div>
 
 {#if openMatch !== undefined}
 

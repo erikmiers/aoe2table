@@ -7,6 +7,124 @@ export interface Pairing {
     table: number;
 }
 
+export type ScoreOverride = [number, number]; // [opponent0 games, opponent1 games]
+
+export interface PreliminaryStats {
+    wins: number;
+    losses: number;
+    diff: number;
+    pts: number;
+}
+
+/** Cycle from clicking player's view: 2:0 → 1:1 → 0:2 → clear. Stored in Match.opponents order. */
+export function cycleOverrideFromPlayerView(
+    current: ScoreOverride | undefined,
+    playerIsOpponent0: boolean,
+): ScoreOverride | undefined {
+    const sequence: ScoreOverride[] = [[2, 0], [1, 1], [0, 2]];
+
+    const currentFromPlayer: ScoreOverride | undefined = current === undefined
+        ? undefined
+        : playerIsOpponent0 ? current : [current[1], current[0]];
+
+    let nextIdx = 0;
+    if (currentFromPlayer !== undefined) {
+        const idx = sequence.findIndex(
+            ([a, b]) => a === currentFromPlayer[0] && b === currentFromPlayer[1],
+        );
+        nextIdx = idx + 1;
+        if (nextIdx >= sequence.length) {
+            return undefined; // clear
+        }
+    }
+
+    const nextFromPlayer = sequence[nextIdx];
+    return playerIsOpponent0
+        ? nextFromPlayer
+        : [nextFromPlayer[1], nextFromPlayer[0]];
+}
+
+function isPendingResult(result: Array<number>): boolean {
+    return result[0] === 0 && result[1] === 0;
+}
+
+function resultForPlayer(
+    pid: string,
+    matchId: string,
+    official: Array<number>,
+    overrides: Map<string, ScoreOverride>,
+    matchesById: Map<string, Match>,
+): [number, number] {
+    const override = overrides.get(matchId);
+    if (override === undefined) {
+        return [official[0], official[1]];
+    }
+    const match = matchesById.get(matchId);
+    if (match === undefined) {
+        return [official[0], official[1]];
+    }
+    if (match.opponents[0].id === pid) {
+        return [override[0], override[1]];
+    }
+    return [override[1], override[0]];
+}
+
+/**
+ * Recompute standings applying provisional score overrides.
+ * Override values are in Match.opponents order: [o0 games, o1 games].
+ */
+export function recomputePreliminaryTable(
+    table: Map<string, TableRow>,
+    overrides: Map<string, ScoreOverride>,
+    matchesById: Map<string, Match>,
+): Array<[string, PreliminaryStats]> {
+    // Pass 1: provisional wins/losses per player
+    const provisional = new Map<string, {
+        wins: number;
+        losses: number;
+        results: Map<string, [number, number]>; // opponentId -> result from this player's view
+    }>();
+
+    for (const [pid, row] of table) {
+        let wins = 0;
+        let losses = 0;
+        const results = new Map<string, [number, number]>();
+
+        for (const [, rnd] of row.rounds) {
+            const result = resultForPlayer(pid, rnd.match, rnd.result, overrides, matchesById);
+            results.set(rnd.opponent, result);
+            wins += result[0];
+            losses += result[1];
+        }
+
+        provisional.set(pid, { wins, losses, results });
+    }
+
+    // Pass 2: Buchholz = sum of opponents' provisional wins, skipping pending 0:0
+    const stats = new Map<string, PreliminaryStats>();
+    for (const [pid, p] of provisional) {
+        let pts = 0;
+        for (const [oppId, result] of p.results) {
+            if (isPendingResult(result)) continue;
+            pts += provisional.get(oppId)?.wins ?? 0;
+        }
+        stats.set(pid, {
+            wins: p.wins,
+            losses: p.losses,
+            diff: p.wins - p.losses,
+            pts,
+        });
+    }
+
+    return [...stats].sort((entryA, entryB) => {
+        const [aid, a] = entryA;
+        const [bid, b] = entryB;
+        if (b.wins !== a.wins) return b.wins - a.wins;
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        return aid.localeCompare(bid);
+    });
+}
+
 function playedAgainst(player1: TableRow, opponent: string) {
     for ( const [id, round] of player1.rounds ) {
         if ( round.opponent === opponent ) {
