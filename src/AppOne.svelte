@@ -28,7 +28,13 @@
     "feudal-age.webp",
     "castle-age.webp",
     "imperial-age.webp",
-    "post-imp.jpg",]
+    "post-imp.jpg",
+    "dark-age.webp",
+    "feudal-age.webp",
+    "castle-age.webp",
+    "imperial-age.webp",
+    "post-imp.jpg"]
+
 
   const dayNames = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
 
@@ -332,10 +338,7 @@ function rowLeave() {
 
 
 <main>
-    <!-- <img class="h-24 m-auto" src="{BASE_URL}a2glogoliga.png" alt="">
-    <h1 class="mb-8">AoE2Germany Liga - Saison 8</h1> -->
-
-
+  <div class="constrained mx-auto">
     <div class="logo-cloud grid-cols-1 lg:!grid-cols-5 gap-1">
       {#each stages as stage}
       <a class="logo-item" href="#" onclick={(e) => onStageSelect(stage)}>
@@ -347,10 +350,12 @@ function rowLeave() {
     <br>
 
     <h2 class="mb-8 text-2xl">{openStage?.name}</h2>
+  </div>
 
-  <div class="flex flex-col xl:flex-row gap-4 items-start w-full">
-  <div class="overflow-x-auto w-full min-w-0">
-    <table class="table table-interactive table-hover overflow-visible min-w-max w-full border-collapse">
+  <!-- Content-sized tables; can use full viewport width before scrolling -->
+  <div class="flex flex-col xl:flex-row gap-4 items-start w-full justify-center">
+  <div class="overflow-x-auto max-w-full min-w-0 rounded-container-token">
+    <table class="table table-interactive table-hover overflow-visible min-w-max w-full border-collapse !rounded-none">
       <thead>
         <tr>
           <th>#</th>
@@ -381,7 +386,7 @@ function rowLeave() {
               onmouseleave={() => rowLeave()}>
               <div class="ms-2 flex items-center space-x-2">
                 <Avatar width="w-6" initials={nameLookUp(pid)} src={imageLookUp(pid)}/>
-                <span>{nameLookUp(pid)}</span>
+                <span class="truncate max-w-[140px]">{nameLookUp(pid)}</span>
               </div>
             </td>
             <td class:activeRow><span class="font-bold">{row.wins}</span></td>
@@ -415,8 +420,8 @@ function rowLeave() {
   </div>
 
   {#if preliminaryTable.length > 0}
-  <div class="min-w-max shrink-0">
-    <table class="table table-interactive table-hover border-collapse">
+  <div class="max-w-full overflow-x-auto xl:overflow-visible xl:shrink-0">
+    <table class="table table-interactive table-hover border-collapse min-w-max">
       <thead>
         <tr>
           <th>
@@ -440,7 +445,7 @@ function rowLeave() {
               onclick={() => toggleMember(pid)}>
               <div class="ms-2 flex items-center space-x-2 h-10">
                 <Avatar width="w-6" initials={nameLookUp(pid)} src={imageLookUp(pid)}/>
-                <span>{nameLookUp(pid)}</span>
+                <span class="truncate max-w-[140px]">{nameLookUp(pid)}</span>
               </div>
             </td>
             <td><span class="font-bold">{row.wins}</span></td>
@@ -455,6 +460,7 @@ function rowLeave() {
   {/if}
   </div>
 
+  <div class="constrained mx-auto">
 {#if openMatch !== undefined}
 
  <!-- Member header ---------------------------------------------------->
@@ -494,11 +500,15 @@ function rowLeave() {
 {/if}
 
 <PlayerStats {openMember} {stages} lookup={playerLookUp}/>
-
+  </div>
 
 </main>
 
 <style>
+  .constrained {
+    max-width: 1280px;
+    width: 100%;
+  }
   .table tbody td {
     padding-left: 0;
     padding-right: 0;
