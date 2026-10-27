@@ -21,8 +21,6 @@
         draftAnalysis = openMember ? draftCache.get(openMember.LeagueID) : undefined;
     });
     
-    const isProVersion = window.location.hash === "#pro";
-
     const mapIcons: Record<string,string> = {
         Badlands: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Badlands.png",
         Basmo: "https://files.aoe2germany.de/files/maps-draft/1v1_10_Basmo.png",
@@ -359,8 +357,8 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
 {#if openMember !== undefined}
 
  <!-- Member header ---------------------------------------------------->
-<section class="mb-4 mt-8 p-[1em] overflow-x-auto rounded-lg border border-surface-500 bg-surface-900/50">
-    <section class="flex items-center justify-between w-full p-0 pb-8">
+<section class="mb-4 mt-8 p-[1em] rounded-lg border border-surface-500 bg-surface-900/50">
+    <section class="flex items-center justify-between w-full p-0 pb-4">
         <div class="flex items-center space-x-4">
             <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>
             <span class="text-l">{openMember.Name}</span>
@@ -397,7 +395,6 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
             on:click={() => toggleMembers(player.Name)}> {openMembers.includes(player.Name)?"-":"+"}</button> -->
         </div>        
     </section>
-    {#if isProVersion}
     <button type="button" class="btn btn-sm variant-ghost-primary ms-2 me-auto" onclick={(e) => loadDrafts()}>
         {#if isLoading}
             <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -407,13 +404,12 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
         {:else}
             <span>Load drafts</span>
         {/if}
-        </button>
-    {/if}
-    {#if isProVersion && draftAnalysis}
-        <section class="flex items-start justify-between w-full p-0">
+    </button>
+    {#if draftAnalysis}
+        <section class="flex items-start overflow-x-auto max-w-full mt-4 p-0">
         {#each draftAnalysis as draft, round}
 
-            <div class="card !p-[1em] items-center !w-[400px] m-1">
+            <div class="card !p-[1em] items-center !w-[400px] m-1 shrink-0">
                 <div class="flex justify-content-between w-[300px] mb-2">
                     <span class="badge variant-ghost-surface me-auto">{draft.hostName}</span>
                     <span class="text-slate-600">Round {round+1}</span>
