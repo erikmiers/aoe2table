@@ -1,8 +1,9 @@
 <script lang="ts">
 
     import { type DraftAnalysis, type Stage, type Match, type Member, type GameAnalysis, 
-        type DraftObject, type CompanionGameObject, type DraftEvent } from '../types';
-    import { draftCache } from './draftCache';
+        type DraftObject, type CompanionGameObject, type DraftEvent, type CompanionRmStats,
+        type CompanionStatEntry } from '../types';
+    import { draftCache, statsCache } from './draftCache';
     
     import { Avatar } from '@skeletonlabs/skeleton';
     import { fade, slide } from 'svelte/transition';
@@ -16,9 +17,16 @@
 
     let {openMember, stages, lookup} : Props = $props()
     let draftAnalysis: Array<DraftAnalysis> | undefined = $state(undefined)
+    let companionStats: CompanionRmStats | undefined = $state(undefined)
 
     $effect(() => {
-        draftAnalysis = openMember ? draftCache.get(openMember.LeagueID) : undefined;
+        if (!openMember) {
+            draftAnalysis = undefined;
+            companionStats = undefined;
+            return;
+        }
+        draftAnalysis = draftCache.get(openMember.LeagueID);
+        companionStats = statsCache.get(openMember.LeagueID);
     });
     
     const mapIcons: Record<string,string> = {
@@ -222,8 +230,82 @@ function getDraftEvents(events: Array<DraftEvent>, player: string, action: strin
 
 
 
+//----------------------------------------------------------------------------->
+function toStatEntries(
+    items: Array<{ games: number; wins: number; losses: number; name?: string; imageUrl?: string; civName?: string; civImageUrl?: string; mapName?: string; mapImageUrl?: string }>,
+    kind: 'civ' | 'map',
+): CompanionStatEntry[] {
+    return items
+        .slice()
+        .sort((a, b) => b.games - a.games)
+        .slice(0, 6)
+        .map((item) => {
+            const games = item.games ?? 0;
+            const wins = item.wins ?? 0;
+            const losses = item.losses ?? 0;
+            return {
+                name: kind === 'civ' ? (item.civName ?? '') : (item.mapName ?? ''),
+                imageUrl: kind === 'civ' ? (item.civImageUrl ?? '') : (item.mapImageUrl ?? ''),
+                games,
+                wins,
+                losses,
+                rate: games > 0 ? Math.round((wins / games) * 100) : 0,
+            };
+        });
+}
+
+async function fetchCompanionRmStats(relicId: string): Promise<CompanionRmStats | undefined> {
+    if (!relicId) {
+        return undefined;
+    }
+
+    const [profileRes, statsRes] = await Promise.all([
+        fetch(`https://data.aoe2companion.com/api/profiles/${encodeURIComponent(relicId)}`),
+        fetch(`https://data.aoe2companion.com/api/profiles/${encodeURIComponent(relicId)}/stats?leaderboard_id=rm_1v1`),
+    ]);
+
+    if (!statsRes.ok) {
+        console.log(`Failed to fetch companion stats for ${relicId}: ${statsRes.status}`);
+        return undefined;
+    }
+
+    const statsJson = await statsRes.json();
+    let games = 0;
+    let wins = 0;
+    let losses = 0;
+
+    if (profileRes.ok) {
+        const profileJson = await profileRes.json();
+        const rm = (profileJson.leaderboards ?? []).find((lb: { leaderboardId?: string }) => lb.leaderboardId === 'rm_1v1');
+        if (rm) {
+            games = rm.games ?? 0;
+            wins = rm.wins ?? 0;
+            losses = rm.losses ?? 0;
+        }
+    }
+
+    if (games === 0) {
+        games = (statsJson.civ ?? []).reduce((sum: number, c: { games: number }) => sum + (c.games ?? 0), 0);
+        wins = (statsJson.civ ?? []).reduce((sum: number, c: { wins: number }) => sum + (c.wins ?? 0), 0);
+        losses = (statsJson.civ ?? []).reduce((sum: number, c: { losses: number }) => sum + (c.losses ?? 0), 0);
+    }
+
+    return {
+        games,
+        wins,
+        losses,
+        winRate: games > 0 ? Math.round((wins / games) * 100) : 0,
+        civs: toStatEntries(statsJson.civ ?? [], 'civ'),
+        maps: toStatEntries(statsJson.map ?? [], 'map'),
+    };
+}
+//----------------------------------------------------------------------------->
+
+
+
+
 //----------------------------------------------------------------------------->    
-async function loadDrafts() {
+async function loadStats() {
     if ( !openMember ) {
         return
     }
@@ -231,8 +313,16 @@ async function loadDrafts() {
     isLoading = true;
 
     const matches = findMatchesByPlayerId(openMember.LeagueID);
-    const drafts = await fetchDrafts(matches);
-    const games = await fetchGames(matches);
+    const [drafts, games, rmStats] = await Promise.all([
+        fetchDrafts(matches),
+        fetchGames(matches),
+        fetchCompanionRmStats(openMember.RelicID),
+    ]);
+
+    if (rmStats) {
+        companionStats = rmStats;
+        statsCache.set(openMember.LeagueID, rmStats);
+    }
 
     draftAnalysis = [];
     for (const [index, match] of matches.entries()) {
@@ -362,6 +452,16 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
         <div class="flex items-center space-x-4">
             <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>
             <span class="text-l">{openMember.Name}</span>
+            <button type="button" class="btn btn-sm variant-ghost-primary" onclick={() => loadStats()}>
+                {#if isLoading}
+                    <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                {:else}
+                    <span>Load stats</span>
+                {/if}
+            </button>
         </div>
         
         
@@ -395,16 +495,56 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
             on:click={() => toggleMembers(player.Name)}> {openMembers.includes(player.Name)?"-":"+"}</button> -->
         </div>        
     </section>
-    <button type="button" class="btn btn-sm variant-ghost-primary ms-2 me-auto" onclick={(e) => loadDrafts()}>
-        {#if isLoading}
-            <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-        {:else}
-            <span>Load drafts</span>
-        {/if}
-    </button>
+
+    {#if companionStats}
+    <section class="w-full mt-2 mb-2 p-2 bg-surface-900/60 rounded-lg text-left">
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="text-lg font-bold bg-gradient-to-br from-indigo-400 to-sky-200 bg-clip-text text-transparent">RM 1v1</span>
+            <span class="badge variant-ghost-surface">{companionStats.games} games</span>
+            <span class="badge variant-ghost-surface">{companionStats.winRate}% winrate</span>
+            <span class="text-sm text-surface-400">{companionStats.wins}W / {companionStats.losses}L</span>
+        </div>
+
+        <div class="mb-3">
+            <span class="text-sm text-surface-400">Top civs</span>
+            <div class="flex flex-wrap items-stretch gap-2 mt-1">
+                {#each companionStats.civs as civ}
+                <div class="flex items-center gap-2 p-1 rounded-lg bg-surface-900/80 min-w-[9rem]">
+                    <img class="h-8 w-8 rounded-full" src={civ.imageUrl} alt={civ.name} />
+                    <div class="leading-tight text-left">
+                        <div class="text-sm truncate max-w-[6rem]">{civ.name}</div>
+                        <div class="text-xs text-surface-400">{civ.games} · {civ.rate}%</div>
+                    </div>
+                    <ConicGradient width="w-6" stops={[
+                        {color:'rgba(0,255,0,.35)',start:0,end:civ.rate},
+                        {color:'rgba(255,0,0,.25)',start:civ.rate,end:100}
+                    ]} />
+                </div>
+                {/each}
+            </div>
+        </div>
+
+        <div>
+            <span class="text-sm text-surface-400">Top maps</span>
+            <div class="flex flex-wrap items-stretch gap-2 mt-1">
+                {#each companionStats.maps as map}
+                <div class="flex items-center gap-2 p-1 rounded-lg bg-surface-900/80 min-w-[9rem]">
+                    <img class="h-8 w-8 rounded-full object-cover" src={map.imageUrl} alt={map.name} />
+                    <div class="leading-tight text-left">
+                        <div class="text-sm truncate max-w-[6rem]">{map.name}</div>
+                        <div class="text-xs text-surface-400">{map.games} · {map.rate}%</div>
+                    </div>
+                    <ConicGradient width="w-6" stops={[
+                        {color:'rgba(0,255,0,.35)',start:0,end:map.rate},
+                        {color:'rgba(255,0,0,.25)',start:map.rate,end:100}
+                    ]} />
+                </div>
+                {/each}
+            </div>
+        </div>
+    </section>
+    {/if}
+
     {#if draftAnalysis}
         <section class="flex items-start overflow-x-auto max-w-full mt-4 p-0">
         {#each draftAnalysis as draft, round}

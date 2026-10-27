@@ -198,6 +198,36 @@ export interface CompanionGame {
     teams: Array<CompanionTeam>;
 }
 
+export interface CompanionTeam {
+    players: Array<CompanionPlayer>;
+}
+
+export interface CompanionPlayer {
+    profileId: number | string;
+    name: string;
+    civName: string;
+    civImageUrl: string;
+    won: boolean;
+}
+
+export interface CompanionStatEntry {
+    name: string;
+    imageUrl: string;
+    games: number;
+    wins: number;
+    losses: number;
+    rate: number;
+}
+
+export interface CompanionRmStats {
+    games: number;
+    wins: number;
+    losses: number;
+    winRate: number;
+    civs: Array<CompanionStatEntry>;
+    maps: Array<CompanionStatEntry>;
+}
+
 export interface GameAnalysis {
     companionId: string;
     companionLink: string;
