@@ -12,8 +12,16 @@
     getPlayoffSpots,
     type ScoreOverride,
   } from "./AppOne";
+  import {
+    getSwissLeagues,
+    getPairedFinalsStage,
+    getPairedSwissStage,
+    buildBracketFromStage,
+  } from "./lib/bracket";
+  import { resolveBracket } from "./lib/bracketFixture";
 
   import PlayerStats from "./lib/PlayerStats.svelte";
+  import BracketView from "./lib/BracketView.svelte";
 
   const BASE_URL = import.meta.env.BASE_URL;
   const DATA_URL = BASE_URL + "A2GS101V1/";
@@ -22,6 +30,7 @@
   let stages: Stage[] = $state([]);
   let calendar: CalendarItem[] = [];
   let openStage : Stage | undefined = $state(undefined);
+  let leagueMode: 'liga' | 'finals' = $state('liga');
   let openMatch : Match | undefined = $state(undefined);
   let openMember : Member | undefined = $state(undefined);
   let hoveredMatch : string | undefined = $state(undefined);
@@ -39,11 +48,28 @@
     "castle-age.webp",
     "imperial-age.webp",
     "post-imp.jpg",
-    "dark-age.webp",
-    "feudal-age.webp",
-    "castle-age.webp",
-    "imperial-age.webp",
-    "post-imp.jpg"]
+  ]
+
+  let swissLeagues = $derived(getSwissLeagues(stages));
+
+  let activeSwiss = $derived.by(() => {
+    if (!openStage) return undefined;
+    if (openStage.type === 'swiss') return openStage;
+    return getPairedSwissStage(stages, openStage);
+  });
+
+  let activeFinals = $derived.by(() => {
+    if (!openStage) return undefined;
+    if (openStage.type === 'single_elimination') return openStage;
+    return getPairedFinalsStage(stages, openStage);
+  });
+
+  let currentBracket = $derived.by(() => {
+    if (!openStage || openStage.type !== 'single_elimination') return undefined;
+    const swiss = getPairedSwissStage(stages, openStage);
+    const spots = swiss ? getPlayoffSpots(swiss) : 6;
+    return resolveBracket(openStage, swiss, spots, buildBracketFromStage);
+  });
 
 
   const dayNames = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
@@ -64,7 +90,7 @@
 
   let preliminaryTable = $derived.by(() => {
     const stage = openStage;
-    if (stage === undefined || !showPreliminaryTable) {
+    if (stage === undefined || stage.type !== 'swiss' || !showPreliminaryTable) {
       return [] as ReturnType<typeof recomputePreliminaryTable>;
     }
     return recomputePreliminaryTable(stage.table, provisionalOverrides, matchesById);
@@ -76,7 +102,7 @@
     const overrides = provisionalOverrides;
     const matches = matchesById;
 
-    if (stage === undefined || !canComputePlayoffProbabilities(stage.table, overrides)) {
+    if (stage === undefined || stage.type !== 'swiss' || !canComputePlayoffProbabilities(stage.table, overrides)) {
       playoffProbs = new Map();
       playoffProbsLoading = false;
       return;
@@ -144,24 +170,20 @@
   function toggleMatch(mid: string) {
     if ( openMatch?.id === mid ) {
       openMatch = undefined
-    } else {
-      const rounds = openStage ? openStage.groups[0].rounds : [];
-      for ( const round of rounds ) {
-        const match = round.matches.find((match: Match) => match.id === mid);
-        if ( match !== undefined ) {
-          const o1 = playerLookUp(match.opponents[0].id)
-          match.opponents[0].name = o1 ? o1.Name : ""
-          match.opponents[0].image = o1 ? o1.Image : ""
-          const o2 = playerLookUp(match.opponents[1].id)
-          match.opponents[1].name = o2? o2.Name : ""
-          match.opponents[1].image = o2 ? o2.Image : ""
-          openMatch = match
-          openMember = undefined
-          return
-        }
-      }
-
+      return
     }
+    const match = findMatchById(mid);
+    if (match === undefined) {
+      return
+    }
+    for (const op of match.opponents ?? []) {
+      if (!op?.id) continue
+      const player = playerLookUp(op.id)
+      op.name = player ? player.Name : ""
+      op.image = player ? player.Image : ""
+    }
+    openMatch = match
+    openMember = undefined
   }
 
 
@@ -317,11 +339,35 @@
     showPreliminaryTable = !showPreliminaryTable;
   }
 
-  function onStageSelect(stage: Stage) {
-    openStage = stage;
+  function onLeagueSelect(swiss: Stage) {
     provisionalOverrides = new Map();
     showPreliminaryTable = false;
     openMatch = undefined;
+    openMember = undefined;
+    if (leagueMode === 'finals') {
+      openStage = getPairedFinalsStage(stages, swiss) ?? swiss;
+    } else {
+      openStage = swiss;
+    }
+  }
+
+  function setLeagueMode(mode: 'liga' | 'finals') {
+    if (mode === leagueMode) return;
+    leagueMode = mode;
+    provisionalOverrides = new Map();
+    showPreliminaryTable = false;
+    openMatch = undefined;
+    const swiss = activeSwiss;
+    if (!swiss) return;
+    if (mode === 'finals') {
+      openStage = getPairedFinalsStage(stages, swiss) ?? swiss;
+    } else {
+      openStage = swiss;
+    }
+  }
+
+  function onBracketMatchClick(matchId: string) {
+    toggleMatch(matchId);
   }
 
 
@@ -359,22 +405,22 @@
     let fetchedData2 = await response2.json();
 
     // Properly cast json data into internal type structure
-    stages = [...Object.values<Stage>(fetchedData2.stages)];
+    const rawStages = Array.isArray(fetchedData2.stages)
+      ? fetchedData2.stages
+      : Object.values<Stage>(fetchedData2.stages);
+    stages = [...rawStages];
     for ( const stage of stages ) {
-      stage.table = new Map<string, TableRow>(Object.entries(stage.table));
+      stage.table = new Map<string, TableRow>(Object.entries(stage.table ?? {}));
       for ( const [pid, row] of stage.table ) {
-        row.rounds = new Map<string, TableRowRound>(Object.entries(row.rounds));
+        row.rounds = new Map<string, TableRowRound>(Object.entries(row.rounds ?? {}));
       }
     }
-    openStage = stages[0]
+    openStage = getSwissLeagues(stages)[0] ?? stages[0]
+    leagueMode = 'liga'
   });
 
 function hasMapDraft(match: Match) {
-  let meta = match.meta
-  if ( meta.maps ) {
-    return true
-  }
-  return false
+  return Boolean(match.meta?.maps)
 }
 
 function checkActive(pid : string, a: any, b:any) {
@@ -406,27 +452,56 @@ function rowLeave() {
 <main>
   <div class="constrained mx-auto">
     <div class="logo-cloud grid-cols-1 lg:!grid-cols-5 gap-1">
-      {#each stages as stage}
-      <a class="logo-item" href="#" onclick={(e) => onStageSelect(stage)}>
-        <img class="h-8" src="{BASE_URL}{stageIcons[stage.number-1]}" alt="">
-        <span>{stage.name}</span>
+      {#each swissLeagues as league}
+      <a
+        class="logo-item {activeSwiss?.id === league.id ? 'ring-1 ring-primary-500' : ''}"
+        href="#"
+        onclick={(e) => { e.preventDefault(); onLeagueSelect(league); }}>
+        <img class="h-8" src="{BASE_URL}{stageIcons[league.number-1]}" alt="">
+        <span>{league.name.replace(/\s*Liga\s*$/i, '')}</span>
       </a>
       {/each}
     </div>
-    <br>
+
+    <div class="flex justify-center gap-2 mt-4 mb-2">
+      <button
+        type="button"
+        class="btn btn-sm {leagueMode === 'liga' ? 'variant-filled-primary' : 'variant-ghost-primary'}"
+        onclick={() => setLeagueMode('liga')}>
+        Liga
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm {leagueMode === 'finals' ? 'variant-filled-primary' : 'variant-ghost-primary'}"
+        onclick={() => setLeagueMode('finals')}
+        disabled={!activeSwiss || !getPairedFinalsStage(stages, activeSwiss)}>
+        Finals
+      </button>
+    </div>
 
     <div class="relative mb-8">
       <h2 class="text-2xl m-0 text-center">{openStage?.name}</h2>
+      {#if openStage?.type === 'swiss'}
       <button
         type="button"
         class="btn btn-sm absolute right-0 top-1/2 -translate-y-1/2 {showPreliminaryTable ? 'variant-filled-primary' : 'variant-ghost-primary'}"
         onclick={togglePreliminaryTable}>
         Preview
-        <!-- {showPreliminaryTable ? 'Hide preliminary' : 'Show preliminary'} -->
       </button>
+      {/if}
     </div>
   </div>
 
+  {#if openStage?.type === 'single_elimination' && currentBracket}
+  <div class="constrained mx-auto mb-6">
+    <BracketView
+      bracket={currentBracket}
+      {nameLookUp}
+      {imageLookUp}
+      onMatchClick={onBracketMatchClick}
+    />
+  </div>
+  {:else if openStage?.type === 'swiss'}
   <!-- Content-sized tables; can use full viewport width before scrolling -->
   <div class="flex flex-col xl:flex-row gap-4 items-start w-full justify-center">
   <div class="overflow-x-auto max-w-full min-w-0 rounded-container-token">
@@ -540,9 +615,10 @@ function rowLeave() {
   </div>
   {/if}
   </div>
+  {/if}
 
   <div class="constrained mx-auto">
-{#if openMatch !== undefined}
+{#if openMatch !== undefined && openMatch.opponents?.length >= 2}
 
  <!-- Member header ---------------------------------------------------->
  <section class="mb-4 mt-8 small-p rounded-lg border border-surface-500 bg-surface-900/50">
@@ -568,7 +644,7 @@ function rowLeave() {
         <a href="https://aoe2cm.net/draft/{openMatch.meta.maps}" target="_blank"
         class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Map Draft</a>
       {/if}
-      {#if openMatch.meta.civs}
+      {#if openMatch.meta?.civs}
         <a href="https://aoe2cm.net/draft/{openMatch.meta.civs}" target="_blank"
         class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Civ Draft</a>
       {/if}
