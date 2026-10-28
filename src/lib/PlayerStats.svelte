@@ -447,7 +447,7 @@ function sortedMatches(matches: Array<GameAnalysis>): Array<GameAnalysis> {
 {#if openMember !== undefined}
 
  <!-- Member header ---------------------------------------------------->
-<section class="mb-4 mt-8 p-[1em] rounded-lg border border-surface-500 bg-surface-900/50">
+<section id="player-stats" class="mb-4 mt-8 scroll-mt-4 p-[1em] rounded-lg border border-surface-500 bg-surface-900/50">
     <section class="flex items-center justify-between w-full p-0 pb-4">
         <div class="flex items-center space-x-4">
             <Avatar width="w-12" src={openMember.Image} initials={openMember.Name}/>

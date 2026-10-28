@@ -2,7 +2,7 @@
   import "./app.css";
 
   import { Avatar } from '@skeletonlabs/skeleton';
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { type Member, type StatItem, type Stage, type Match, type TableRow, type TableRowRound, type CalendarItem} from './types.d'
   import {
     recomputePreliminaryTable,
@@ -370,6 +370,14 @@
     toggleMatch(matchId);
   }
 
+  async function onBracketPlayerClick(playerId: string) {
+    const opening = openMember?.LeagueID !== playerId;
+    toggleMember(playerId);
+    if (!opening) return;
+    await tick();
+    document.getElementById('player-stats')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
 
   onMount(async () => {
     // Fetch calendar data
@@ -454,7 +462,7 @@ function rowLeave() {
     <div class="logo-cloud grid-cols-1 lg:!grid-cols-5 gap-1">
       {#each swissLeagues as league}
       <a
-        class="logo-item {activeSwiss?.id === league.id ? 'ring-1 ring-primary-500' : ''}"
+        class="logo-item {activeSwiss?.id === league.id ? '!bg-surface-700' : ''}"
         href="#"
         onclick={(e) => { e.preventDefault(); onLeagueSelect(league); }}>
         <img class="h-8" src="{BASE_URL}{stageIcons[league.number-1]}" alt="">
@@ -463,24 +471,27 @@ function rowLeave() {
       {/each}
     </div>
 
-    <div class="flex justify-center gap-2 mt-4 mb-2">
-      <button
-        type="button"
-        class="btn btn-sm {leagueMode === 'liga' ? 'variant-filled-primary' : 'variant-ghost-primary'}"
-        onclick={() => setLeagueMode('liga')}>
-        Liga
-      </button>
-      <button
-        type="button"
-        class="btn btn-sm {leagueMode === 'finals' ? 'variant-filled-primary' : 'variant-ghost-primary'}"
-        onclick={() => setLeagueMode('finals')}
-        disabled={!activeSwiss || !getPairedFinalsStage(stages, activeSwiss)}>
-        Finals
-      </button>
-    </div>
-
-    <div class="relative mb-8">
-      <h2 class="text-2xl m-0 text-center">{openStage?.name}</h2>
+    <div class="relative mt-6 mb-8">
+      <h2 class="text-2xl m-0 text-center">
+        {activeSwiss?.name.replace(/\s*Liga\s*$/i, '').trim() ?? ''}
+        <button
+          type="button"
+          class="heading-switch"
+          class:is-active={leagueMode === 'liga'}
+          aria-pressed={leagueMode === 'liga'}
+          onclick={() => setLeagueMode('liga')}>
+          Liga
+        </button>
+        <button
+          type="button"
+          class="heading-switch"
+          class:is-active={leagueMode === 'finals'}
+          aria-pressed={leagueMode === 'finals'}
+          disabled={!activeFinals}
+          onclick={() => setLeagueMode('finals')}>
+          Finals
+        </button>
+      </h2>
       {#if openStage?.type === 'swiss'}
       <button
         type="button"
@@ -499,6 +510,8 @@ function rowLeave() {
       {nameLookUp}
       {imageLookUp}
       onMatchClick={onBracketMatchClick}
+      onPlayerClick={onBracketPlayerClick}
+      selectedPlayerId={openMember?.LeagueID}
     />
   </div>
   {:else if openStage?.type === 'swiss'}
@@ -665,6 +678,32 @@ function rowLeave() {
   .constrained {
     max-width: 1280px;
     width: 100%;
+  }
+  .heading-switch {
+    display: inline;
+    margin-inline-start: 0.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font: inherit;
+    color: rgb(255 255 255 / 0.35);
+    cursor: pointer;
+  }
+  .heading-switch:hover:not(:disabled) {
+    border-color: transparent;
+    color: rgb(255 255 255 / 0.7);
+  }
+  .heading-switch.is-active {
+    color: rgb(255 255 255 / 0.92);
+  }
+  .heading-switch:disabled {
+    color: rgb(255 255 255 / 0.2);
+    cursor: not-allowed;
+  }
+  .heading-switch:focus-visible {
+    outline: 2px solid rgb(var(--color-primary-500));
+    outline-offset: 3px;
   }
   .table tbody td {
     padding-left: 0;

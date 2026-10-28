@@ -7,9 +7,11 @@
     nameLookUp: (id: string) => string;
     imageLookUp: (id: string) => string;
     onMatchClick?: (matchId: string) => void;
+    onPlayerClick?: (playerId: string) => void;
+    selectedPlayerId?: string;
   }
 
-  let { bracket, nameLookUp, imageLookUp, onMatchClick }: Props = $props();
+  let { bracket, nameLookUp, imageLookUp, onMatchClick, onPlayerClick, selectedPlayerId }: Props = $props();
 
   function slotLabel(slot: BracketSlot): string {
     if (slot.isBye) return 'Bye';
@@ -33,7 +35,74 @@
       onMatchClick(m.id);
     }
   }
+
+  function selectPlayer(event: MouseEvent, playerId: string) {
+    event.stopPropagation();
+    onPlayerClick?.(playerId);
+  }
 </script>
+
+{#snippet slotContents(slot: BracketSlot)}
+  {#if slot.playerId}
+    <Avatar width="w-6" initials={slotLabel(slot)} src={slotImage(slot)} />
+  {:else}
+    <div class="w-6 h-6 rounded-full bg-surface-700 shrink-0"></div>
+  {/if}
+  <span class="truncate text-sm flex-1">
+    {#if slot.seed && slot.playerId}
+      <span class="text-surface-500 text-xs me-1">#{slot.seed}</span>
+    {/if}
+    {slotLabel(slot)}
+  </span>
+  {#if scoreText(slot) !== ''}
+    <span class="font-bold text-sm tabular-nums">{scoreText(slot)}</span>
+  {/if}
+{/snippet}
+
+{#snippet playerSlot(slot: BracketSlot)}
+  {#if slot.playerId && onPlayerClick}
+    <button
+      type="button"
+      class="slot-player"
+      class:is-selected={slot.playerId === selectedPlayerId}
+      aria-pressed={slot.playerId === selectedPlayerId}
+      onclick={(event) => selectPlayer(event, slot.playerId!)}>
+      {@render slotContents(slot)}
+    </button>
+  {:else}
+    <div class="flex items-center gap-2 py-1 px-1 rounded {slot.isBye ? 'text-surface-500' : ''}">
+      {@render slotContents(slot)}
+    </div>
+  {/if}
+{/snippet}
+
+{#snippet matchCard(match: BracketMatch, heading: string | undefined, widthClass: string)}
+  {@const clickable = Boolean(match.id && onMatchClick)}
+  <div
+    class="bracket-match relative text-left rounded-lg border border-surface-500 bg-surface-800/80 p-2 {widthClass}
+           {match.label === 'Bye' ? 'opacity-80 border-dashed' : ''}
+           {clickable ? 'has-[.match-hit:hover]:border-primary-400 has-[.match-hit:focus-visible]:border-primary-400' : ''}">
+    {#if clickable}
+      <button
+        type="button"
+        class="match-hit"
+        aria-label={heading ? `Open ${heading}` : 'Open match'}
+        onclick={() => handleMatchClick(match)}>
+      </button>
+    {/if}
+    <div class="relative z-10 pointer-events-none">
+      {#if heading}
+        <div class="text-[10px] uppercase tracking-wide text-surface-400 mb-1">{heading}</div>
+      {/if}
+      {#each match.slots as slot, si}
+        {@render playerSlot(slot)}
+        {#if si === 0}
+          <div class="border-t border-surface-600/60 my-0.5"></div>
+        {/if}
+      {/each}
+    </div>
+  </div>
+{/snippet}
 
 {#if bracket.isPreview}
   <p class="text-sm text-surface-400 mb-4 text-center">
@@ -52,42 +121,7 @@
           class="flex flex-col flex-1 justify-around gap-6"
           style="min-height: {Math.max(round.matches.length, 1) * 5.5}rem">
           {#each round.matches as match}
-            {@const clickable = Boolean(match.id && onMatchClick)}
-            <button
-              type="button"
-              class="bracket-match text-left rounded-lg border border-surface-500 bg-surface-800/80 p-2 w-full
-                     {clickable ? 'cursor-pointer hover:border-primary-400' : 'cursor-default'}
-                     {match.label === 'Bye' ? 'opacity-80 border-dashed' : ''}"
-              onclick={() => handleMatchClick(match)}
-              disabled={!clickable}>
-              {#if match.label && match.label !== 'Bye'}
-                <div class="text-[10px] uppercase tracking-wide text-surface-400 mb-1">{match.label}</div>
-              {/if}
-              {#each match.slots as slot, si}
-                <div
-                  class="flex items-center gap-2 py-1 px-1 rounded
-                         {si === 0 ? 'mb-1' : ''}
-                         {slot.isBye ? 'text-surface-500' : ''}">
-                  {#if slot.playerId}
-                    <Avatar width="w-6" initials={slotLabel(slot)} src={slotImage(slot)} />
-                  {:else}
-                    <div class="w-6 h-6 rounded-full bg-surface-700 shrink-0"></div>
-                  {/if}
-                  <span class="truncate text-sm flex-1">
-                    {#if slot.seed && slot.playerId}
-                      <span class="text-surface-500 text-xs me-1">#{slot.seed}</span>
-                    {/if}
-                    {slotLabel(slot)}
-                  </span>
-                  {#if scoreText(slot) !== ''}
-                    <span class="font-bold text-sm tabular-nums">{scoreText(slot)}</span>
-                  {/if}
-                </div>
-                {#if si === 0}
-                  <div class="border-t border-surface-600/60 my-0.5"></div>
-                {/if}
-              {/each}
-            </button>
+            {@render matchCard(match, match.label && match.label !== 'Bye' ? match.label : undefined, 'w-full')}
           {/each}
         </div>
       </div>
@@ -99,33 +133,51 @@
   </div>
 
   {#if bracket.thirdPlace}
-    {@const tp = bracket.thirdPlace}
-    {@const clickable = Boolean(tp.id && onMatchClick)}
     <div class="mt-8 flex justify-center">
-      <button
-        type="button"
-        class="bracket-match text-left rounded-lg border border-surface-500 bg-surface-800/80 p-2 min-w-[220px]
-               {clickable ? 'cursor-pointer hover:border-primary-400' : 'cursor-default'}"
-        onclick={() => handleMatchClick(tp)}
-        disabled={!clickable}>
-        <div class="text-[10px] uppercase tracking-wide text-surface-400 mb-1">Platz 3</div>
-        {#each tp.slots as slot, si}
-          <div class="flex items-center gap-2 py-1 px-1 {slot.isBye ? 'text-surface-500' : ''}">
-            {#if slot.playerId}
-              <Avatar width="w-6" initials={slotLabel(slot)} src={slotImage(slot)} />
-            {:else}
-              <div class="w-6 h-6 rounded-full bg-surface-700 shrink-0"></div>
-            {/if}
-            <span class="truncate text-sm flex-1">{slotLabel(slot)}</span>
-            {#if scoreText(slot) !== ''}
-              <span class="font-bold text-sm tabular-nums">{scoreText(slot)}</span>
-            {/if}
-          </div>
-          {#if si === 0}
-            <div class="border-t border-surface-600/60 my-0.5"></div>
-          {/if}
-        {/each}
-      </button>
+      {@render matchCard(bracket.thirdPlace, 'Platz 3', 'min-w-[220px]')}
     </div>
   {/if}
 </div>
+
+<style>
+  .match-hit {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+  .match-hit:hover,
+  .match-hit:focus-visible {
+    border-color: transparent;
+  }
+  .slot-player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.25rem;
+    border: 0;
+    border-radius: 0.25rem;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .slot-player:hover {
+    border-color: transparent;
+    background: rgb(3 105 161 / 0.2);
+  }
+  .slot-player.is-selected {
+    background: rgb(3 105 161 / 0.3);
+  }
+</style>
