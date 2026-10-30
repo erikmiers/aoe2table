@@ -1,97 +1,9 @@
 [
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "11:00",
-        "home": "fanalhb",
-        "away": "FomerMay"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "11:00",
-        "home": "Lankabel95",
-        "away": "Bardo"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "18:00",
-        "home": "DerHausmeister",
-        "away": "Scol1ng"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "19:00",
-        "home": "Wodlapato",
-        "away": "LM | CoMa"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "19:00",
-        "home": "4k1m",
-        "away": "Canuck"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "Hansdampf",
-        "away": "e1sTea"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "cker",
-        "away": "LM | RenLo"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "golaza",
-        "away": "Dayjay"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "kango",
-        "away": "Storm"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "Gelga",
-        "away": "OIDA | Pat_Star"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-10-29",
-        "time": "20:00",
-        "home": "Mavto",
-        "away": "Vitalis"
-    },
-    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-10-30",
-        "time": "13:00",
+        "time": "12:00",
         "home": "Running",
         "away": "Target331"
     },
@@ -134,6 +46,14 @@
         "time": "14:00",
         "home": "iroNistiC",
         "away": "Eljardinero4"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-10-31",
+        "time": "20:00",
+        "home": "[NE]Cap1983",
+        "away": "Therealdrzock"
     },
     {
         "stage": "Feudal Liga",
