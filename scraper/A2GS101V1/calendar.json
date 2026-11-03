@@ -1,19 +1,43 @@
 [
     {
-        "stage": "Division 2",
+        "stage": "Ritter Liga",
         "number": 0,
-        "date": "2026-11-02",
-        "time": "19:00",
-        "home": "Molle",
-        "away": "Madtomski"
+        "date": "2026-11-03",
+        "time": "20:30",
+        "home": "H\u00f6\u00dfi",
+        "away": "LM | CoMa"
     },
     {
         "stage": "Division 2",
         "number": 0,
-        "date": "2026-11-02",
-        "time": "19:30",
-        "home": "chaos_2_win",
-        "away": "sILVER"
+        "date": "2026-11-05",
+        "time": "21:00",
+        "home": "e1sTea",
+        "away": "kelar"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-11-06",
+        "time": "14:00",
+        "home": "Target331",
+        "away": "TheViper"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-11-06",
+        "time": "18:00",
+        "home": "FaultierNosta",
+        "away": "Bitter Lemon"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-11-06",
+        "time": "20:30",
+        "home": "OIDA | Gleipdonir",
+        "away": "Wodlapato"
     },
     {
         "stage": "Dunkle Liga",
@@ -30,5 +54,13 @@
         "time": "20:00",
         "home": "[NE]Cap1983",
         "away": "E-RickRage"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-11-08",
+        "time": "20:30",
+        "home": "CaptainMorgan",
+        "away": "OIDA | Pat_Star"
     }
 ]
