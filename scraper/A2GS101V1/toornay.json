@@ -21144,21 +21144,21 @@
             "number": 8,
             "name": "Ritter Finals",
             "type": "single_elimination",
-            "status": "ready",
+            "status": "running",
             "closed": false,
             "groups": [
                 {
                     "id": "2598917038300055534",
                     "number": 1,
                     "name": "Main Bracket",
-                    "status": "pending",
+                    "status": "running",
                     "closed": false,
                     "rounds": [
                         {
                             "id": "2598917038300055512",
                             "number": 1,
                             "name": "Viertelfinale (Bo5)",
-                            "status": "pending",
+                            "status": "running",
                             "closed": false,
                             "matches": [
                                 {
@@ -21193,27 +21193,30 @@
                                     "opponents": [
                                         {
                                             "number": 1,
-                                            "position": 1,
+                                            "position": 2,
                                             "rank": null,
-                                            "result": null,
+                                            "result": "loss",
                                             "forfeit": false,
-                                            "score": null,
+                                            "score": 0,
                                             "id": "2554399344230631423"
                                         },
                                         {
                                             "number": 2,
-                                            "position": 2,
+                                            "position": 1,
                                             "rank": null,
-                                            "result": null,
+                                            "result": "win",
                                             "forfeit": false,
-                                            "score": null,
+                                            "score": 3,
                                             "id": "2562004412376229887"
                                         }
                                     ],
                                     "number": 2,
-                                    "status": "pending",
-                                    "playedAt": null,
-                                    "meta": {}
+                                    "status": "completed",
+                                    "playedAt": "2026-11-03T22:03:52+00:00",
+                                    "meta": {
+                                        "civs": "etMif",
+                                        "maps": "GlfcK"
+                                    }
                                 },
                                 {
                                     "id": "2598917038300055518",
@@ -21291,6 +21294,40 @@
                 }
             ],
             "table": {
+                "2562004412376229887": {
+                    "wins": 3,
+                    "losses": 0,
+                    "diff": 3,
+                    "pts": 0,
+                    "rounds": {
+                        "2598917038300055512": {
+                            "number": 1,
+                            "opponent": "2554399344230631423",
+                            "result": [
+                                3,
+                                0
+                            ],
+                            "match": "2598917038300055524"
+                        }
+                    }
+                },
+                "2554399344230631423": {
+                    "wins": 0,
+                    "losses": 3,
+                    "diff": -3,
+                    "pts": 3,
+                    "rounds": {
+                        "2598917038300055512": {
+                            "number": 1,
+                            "opponent": "2562004412376229887",
+                            "result": [
+                                0,
+                                3
+                            ],
+                            "match": "2598917038300055524"
+                        }
+                    }
+                },
                 "2554388265324187647": {
                     "wins": 0,
                     "losses": 0,
@@ -21322,40 +21359,6 @@
                                 0
                             ],
                             "match": "2598917038300055527"
-                        }
-                    }
-                },
-                "2554399344230631423": {
-                    "wins": 0,
-                    "losses": 0,
-                    "diff": 0,
-                    "pts": 0,
-                    "rounds": {
-                        "2598917038300055512": {
-                            "number": 1,
-                            "opponent": "2562004412376229887",
-                            "result": [
-                                0,
-                                0
-                            ],
-                            "match": "2598917038300055524"
-                        }
-                    }
-                },
-                "2562004412376229887": {
-                    "wins": 0,
-                    "losses": 0,
-                    "diff": 0,
-                    "pts": 0,
-                    "rounds": {
-                        "2598917038300055512": {
-                            "number": 1,
-                            "opponent": "2554399344230631423",
-                            "result": [
-                                0,
-                                0
-                            ],
-                            "match": "2598917038300055524"
                         }
                     }
                 },
