@@ -1,19 +1,11 @@
 [
     {
-        "stage": "Post-Imperial Liga",
+        "stage": "Round Robin",
         "number": 0,
-        "date": "2026-11-04",
-        "time": "18:00",
-        "home": "[GER] Paeco",
-        "away": "Waldblume"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-11-04",
-        "time": "21:00",
-        "home": "kelar",
-        "away": "kingofthrowing123"
+        "date": "2026-11-05",
+        "time": "19:30",
+        "home": "rOb",
+        "away": "Dayjay"
     },
     {
         "stage": "Division 2",
@@ -30,6 +22,14 @@
         "time": "14:00",
         "home": "Target331",
         "away": "TheViper"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-11-06",
+        "time": "14:30",
+        "home": "Hansdampf",
+        "away": "kelar"
     },
     {
         "stage": "Ritter Liga",
@@ -70,6 +70,22 @@
         "time": "20:00",
         "home": "[NE]Cap1983",
         "away": "E-RickRage"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-11-07",
+        "time": "20:00",
+        "home": "Madeen",
+        "away": "OIDA | Tasty"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-11-07",
+        "time": "21:40",
+        "home": "GrindyFox Replays",
+        "away": "LM | RenLo"
     },
     {
         "stage": "Division 1",
