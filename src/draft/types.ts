@@ -48,13 +48,27 @@ export function emptyWatched(): WatchedDraft {
 }
 
 /** Public ids are 5 letters. Private ids are an underscore plus 5 letters. */
-const DRAFT_ID = /_?[A-Za-z]{5}/;
+const DRAFT_ID = /^_?[A-Za-z]{5}$/;
 
 export function parseDraftId(raw: string): string {
     const trimmed = raw.trim();
     if (!trimmed) return '';
-    const fromPath = trimmed.match(new RegExp(`/draft/(${DRAFT_ID.source})\\b`, 'i'));
-    if (fromPath) return fromPath[1];
-    if (new RegExp(`^${DRAFT_ID.source}$`).test(trimmed)) return trimmed;
-    return '';
+    if (DRAFT_ID.test(trimmed)) return trimmed;
+
+    const withProtocol = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    try {
+        const url = new URL(withProtocol);
+        const parts = url.pathname.split('/').filter(Boolean);
+        const markerAt = parts.findIndex((part) => {
+            const name = part.toLowerCase();
+            return name === 'draft' || name === 'spectate';
+        });
+        const candidate = markerAt >= 0 ? parts[markerAt + 1] : undefined;
+        if (candidate && DRAFT_ID.test(candidate)) return candidate;
+    } catch {
+        // Not a URL. Fall through to the path fragment below.
+    }
+
+    const fromPath = trimmed.match(/\/(?:draft|spectate)\/(_?[A-Za-z]{5})\b/i);
+    return fromPath?.[1] ?? '';
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { pickedCivs, pickedMaps, boardKey, readPlacements, writePlacements, prunePlacements, type BoardPick, type Side } from './board';
+    import { bannedCivs, pickedCivs, pickedMaps, boardKey, readBoard, writeBoard, prunePlacements, pruneWinners, type BoardPick, type WinnerSide } from './board';
     import { watchDraft } from './liveDraft';
     import { emptyWatched, parseDraftId, type DraftStatus, type WatchedDraft } from './types';
 
@@ -12,22 +12,31 @@
 
     let mapInput = $state(queryValue('maps'));
     let civInput = $state(queryValue('civs'));
+    let loadedMapId = $state(parseDraftId(queryValue('maps')));
+    let loadedCivId = $state(parseDraftId(queryValue('civs')));
+    let loadNonce = $state(0);
+    let inputError = $state('');
     let mapDraft = $state<WatchedDraft>(emptyWatched());
     let civDraft = $state<WatchedDraft>(emptyWatched());
     let placements = $state<Record<string, string>>({});
+    let winners = $state<Record<string, WinnerSide>>({});
     let dragId = $state('');
     let dropTarget = $state('');
     let brokenMaps = $state<Record<string, boolean>>({});
 
-    let mapId = $derived(parseDraftId(mapInput));
-    let civId = $derived(parseDraftId(civInput));
+    let mapId = $derived(loadedMapId);
+    let civId = $derived(loadedCivId);
     let maps = $derived(pickedMaps(mapDraft.state));
     let civs = $derived(pickedCivs(civDraft.state));
+    let bans = $derived(bannedCivs(civDraft.state));
     let civById = $derived(new Map(civs.map((civ) => [civ.id, civ])));
     let nameHost = $derived(mapDraft.state?.nameHost || civDraft.state?.nameHost || 'Host');
     let nameGuest = $derived(mapDraft.state?.nameGuest || civDraft.state?.nameGuest || 'Guest');
     let hostStack = $derived(civs.filter((civ) => civ.picker === 'HOST' && placements[civ.id] === undefined));
     let guestStack = $derived(civs.filter((civ) => civ.picker === 'GUEST' && placements[civ.id] === undefined));
+    let hostBans = $derived(bans.filter((civ) => civ.picker === 'HOST'));
+    let guestBans = $derived(bans.filter((civ) => civ.picker === 'GUEST'));
+    let adminBans = $derived(bans.filter((civ) => civ.picker === 'NONE'));
 
     let loadedKey = '';
 
@@ -45,62 +54,77 @@
     });
 
     $effect(() => {
-        const id = mapId;
+        const id = loadedMapId;
+        const nonce = loadNonce;
         let disconnect = () => {};
         if (!id) {
             mapDraft = emptyWatched();
             return;
         }
         mapDraft = { id, status: 'connecting', state: null, error: null };
-        const timer = window.setTimeout(() => {
-            disconnect = watchDraft(id, (draft) => {
-                mapDraft = draft;
-            });
-        }, 400);
-        return () => {
-            window.clearTimeout(timer);
-            disconnect();
-        };
+        disconnect = watchDraft(id, (draft) => {
+            if (nonce !== loadNonce) return;
+            mapDraft = draft;
+        });
+        return () => disconnect();
     });
 
     $effect(() => {
-        const id = civId;
+        const id = loadedCivId;
+        const nonce = loadNonce;
         let disconnect = () => {};
         if (!id) {
             civDraft = emptyWatched();
             return;
         }
         civDraft = { id, status: 'connecting', state: null, error: null };
-        const timer = window.setTimeout(() => {
-            disconnect = watchDraft(id, (draft) => {
-                civDraft = draft;
-            });
-        }, 400);
-        return () => {
-            window.clearTimeout(timer);
-            disconnect();
-        };
+        disconnect = watchDraft(id, (draft) => {
+            if (nonce !== loadNonce) return;
+            civDraft = draft;
+        });
+        return () => disconnect();
     });
 
     $effect(() => {
-        const key = boardKey(mapId, civId);
+        const key = boardKey(loadedMapId, loadedCivId);
         if (key === loadedKey) return;
         loadedKey = key;
-        placements = readPlacements(key);
+        const saved = readBoard(key);
+        placements = saved.placements;
+        winners = saved.winners;
     });
 
     $effect(() => {
-        if (!ready(mapDraft) || !ready(civDraft)) return;
-        const next = prunePlacements(
-            placements,
-            new Set(maps.map((map) => map.id)),
-            new Set(civs.map((civ) => civ.id)),
-        );
-        if (next !== placements) {
-            placements = next;
-            writePlacements(boardKey(mapId, civId), next);
+        if ((loadedMapId && !ready(mapDraft)) || (loadedCivId && !ready(civDraft))) return;
+        const mapIds = new Set(maps.map((map) => map.id));
+        const civIds = new Set(civs.map((civ) => civ.id));
+        const nextPlacements = prunePlacements(placements, mapIds, civIds);
+        const nextWinners = pruneWinners(winners, mapIds);
+        if (nextPlacements !== placements || nextWinners !== winners) {
+            persist(nextPlacements, nextWinners);
         }
     });
+
+    function loadDrafts() {
+        const mapsId = parseDraftId(mapInput);
+        const civsId = parseDraftId(civInput);
+        if (mapInput.trim() && !mapsId) {
+            inputError = 'Could not read a map draft id from that link.';
+            return;
+        }
+        if (civInput.trim() && !civsId) {
+            inputError = 'Could not read a civ draft id from that link.';
+            return;
+        }
+        if (!mapsId && !civsId) {
+            inputError = 'Paste a draft id or an aoe2cm draft link.';
+            return;
+        }
+        inputError = '';
+        loadedMapId = mapsId;
+        loadedCivId = civsId;
+        loadNonce += 1;
+    }
 
     function ready(draft: WatchedDraft): boolean {
         return (draft.status === 'live' || draft.status === 'finished') && draft.state !== null;
@@ -127,12 +151,6 @@
         }
     }
 
-    function rowClass(picker: Side): string {
-        if (picker === 'HOST') return 'pick-host';
-        if (picker === 'GUEST') return 'pick-guest';
-        return '';
-    }
-
     function placedCiv(mapPickId: string, side: 'HOST' | 'GUEST'): BoardPick | undefined {
         for (const [civPickId, placedMap] of Object.entries(placements)) {
             if (placedMap !== mapPickId) continue;
@@ -142,9 +160,31 @@
         return undefined;
     }
 
-    function save(next: Record<string, string>) {
-        placements = next;
-        writePlacements(boardKey(mapId, civId), next);
+    function persist(
+        nextPlacements: Record<string, string>,
+        nextWinners: Record<string, WinnerSide>,
+    ) {
+        placements = nextPlacements;
+        winners = nextWinners;
+        writeBoard(boardKey(loadedMapId, loadedCivId), {
+            placements: nextPlacements,
+            winners: nextWinners,
+        });
+    }
+
+    function toggleWinner(mapPickId: string, side: WinnerSide) {
+        const next = { ...winners };
+        if (next[mapPickId] === side) delete next[mapPickId];
+        else next[mapPickId] = side;
+        persist(placements, next);
+    }
+
+    function civResult(civ: BoardPick): 'win' | 'loss' | '' {
+        const mapPickId = placements[civ.id];
+        if (!mapPickId) return '';
+        const winner = winners[mapPickId];
+        if (!winner) return '';
+        return winner === civ.picker ? 'win' : 'loss';
     }
 
     function startDrag(civ: BoardPick, event: DragEvent) {
@@ -186,7 +226,7 @@
             if (civById.get(otherId)?.picker === side) delete next[otherId];
         }
         next[civ.id] = mapPickId;
-        save(next);
+        persist(next, winners);
     }
 
     function returnToColumn(side: 'HOST' | 'GUEST', event: DragEvent) {
@@ -197,7 +237,7 @@
         if (placements[civ.id] === undefined) return;
         const next = { ...placements };
         delete next[civ.id];
-        save(next);
+        persist(next, winners);
     }
 
     function onCivError(event: Event, civ: BoardPick) {
@@ -214,10 +254,10 @@
 
 {#snippet civToken(civ: BoardPick)}
     {#if civ.hidden}
-        <div class="grid size-12 place-items-center rounded-full border border-surface-500 text-sm text-surface-300" title="Hidden">?</div>
+        <div class="civ-token grid place-items-center border border-surface-500 text-sm text-surface-300" title="Hidden">?</div>
     {:else}
         <div
-            class="size-12 cursor-grab active:cursor-grabbing"
+            class="civ-token cursor-grab active:cursor-grabbing {civResult(civ) === 'win' ? 'civ-win' : ''} {civResult(civ) === 'loss' ? 'civ-loss' : ''}"
             role="button"
             tabindex="0"
             draggable="true"
@@ -229,11 +269,22 @@
             ondragend={endDrag}
         >
             <img
-                class="pointer-events-none size-12 rounded-full"
                 src={civ.imageUrl}
-                alt={civ.name}
+                alt=""
                 onerror={(event) => onCivError(event, civ)}
             />
+            <span class="civ-name">{civ.name}</span>
+        </div>
+    {/if}
+{/snippet}
+
+{#snippet civBan(civ: BoardPick)}
+    {#if civ.hidden}
+        <div class="civ-ban grid place-items-center text-xs text-surface-300" title="Hidden ban" data-ban={civ.id}>?</div>
+    {:else}
+        <div class="civ-ban" title="Banned: {civ.name}" aria-label="Banned {civ.name}" data-ban={civ.id}>
+            <img src={civ.imageUrl} alt="" onerror={(event) => onCivError(event, civ)} />
+            <span class="civ-name">{civ.name}</span>
         </div>
     {/if}
 {/snippet}
@@ -271,20 +322,37 @@
         <span class="w-10"></span>
     </div>
 
-    <div class="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+    <form
+        class="mx-auto grid max-w-3xl gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end"
+        onsubmit={(event) => { event.preventDefault(); loadDrafts(); }}
+    >
         {@render draftField('Map draft', mapDraft, mapInput, (value) => { mapInput = value; })}
         {@render draftField('Civ draft', civDraft, civInput, (value) => { civInput = value; })}
-    </div>
+        <button type="submit" class="load-btn">
+            {mapDraft.status === 'idle' && civDraft.status === 'idle' ? 'Load' : 'Reload'}
+        </button>
+    </form>
+    {#if inputError}
+        <p class="mx-auto mt-2 max-w-3xl text-sm text-red-300">{inputError}</p>
+    {/if}
 
     <p class="mx-auto mt-4 max-w-3xl text-center text-sm text-surface-400">
         Drag a civ onto a map to mark where it is played.
     </p>
 
-    <section class="mx-auto mt-10 grid max-w-3xl grid-cols-[minmax(7rem,1fr)_auto_minmax(7rem,1fr)] items-start gap-x-4">
-        <div>
-            <div class="mb-3 text-right text-lg">{nameHost}</div>
+    <section class="mx-auto mt-10 grid max-w-5xl grid-cols-[minmax(11rem,1fr)_auto_minmax(11rem,1fr)] items-stretch gap-x-4">
+        <div class="flex h-full gap-3">
+            {#if hostBans.length}
+                <div class="ban-rail flex flex-col items-center gap-1.5 self-start" aria-label="{nameHost} bans" data-bans="HOST">
+                    {#each hostBans as civ (civ.id)}
+                        {@render civBan(civ)}
+                    {/each}
+                </div>
+            {/if}
+            <div class="flex h-full min-w-0 flex-1 flex-col">
+            <div class="mb-3 text-center text-lg">{nameHost}</div>
             <div
-                class="flex min-h-48 flex-col items-end gap-3 rounded-2xl border border-dashed px-3 py-3 {dropTarget === 'col:HOST' ? 'border-sky-400 bg-sky-400/10' : 'border-surface-700'}"
+                class="flex min-h-48 flex-1 flex-col items-center gap-3 rounded-2xl border border-dashed px-3 py-3 {dropTarget === 'col:HOST' ? 'border-sky-400 bg-sky-400/10' : 'border-surface-700'}"
                 role="group"
                 aria-label="{nameHost} civs"
                 data-column="HOST"
@@ -295,6 +363,7 @@
                     {@render civToken(civ)}
                 {/each}
             </div>
+            </div>
         </div>
 
         <div class="flex flex-col items-center gap-4 pt-10">
@@ -304,9 +373,15 @@
             {#each maps as map (map.id)}
                 {@const hostPlaced = placedCiv(map.id, 'HOST')}
                 {@const guestPlaced = placedCiv(map.id, 'GUEST')}
-                <div class="flex items-center gap-3 {rowClass(map.picker)}" data-map={map.id} data-picker={map.picker}>
+                <div
+                    class="matchup flex items-center gap-3"
+                    class:is-done={winners[map.id] != null}
+                    data-map={map.id}
+                    data-picker={map.picker}
+                >
+                    <div class="flex flex-col items-center gap-1">
                     <div
-                        class="grid size-14 place-items-center rounded-full border border-dashed {dropTarget === `slot:${map.id}:HOST` ? 'border-sky-400 bg-sky-400/10' : 'border-surface-600'}"
+                        class="civ-slot grid place-items-center rounded-full border border-dashed {dropTarget === `slot:${map.id}:HOST` ? 'border-sky-400 bg-sky-400/10' : 'border-surface-600'}"
                         role="group"
                         aria-label="Host on {map.name}"
                         data-slot="{map.id}:HOST"
@@ -316,6 +391,16 @@
                         {#if hostPlaced}
                             {@render civToken(hostPlaced)}
                         {/if}
+                    </div>
+                    {#if hostPlaced}
+                    <button
+                        type="button"
+                        class="win-btn"
+                        class:is-on={winners[map.id] === 'HOST'}
+                        aria-pressed={winners[map.id] === 'HOST'}
+                        onclick={() => toggleWinner(map.id, 'HOST')}
+                    >Win</button>
+                    {/if}
                     </div>
 
                     <figure class="m-0">
@@ -332,8 +417,9 @@
                         </div>
                     </figure>
 
+                    <div class="flex flex-col items-center gap-1">
                     <div
-                        class="grid size-14 place-items-center rounded-full border border-dashed {dropTarget === `slot:${map.id}:GUEST` ? 'border-amber-300 bg-amber-300/10' : 'border-surface-600'}"
+                        class="civ-slot grid place-items-center rounded-full border border-dashed {dropTarget === `slot:${map.id}:GUEST` ? 'border-amber-300 bg-amber-300/10' : 'border-surface-600'}"
                         role="group"
                         aria-label="Guest on {map.name}"
                         data-slot="{map.id}:GUEST"
@@ -344,14 +430,25 @@
                             {@render civToken(guestPlaced)}
                         {/if}
                     </div>
+                    {#if guestPlaced}
+                    <button
+                        type="button"
+                        class="win-btn"
+                        class:is-on={winners[map.id] === 'GUEST'}
+                        aria-pressed={winners[map.id] === 'GUEST'}
+                        onclick={() => toggleWinner(map.id, 'GUEST')}
+                    >Win</button>
+                    {/if}
+                    </div>
                 </div>
             {/each}
         </div>
 
-        <div>
-            <div class="mb-3 text-lg">{nameGuest}</div>
+        <div class="flex h-full gap-3">
+            <div class="flex h-full min-w-0 flex-1 flex-col">
+            <div class="mb-3 text-center text-lg">{nameGuest}</div>
             <div
-                class="flex min-h-48 flex-col items-start gap-3 rounded-2xl border border-dashed px-3 py-3 {dropTarget === 'col:GUEST' ? 'border-amber-300 bg-amber-300/10' : 'border-surface-700'}"
+                class="flex min-h-48 flex-1 flex-col items-center gap-3 rounded-2xl border border-dashed px-3 py-3 {dropTarget === 'col:GUEST' ? 'border-amber-300 bg-amber-300/10' : 'border-surface-700'}"
                 role="group"
                 aria-label="{nameGuest} civs"
                 data-column="GUEST"
@@ -362,16 +459,134 @@
                     {@render civToken(civ)}
                 {/each}
             </div>
+            </div>
+            {#if guestBans.length}
+                <div class="ban-rail flex flex-col items-center gap-1.5 self-start" aria-label="{nameGuest} bans" data-bans="GUEST">
+                    {#each guestBans as civ (civ.id)}
+                        {@render civBan(civ)}
+                    {/each}
+                </div>
+            {/if}
         </div>
     </section>
+
+    {#if adminBans.length}
+        <div class="ban-rail mx-auto mt-8 flex max-w-5xl flex-col items-center gap-2" data-bans="NONE">
+            <div class="text-[0.65rem] uppercase tracking-widest text-slate-400">Admin</div>
+            <div class="flex flex-wrap justify-center gap-1.5">
+                {#each adminBans as civ (civ.id)}
+                    {@render civBan(civ)}
+                {/each}
+            </div>
+        </div>
+    {/if}
 </main>
 
 <style>
-    .pick-host {
-        transform: translateX(-1.25rem);
+    .load-btn {
+        border-radius: 0.5rem;
+        border: 0;
+        background: rgb(56 189 248);
+        color: rgb(15 23 42);
+        font-weight: 600;
+        padding: 0.55rem 1rem;
+        cursor: pointer;
     }
-    .pick-guest {
-        transform: translateX(1.25rem);
+    .load-btn:hover {
+        background: rgb(125 211 252);
+    }
+    .win-btn {
+        border-radius: 9999px;
+        border: 1px solid rgb(100 116 139);
+        background: transparent;
+        color: rgb(203 213 225);
+        font-size: 0.7rem;
+        line-height: 1.2;
+        padding: 0.15rem 0.55rem;
+        cursor: pointer;
+    }
+    .win-btn.is-on {
+        border-color: rgb(250 204 21);
+        background: rgb(250 204 21);
+        color: rgb(15 23 42);
+        font-weight: 700;
+    }
+    .civ-token {
+        position: relative;
+        width: 5rem;
+        height: 5rem;
+        overflow: hidden;
+        border-radius: 9999px;
+    }
+    .civ-token img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+    .civ-name {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        padding: 0.05rem 0.2rem;
+        font-size: 0.65rem;
+        line-height: 1.2;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: rgb(15 23 42 / 0.72);
+    }
+    .ban-rail {
+        margin-top: 2.5rem;
+        border: 1px solid rgb(127 29 29 / 0.55);
+        border-radius: 1rem;
+        padding: 0.45rem 0.4rem;
+        background: rgb(15 23 42 / 0.45);
+    }
+    .ban-rail[data-bans='NONE'] {
+        margin-top: 2rem;
+        padding: 0.55rem 0.7rem 0.65rem;
+    }
+    .civ-ban {
+        position: relative;
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        border-radius: 9999px;
+        box-shadow: inset 0 0 0 2px rgb(127 29 29);
+    }
+    .civ-ban img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(0.55);
+    }
+    .civ-ban .civ-name {
+        font-size: 0.5rem;
+        background: rgb(15 23 42 / 0.82);
+    }
+    .civ-slot {
+        width: 5rem;
+        height: 5rem;
+    }
+    .civ-win {
+        border-radius: 9999px;
+        outline: 3px solid rgb(250 204 21);
+        outline-offset: 2px;
+    }
+    .civ-loss {
+        filter: grayscale(1);
+        opacity: 0.4;
+    }
+    .matchup {
+        border-radius: 1.25rem;
+        padding: 0.4rem 0.45rem;
+    }
+    .matchup.is-done {
+        background: rgb(250 204 21 / 0.08);
+        box-shadow: inset 0 0 0 1px rgb(250 204 21 / 0.5);
     }
     .map-disc {
         position: relative;

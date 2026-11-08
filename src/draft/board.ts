@@ -56,21 +56,23 @@ function sideOf(player: string | undefined): Side | null {
     return null;
 }
 
-function collect(state: DraftState, kind: 'map' | 'civ'): BoardPick[] {
+function collect(state: DraftState, kind: 'map' | 'civ', action: 'pick' | 'ban'): BoardPick[] {
     const options = new Map((state.preset.draftOptions ?? []).map((option) => [option.id, option]));
     const snipes: string[] = [];
-    for (const event of state.events) {
-        if (event.actionType !== 'snipe') continue;
-        const id = chosenId(event);
-        if (!isHidden(id)) snipes.push(id);
+    if (action === 'pick') {
+        for (const event of state.events) {
+            if (event.actionType !== 'snipe') continue;
+            const id = chosenId(event);
+            if (!isHidden(id)) snipes.push(id);
+        }
     }
 
     const picks: BoardPick[] = [];
     state.events.forEach((event, index) => {
-        if (event.actionType !== 'pick') return;
+        if (event.actionType !== action) return;
         const picker = sideOf(event.player);
         if (!picker) return;
-        if (kind === 'civ' && picker === 'NONE') return;
+        if (kind === 'civ' && action === 'pick' && picker === 'NONE') return;
 
         const optionId = chosenId(event);
         const hidden = isHidden(optionId);
@@ -104,37 +106,68 @@ function collect(state: DraftState, kind: 'map' | 'civ'): BoardPick[] {
 
 export function pickedMaps(state: DraftState | null): BoardPick[] {
     if (!state) return [];
-    return collect(state, 'map');
+    return collect(state, 'map', 'pick');
 }
 
 export function pickedCivs(state: DraftState | null): BoardPick[] {
     if (!state) return [];
-    return collect(state, 'civ');
+    return collect(state, 'civ', 'pick');
+}
+
+export function bannedCivs(state: DraftState | null): BoardPick[] {
+    if (!state) return [];
+    return collect(state, 'civ', 'ban');
+}
+
+export type WinnerSide = 'HOST' | 'GUEST';
+
+export interface BoardSave {
+    placements: Record<string, string>;
+    winners: Record<string, WinnerSide>;
 }
 
 export function boardKey(mapId: string, civId: string): string {
     return `draft-board:${mapId}:${civId}`;
 }
 
-export function readPlacements(key: string): Record<string, string> {
+function emptySave(): BoardSave {
+    return { placements: {}, winners: {} };
+}
+
+function asStringRecord(value: unknown): Record<string, string> {
+    if (!value || typeof value !== 'object') return {};
+    const record: Record<string, string> = {};
+    for (const [key, item] of Object.entries(value)) {
+        if (typeof item === 'string') record[key] = item;
+    }
+    return record;
+}
+
+export function readBoard(key: string): BoardSave {
     try {
         const raw = localStorage.getItem(key);
-        if (!raw) return {};
+        if (!raw) return emptySave();
         const parsed = JSON.parse(raw) as unknown;
-        if (!parsed || typeof parsed !== 'object') return {};
-        const placements: Record<string, string> = {};
-        for (const [civId, mapId] of Object.entries(parsed)) {
-            if (typeof mapId === 'string') placements[civId] = mapId;
+        if (!parsed || typeof parsed !== 'object') return emptySave();
+        const record = parsed as Record<string, unknown>;
+        if (record.placements && typeof record.placements === 'object') {
+            const winners: Record<string, WinnerSide> = {};
+            if (record.winners && typeof record.winners === 'object') {
+                for (const [mapId, side] of Object.entries(record.winners)) {
+                    if (side === 'HOST' || side === 'GUEST') winners[mapId] = side;
+                }
+            }
+            return { placements: asStringRecord(record.placements), winners };
         }
-        return placements;
+        return { placements: asStringRecord(parsed), winners: {} };
     } catch {
-        return {};
+        return emptySave();
     }
 }
 
-export function writePlacements(key: string, placements: Record<string, string>) {
+export function writeBoard(key: string, save: BoardSave) {
     if (!key) return;
-    localStorage.setItem(key, JSON.stringify(placements));
+    localStorage.setItem(key, JSON.stringify(save));
 }
 
 export function prunePlacements(
@@ -149,4 +182,17 @@ export function prunePlacements(
         else changed = true;
     }
     return changed ? next : placements;
+}
+
+export function pruneWinners(
+    winners: Record<string, WinnerSide>,
+    mapIds: Set<string>,
+): Record<string, WinnerSide> {
+    let changed = false;
+    const next: Record<string, WinnerSide> = {};
+    for (const [mapId, side] of Object.entries(winners)) {
+        if (mapIds.has(mapId)) next[mapId] = side;
+        else changed = true;
+    }
+    return changed ? next : winners;
 }

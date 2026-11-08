@@ -431,13 +431,6 @@ function hasMapDraft(match: Match) {
   return Boolean(match.meta?.maps)
 }
 
-function spectateHref(match: Match): string {
-  const params = new URLSearchParams();
-  if (match.meta?.maps) params.set('maps', match.meta.maps);
-  if (match.meta?.civs) params.set('civs', match.meta.civs);
-  return `${BASE_URL}draft/?${params.toString()}`;
-}
-
 function checkActive(pid : string, a: any, b:any) {
   if ( hoveredRow ) {
     for ( let [id, round] of hoveredRow.rounds ) {
@@ -660,10 +653,6 @@ function rowLeave() {
   </section>
   <section class="flex items-center justify-between w-full p-0 mt-6">
     <div class="flex items-center justify-end m-auto">
-      {#if hasMapDraft(openMatch) || openMatch.meta?.civs}
-        <a href={spectateHref(openMatch)}
-        class="btn btn-sm variant-filled-primary ms-2 me-auto">Spectate</a>
-      {/if}
       {#if hasMapDraft(openMatch)}
         <a href="https://aoe2cm.net/draft/{openMatch.meta.maps}" target="_blank"
         class="btn btn-sm variant-ghost-primary ms-2 me-auto" data-sveltekit-preload-data="hover">Map Draft</a>
