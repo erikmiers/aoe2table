@@ -1,29 +1,5 @@
 [
     {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-11-07",
-        "time": "14:15",
-        "home": "Revenge",
-        "away": "Eljardinero4"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-11-07",
-        "time": "19:30",
-        "home": "Sir deep purple 2",
-        "away": "4k1m"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-11-07",
-        "time": "21:40",
-        "home": "GrindyFox Replays",
-        "away": "LM | RenLo"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-11-08",
@@ -38,6 +14,14 @@
         "time": "16:00",
         "home": "[NE]Cap1983",
         "away": "E-RickRage"
+    },
+    {
+        "stage": "Imperial Liga",
+        "number": 0,
+        "date": "2026-11-08",
+        "time": "17:00",
+        "home": "Butti",
+        "away": "IchbinGroo7"
     },
     {
         "stage": "Division 1",
