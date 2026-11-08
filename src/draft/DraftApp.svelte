@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { bannedCivs, pickedCivs, pickedMaps, boardKey, readBoard, writeBoard, prunePlacements, pruneWinners, type BoardPick, type WinnerSide } from './board';
+    import { bannedCivs, bannedMaps, snipedMaps, pickedCivs, pickedMaps, boardKey, readBoard, writeBoard, prunePlacements, pruneWinners, type BoardPick, type WinnerSide } from './board';
     import { watchDraft } from './liveDraft';
     import { emptyWatched, parseDraftId, type DraftStatus, type WatchedDraft } from './types';
 
@@ -29,6 +29,8 @@
     let maps = $derived(pickedMaps(mapDraft.state));
     let civs = $derived(pickedCivs(civDraft.state));
     let bans = $derived(bannedCivs(civDraft.state));
+    let mapBans = $derived(bannedMaps(mapDraft.state));
+    let mapSnipes = $derived(snipedMaps(mapDraft.state));
     let civById = $derived(new Map(civs.map((civ) => [civ.id, civ])));
     let nameHost = $derived(mapDraft.state?.nameHost || civDraft.state?.nameHost || 'Host');
     let nameGuest = $derived(mapDraft.state?.nameGuest || civDraft.state?.nameGuest || 'Guest');
@@ -37,6 +39,15 @@
     let hostBans = $derived(bans.filter((civ) => civ.picker === 'HOST'));
     let guestBans = $derived(bans.filter((civ) => civ.picker === 'GUEST'));
     let adminBans = $derived(bans.filter((civ) => civ.picker === 'NONE'));
+    let hostMapBans = $derived(removedMaps(mapBans, mapSnipes, 'HOST'));
+    let guestMapBans = $derived(removedMaps(mapBans, mapSnipes, 'GUEST'));
+    let adminMapBans = $derived(removedMaps(mapBans, mapSnipes, 'NONE'));
+
+    function removedMaps(bans: BoardPick[], snipes: BoardPick[], side: BoardPick['picker']): BoardPick[] {
+        return [...bans, ...snipes]
+            .filter((map) => map.picker === side)
+            .sort((a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1)));
+    }
 
     let loadedKey = '';
 
@@ -278,12 +289,29 @@
     {/if}
 {/snippet}
 
-{#snippet civBan(civ: BoardPick)}
+{#snippet civBan(civ: BoardPick, kind: 'civ' | 'map' = 'civ')}
+    {@const label = civ.snipe ? `Sniped ${civ.name}` : `Banned ${civ.name}`}
     {#if civ.hidden}
-        <div class="civ-ban grid place-items-center text-xs text-surface-300" title="Hidden ban" data-ban={civ.id}>?</div>
+        <div class="civ-ban grid place-items-center text-xs text-surface-300" class:is-snipe={civ.snipe} title={civ.snipe ? 'Hidden snipe' : 'Hidden ban'} data-ban={civ.id} data-kind={kind} data-snipe={civ.snipe ? '' : undefined}>
+            ?
+            {#if civ.snipe}<span class="snipe-mark">Snipe</span>{/if}
+        </div>
+    {:else if kind === 'map' && brokenMaps[civ.id]}
+        <div class="civ-ban grid place-items-center px-1 text-center text-[0.5rem] text-surface-300" class:is-snipe={civ.snipe} title={label} aria-label={label} data-ban={civ.id} data-kind={kind} data-snipe={civ.snipe ? '' : undefined}>
+            {#if civ.snipe}<span class="snipe-mark">Snipe</span>{/if}
+            {civ.name}
+        </div>
     {:else}
-        <div class="civ-ban" title="Banned: {civ.name}" aria-label="Banned {civ.name}" data-ban={civ.id}>
-            <img src={civ.imageUrl} alt="" onerror={(event) => onCivError(event, civ)} />
+        <div class="civ-ban" class:is-snipe={civ.snipe} title={label} aria-label={label} data-ban={civ.id} data-kind={kind} data-snipe={civ.snipe ? '' : undefined}>
+            <img
+                src={civ.imageUrl}
+                alt=""
+                onerror={(event) => {
+                    if (kind === 'map') onMapError(civ.id);
+                    else onCivError(event, civ);
+                }}
+            />
+            {#if civ.snipe}<span class="snipe-mark">Snipe</span>{/if}
             <span class="civ-name">{civ.name}</span>
         </div>
     {/if}
@@ -342,11 +370,22 @@
 
     <section class="mx-auto mt-10 grid max-w-5xl grid-cols-[minmax(11rem,1fr)_auto_minmax(11rem,1fr)] items-stretch gap-x-4">
         <div class="flex h-full gap-3">
-            {#if hostBans.length}
-                <div class="ban-rail flex flex-col items-center gap-1.5 self-start" aria-label="{nameHost} bans" data-bans="HOST">
-                    {#each hostBans as civ (civ.id)}
-                        {@render civBan(civ)}
-                    {/each}
+            {#if hostBans.length || hostMapBans.length}
+                <div class="flex h-full flex-col" data-bans="HOST">
+                    {#if hostBans.length}
+                        <div class="ban-rail align-stack flex flex-col items-center gap-1.5" aria-label="{nameHost} civ bans">
+                            {#each hostBans as civ (civ.id)}
+                                {@render civBan(civ)}
+                            {/each}
+                        </div>
+                    {/if}
+                    {#if hostMapBans.length}
+                        <div class="ban-rail mt-auto flex flex-col items-center gap-1.5" aria-label="{nameHost} map bans" data-map-bans="HOST">
+                            {#each hostMapBans as map (map.id)}
+                                {@render civBan(map, 'map')}
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
             {/if}
             <div class="flex h-full min-w-0 flex-1 flex-col">
@@ -460,24 +499,44 @@
                 {/each}
             </div>
             </div>
-            {#if guestBans.length}
-                <div class="ban-rail flex flex-col items-center gap-1.5 self-start" aria-label="{nameGuest} bans" data-bans="GUEST">
-                    {#each guestBans as civ (civ.id)}
-                        {@render civBan(civ)}
-                    {/each}
+            {#if guestBans.length || guestMapBans.length}
+                <div class="flex h-full flex-col" data-bans="GUEST">
+                    {#if guestBans.length}
+                        <div class="ban-rail align-stack flex flex-col items-center gap-1.5" aria-label="{nameGuest} civ bans">
+                            {#each guestBans as civ (civ.id)}
+                                {@render civBan(civ)}
+                            {/each}
+                        </div>
+                    {/if}
+                    {#if guestMapBans.length}
+                        <div class="ban-rail mt-auto flex flex-col items-center gap-1.5" aria-label="{nameGuest} map bans" data-map-bans="GUEST">
+                            {#each guestMapBans as map (map.id)}
+                                {@render civBan(map, 'map')}
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
             {/if}
         </div>
     </section>
 
-    {#if adminBans.length}
+    {#if adminBans.length || adminMapBans.length}
         <div class="ban-rail mx-auto mt-8 flex max-w-5xl flex-col items-center gap-2" data-bans="NONE">
             <div class="text-[0.65rem] uppercase tracking-widest text-slate-400">Admin</div>
-            <div class="flex flex-wrap justify-center gap-1.5">
-                {#each adminBans as civ (civ.id)}
-                    {@render civBan(civ)}
-                {/each}
-            </div>
+            {#if adminBans.length}
+                <div class="flex flex-wrap justify-center gap-1.5">
+                    {#each adminBans as civ (civ.id)}
+                        {@render civBan(civ)}
+                    {/each}
+                </div>
+            {/if}
+            {#if adminMapBans.length}
+                <div class="flex flex-wrap justify-center gap-1.5" data-map-bans="NONE">
+                    {#each adminMapBans as map (map.id)}
+                        {@render civBan(map, 'map')}
+                    {/each}
+                </div>
+            {/if}
         </div>
     {/if}
 </main>
@@ -539,11 +598,13 @@
         background: rgb(15 23 42 / 0.72);
     }
     .ban-rail {
-        margin-top: 2.5rem;
         border: 1px solid rgb(127 29 29 / 0.55);
         border-radius: 1rem;
         padding: 0.45rem 0.4rem;
         background: rgb(15 23 42 / 0.45);
+    }
+    .ban-rail.align-stack {
+        margin-top: 2.5rem;
     }
     .ban-rail[data-bans='NONE'] {
         margin-top: 2rem;
@@ -565,6 +626,24 @@
     }
     .civ-ban .civ-name {
         font-size: 0.5rem;
+        background: rgb(15 23 42 / 0.82);
+    }
+    .civ-ban.is-snipe {
+        box-shadow: inset 0 0 0 2px rgb(120 53 15);
+    }
+    .snipe-mark {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        padding: 0.02rem 0.15rem;
+        font-size: 0.45rem;
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+        text-align: center;
+        text-transform: uppercase;
+        color: rgb(254 215 170);
         background: rgb(15 23 42 / 0.82);
     }
     .civ-slot {

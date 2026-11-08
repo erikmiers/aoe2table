@@ -9,6 +9,7 @@ export interface BoardPick {
     imageUrl: string;
     picker: Side;
     hidden: boolean;
+    snipe?: boolean;
 }
 
 const HIDDEN_IDS = new Set([
@@ -117,6 +118,35 @@ export function pickedCivs(state: DraftState | null): BoardPick[] {
 export function bannedCivs(state: DraftState | null): BoardPick[] {
     if (!state) return [];
     return collect(state, 'civ', 'ban');
+}
+
+export function bannedMaps(state: DraftState | null): BoardPick[] {
+    if (!state) return [];
+    return collect(state, 'map', 'ban');
+}
+
+export function snipedMaps(state: DraftState | null): BoardPick[] {
+    if (!state) return [];
+    const options = new Map((state.preset.draftOptions ?? []).map((option) => [option.id, option]));
+    const snipes: BoardPick[] = [];
+    state.events.forEach((event, index) => {
+        if (event.actionType !== 'snipe') return;
+        const picker = sideOf(event.player);
+        if (!picker) return;
+        const optionId = chosenId(event);
+        const hidden = isHidden(optionId);
+        const option = options.get(optionId);
+        snipes.push({
+            id: `e${index}`,
+            optionId,
+            name: hidden ? 'Hidden' : (option?.name || optionId),
+            imageUrl: hidden ? '' : imageFor('map', optionId, option),
+            picker,
+            hidden,
+            snipe: true,
+        });
+    });
+    return snipes;
 }
 
 export type WinnerSide = 'HOST' | 'GUEST';
