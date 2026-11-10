@@ -1,29 +1,5 @@
 [
     {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-11-09",
-        "time": "18:30",
-        "home": "Running",
-        "away": "Benanji"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-11-09",
-        "time": "19:00",
-        "home": "Hansdampf",
-        "away": "chaos_2_win"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-11-09",
-        "time": "19:30",
-        "home": "sILVER",
-        "away": "Madtomski"
-    },
-    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-11-10",
@@ -38,6 +14,14 @@
         "time": "21:00",
         "home": "e1sTea",
         "away": "Molle"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-11-11",
+        "time": "09:00",
+        "home": "Wean Dinchester",
+        "away": "TheViper"
     },
     {
         "stage": "Round Robin",
@@ -56,11 +40,59 @@
         "away": "shiXo"
     },
     {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-11-12",
+        "time": "20:00",
+        "home": "[NE]Cap1983",
+        "away": "BernieBlindmann"
+    },
+    {
         "stage": "Feudal Liga",
         "number": 0,
         "date": "2026-11-13",
         "time": "20:00",
         "home": "SilasU",
         "away": "cker"
+    },
+    {
+        "stage": "Dunkle Liga",
+        "number": 0,
+        "date": "2026-11-14",
+        "time": "16:00",
+        "home": "iroNistiC",
+        "away": "Eljardinero4"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-11-14",
+        "time": "18:00",
+        "home": "Sir deep purple 2",
+        "away": "FaultierNosta"
+    },
+    {
+        "stage": "Ritter Liga",
+        "number": 0,
+        "date": "2026-11-15",
+        "time": "19:00",
+        "home": "Wodlapato",
+        "away": "LM | CoMa"
+    },
+    {
+        "stage": "Feudal Liga",
+        "number": 0,
+        "date": "2026-11-15",
+        "time": "21:00",
+        "home": "Lynx",
+        "away": "LM | RenLo"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-11-19",
+        "time": "17:30",
+        "home": "Terz",
+        "away": "JorDan_AoE"
     }
 ]
