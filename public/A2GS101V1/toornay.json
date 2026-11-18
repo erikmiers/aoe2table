@@ -22206,7 +22206,7 @@
                             "id": "2598917172831719392",
                             "number": 3,
                             "name": "Platz 3 (Bo5) & Finale (Bo7)",
-                            "status": "pending",
+                            "status": "running",
                             "closed": false,
                             "matches": [
                                 {
@@ -22241,27 +22241,30 @@
                                     "opponents": [
                                         {
                                             "number": 1,
-                                            "position": 1,
+                                            "position": 2,
                                             "rank": null,
-                                            "result": null,
+                                            "result": "loss",
                                             "forfeit": false,
-                                            "score": null,
+                                            "score": 2,
                                             "id": "2561067130484598783"
                                         },
                                         {
                                             "number": 2,
-                                            "position": 2,
+                                            "position": 1,
                                             "rank": null,
-                                            "result": null,
+                                            "result": "win",
                                             "forfeit": false,
-                                            "score": null,
+                                            "score": 3,
                                             "id": "2558014609077811199"
                                         }
                                     ],
                                     "number": 2,
-                                    "status": "pending",
-                                    "playedAt": null,
-                                    "meta": {}
+                                    "status": "completed",
+                                    "playedAt": "2026-11-17T22:27:53+00:00",
+                                    "meta": {
+                                        "civs": "nkymr",
+                                        "maps": "DpIJX"
+                                    }
                                 }
                             ]
                         }
@@ -22273,7 +22276,7 @@
                     "wins": 6,
                     "losses": 4,
                     "diff": 2,
-                    "pts": 4,
+                    "pts": 7,
                     "rounds": {
                         "2598917172831719394": {
                             "number": 1,
@@ -22304,11 +22307,37 @@
                         }
                     }
                 },
-                "2561067130484598783": {
-                    "wins": 3,
+                "2558014609077811199": {
+                    "wins": 5,
                     "losses": 5,
-                    "diff": -2,
-                    "pts": 5,
+                    "diff": 0,
+                    "pts": 11,
+                    "rounds": {
+                        "2598917172831719393": {
+                            "number": 2,
+                            "opponent": "2561066014885375999",
+                            "result": [
+                                2,
+                                3
+                            ],
+                            "match": "2598917172831719406"
+                        },
+                        "2598917172831719392": {
+                            "number": 3,
+                            "opponent": "2561067130484598783",
+                            "result": [
+                                3,
+                                2
+                            ],
+                            "match": "2598917172932382687"
+                        }
+                    }
+                },
+                "2561067130484598783": {
+                    "wins": 5,
+                    "losses": 8,
+                    "diff": -3,
+                    "pts": 10,
                     "rounds": {
                         "2598917172831719394": {
                             "number": 1,
@@ -22332,8 +22361,8 @@
                             "number": 3,
                             "opponent": "2558014609077811199",
                             "result": [
-                                0,
-                                0
+                                2,
+                                3
                             ],
                             "match": "2598917172932382687"
                         }
@@ -22343,7 +22372,7 @@
                     "wins": 3,
                     "losses": 0,
                     "diff": 3,
-                    "pts": 3,
+                    "pts": 5,
                     "rounds": {
                         "2598917172831719393": {
                             "number": 2,
@@ -22382,37 +22411,11 @@
                         }
                     }
                 },
-                "2558014609077811199": {
-                    "wins": 2,
-                    "losses": 3,
-                    "diff": -1,
-                    "pts": 6,
-                    "rounds": {
-                        "2598917172831719393": {
-                            "number": 2,
-                            "opponent": "2561066014885375999",
-                            "result": [
-                                2,
-                                3
-                            ],
-                            "match": "2598917172831719406"
-                        },
-                        "2598917172831719392": {
-                            "number": 3,
-                            "opponent": "2561067130484598783",
-                            "result": [
-                                0,
-                                0
-                            ],
-                            "match": "2598917172932382687"
-                        }
-                    }
-                },
                 "2561067303584983039": {
                     "wins": 2,
                     "losses": 3,
                     "diff": -1,
-                    "pts": 3,
+                    "pts": 5,
                     "rounds": {
                         "2598917172831719394": {
                             "number": 1,
