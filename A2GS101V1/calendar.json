@@ -1,29 +1,5 @@
 [
     {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-11-17",
-        "time": "18:00",
-        "home": "Target331",
-        "away": "shiXo"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-11-17",
-        "time": "20:30",
-        "home": "chaos_2_win",
-        "away": "kelar"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-11-17",
-        "time": "21:30",
-        "home": "Promiskuitiv",
-        "away": "IchbinGroo7"
-    },
-    {
         "stage": "Post-Imperial Liga",
         "number": 0,
         "date": "2026-11-18",
@@ -46,6 +22,38 @@
         "time": "20:00",
         "home": "Wodlapato",
         "away": "FaultierNosta"
+    },
+    {
+        "stage": "Militia II",
+        "number": 0,
+        "date": "2026-11-18",
+        "time": "20:00",
+        "home": "Ramkabel",
+        "away": "GubbelGubbel"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-11-18",
+        "time": "20:00",
+        "home": "Team 29 - Rogan",
+        "away": "Gubbel Gubbel III"
+    },
+    {
+        "stage": "Long Swordsman I",
+        "number": 0,
+        "date": "2026-11-18",
+        "time": "20:30",
+        "home": "Siegfried und Roy",
+        "away": "Agents of Chaos 2"
+    },
+    {
+        "stage": "Champion",
+        "number": 0,
+        "date": "2026-11-18",
+        "time": "20:45",
+        "home": "Fruity Monks OGs",
+        "away": "G\u00f6tter des Werfens"
     },
     {
         "stage": "Division 1",
@@ -112,6 +120,14 @@
         "away": "cker"
     },
     {
+        "stage": "Man-at-Arms I",
+        "number": 0,
+        "date": "2026-11-21",
+        "time": "19:00",
+        "home": "Die Deichkicker",
+        "away": "Egalclan"
+    },
+    {
         "stage": "Imperial Liga",
         "number": 0,
         "date": "2026-11-22",
@@ -128,11 +144,35 @@
         "away": "JorDan_AoE"
     },
     {
+        "stage": "Militia I",
+        "number": 0,
+        "date": "2026-11-22",
+        "time": "18:00",
+        "home": "AluJohn's Kacktapult",
+        "away": "Three Idle Vills"
+    },
+    {
         "stage": "Man-at-Arms I",
         "number": 0,
         "date": "2026-11-22",
         "time": "19:00",
         "home": "Walls & Camels",
         "away": "FCBearConversion"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-11-22",
+        "time": "19:30",
+        "home": "Idle Time",
+        "away": "LM | Low Elo Legends"
+    },
+    {
+        "stage": "Long Swordsman II",
+        "number": 0,
+        "date": "2026-11-22",
+        "time": "20:30",
+        "home": "Captain Stublas",
+        "away": "Low APM high BMI"
     }
 ]
