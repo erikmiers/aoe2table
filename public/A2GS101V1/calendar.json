@@ -1,61 +1,5 @@
 [
     {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "17:00",
-        "home": "JoJo_Baum",
-        "away": "Maisternippon"
-    },
-    {
-        "stage": "Division 2",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:00",
-        "home": "e1sTea",
-        "away": "kingofthrowing123"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:00",
-        "home": "Wodlapato",
-        "away": "FaultierNosta"
-    },
-    {
-        "stage": "Militia II",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:00",
-        "home": "Ramkabel",
-        "away": "GubbelGubbel"
-    },
-    {
-        "stage": "Man-at-Arms II",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:00",
-        "home": "Team 29 - Rogan",
-        "away": "Gubbel Gubbel III"
-    },
-    {
-        "stage": "Long Swordsman I",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:30",
-        "home": "Siegfried und Roy",
-        "away": "Agents of Chaos 2"
-    },
-    {
-        "stage": "Champion",
-        "number": 0,
-        "date": "2026-11-18",
-        "time": "20:45",
-        "home": "Fruity Monks OGs",
-        "away": "G\u00f6tter des Werfens"
-    },
-    {
         "stage": "Division 1",
         "number": 0,
         "date": "2026-11-19",
@@ -70,6 +14,14 @@
         "time": "20:00",
         "home": "OIDA | Chuchich\u00e4stli",
         "away": "No Loom into GG"
+    },
+    {
+        "stage": "Division 2",
+        "number": 0,
+        "date": "2026-11-20",
+        "time": "10:00",
+        "home": "Hansdampf",
+        "away": "kingofthrowing123"
     },
     {
         "stage": "Ritter Liga",
@@ -110,6 +62,14 @@
         "time": "21:30",
         "home": "Eljardinero4",
         "away": "BernieBlindmann"
+    },
+    {
+        "stage": "Division 1",
+        "number": 0,
+        "date": "2026-11-21",
+        "time": "13:00",
+        "home": "Running",
+        "away": "TheViper"
     },
     {
         "stage": "Feudal Liga",
@@ -160,6 +120,14 @@
         "away": "FCBearConversion"
     },
     {
+        "stage": "Militia II",
+        "number": 0,
+        "date": "2026-11-22",
+        "time": "19:00",
+        "home": "GubbelGubbel 2",
+        "away": "Monk mafia"
+    },
+    {
         "stage": "Man-at-Arms II",
         "number": 0,
         "date": "2026-11-22",
@@ -174,5 +142,13 @@
         "time": "20:30",
         "home": "Captain Stublas",
         "away": "Low APM high BMI"
+    },
+    {
+        "stage": "Man-at-Arms I",
+        "number": 0,
+        "date": "2026-11-23",
+        "time": "20:30",
+        "home": "Die Halbos",
+        "away": "Egalclan"
     }
 ]
