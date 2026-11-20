@@ -1,21 +1,5 @@
 [
     {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-11-19",
-        "time": "17:30",
-        "home": "Terz",
-        "away": "JorDan_AoE"
-    },
-    {
-        "stage": "Long Swordsman II",
-        "number": 0,
-        "date": "2026-11-19",
-        "time": "20:00",
-        "home": "OIDA | Chuchich\u00e4stli",
-        "away": "No Loom into GG"
-    },
-    {
         "stage": "Division 2",
         "number": 0,
         "date": "2026-11-20",
@@ -86,6 +70,14 @@
         "time": "19:00",
         "home": "Die Deichkicker",
         "away": "Egalclan"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-11-22",
+        "time": "10:00",
+        "home": "Wahnderer",
+        "away": "KIV | Blugman und Robin"
     },
     {
         "stage": "Imperial Liga",
