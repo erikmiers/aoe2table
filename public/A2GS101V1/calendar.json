@@ -1,51 +1,11 @@
 [
     {
-        "stage": "Division 2",
+        "stage": "Long Swordsman I",
         "number": 0,
-        "date": "2026-11-20",
-        "time": "10:00",
-        "home": "Hansdampf",
-        "away": "kingofthrowing123"
-    },
-    {
-        "stage": "Ritter Liga",
-        "number": 0,
-        "date": "2026-11-20",
-        "time": "18:00",
-        "home": "LM | CoMa",
-        "away": "Sir deep purple 2"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-11-20",
-        "time": "20:00",
-        "home": "[NE]Cap1983",
-        "away": "iroNistiC"
-    },
-    {
-        "stage": "Two-Handed Swordsman I",
-        "number": 0,
-        "date": "2026-11-20",
-        "time": "20:00",
-        "home": "LM | Shadow Monks",
-        "away": "JoJo_Deen"
-    },
-    {
-        "stage": "Feudal Liga",
-        "number": 0,
-        "date": "2026-11-20",
-        "time": "21:00",
-        "home": "SilasU",
-        "away": "LM | RenLo"
-    },
-    {
-        "stage": "Dunkle Liga",
-        "number": 0,
-        "date": "2026-11-20",
-        "time": "21:30",
-        "home": "Eljardinero4",
-        "away": "BernieBlindmann"
+        "date": "2026-11-21",
+        "time": "12:00",
+        "home": "What are you doing steppe lancer?",
+        "away": "LM | Apoplex"
     },
     {
         "stage": "Division 1",
@@ -70,6 +30,14 @@
         "time": "19:00",
         "home": "Die Deichkicker",
         "away": "Egalclan"
+    },
+    {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-11-21",
+        "time": "19:00",
+        "home": "Madeen",
+        "away": "Maisternippon"
     },
     {
         "stage": "Man-at-Arms II",
@@ -142,5 +110,13 @@
         "time": "20:30",
         "home": "Die Halbos",
         "away": "Egalclan"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-11-24",
+        "time": "20:30",
+        "home": "Team 29 - Rogan",
+        "away": "Wahnderer"
     }
 ]
