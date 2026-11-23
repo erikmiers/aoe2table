@@ -1,69 +1,5 @@
 [
     {
-        "stage": "Man-at-Arms II",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "10:00",
-        "home": "Wahnderer",
-        "away": "KIV | Blugman und Robin"
-    },
-    {
-        "stage": "Imperial Liga",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "14:00",
-        "home": "OIDA | Pat_Star",
-        "away": "Makrobean"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "14:30",
-        "home": "FreakinAndy",
-        "away": "JorDan_AoE"
-    },
-    {
-        "stage": "Militia I",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "18:00",
-        "home": "AluJohn's Kacktapult",
-        "away": "Three Idle Vills"
-    },
-    {
-        "stage": "Man-at-Arms I",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "19:00",
-        "home": "Walls & Camels",
-        "away": "FCBearConversion"
-    },
-    {
-        "stage": "Militia II",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "19:00",
-        "home": "GubbelGubbel 2",
-        "away": "Monk mafia"
-    },
-    {
-        "stage": "Man-at-Arms II",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "19:30",
-        "home": "Idle Time",
-        "away": "LM | Low Elo Legends"
-    },
-    {
-        "stage": "Long Swordsman II",
-        "number": 0,
-        "date": "2026-11-22",
-        "time": "20:30",
-        "home": "Captain Stublas",
-        "away": "Low APM high BMI"
-    },
-    {
         "stage": "Man-at-Arms I",
         "number": 0,
         "date": "2026-11-23",
@@ -72,11 +8,27 @@
         "away": "Egalclan"
     },
     {
+        "stage": "Post-Imperial Liga",
+        "number": 0,
+        "date": "2026-11-24",
+        "time": "18:00",
+        "home": "JoJo_Baum",
+        "away": "[GER] Paeco"
+    },
+    {
         "stage": "Man-at-Arms II",
         "number": 0,
         "date": "2026-11-24",
         "time": "20:30",
         "home": "Team 29 - Rogan",
         "away": "Wahnderer"
+    },
+    {
+        "stage": "Long Swordsman II",
+        "number": 0,
+        "date": "2026-12-02",
+        "time": "19:00",
+        "home": "OIDA | Chuchich\u00e4stli",
+        "away": "Low APM high BMI"
     }
 ]
