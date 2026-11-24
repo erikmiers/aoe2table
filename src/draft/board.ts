@@ -151,9 +151,30 @@ export function snipedMaps(state: DraftState | null): BoardPick[] {
 
 export type WinnerSide = 'HOST' | 'GUEST';
 
+export function guessTeamSize(names: (string | undefined)[]): number {
+    for (const name of names) {
+        const match = name?.match(/\b([1-4])\s*v\s*\1\b/i);
+        if (match) return Number(match[1]);
+    }
+    return 1;
+}
+
+export function parsePlacement(value: string): { mapId: string; slot: number } {
+    const at = value.lastIndexOf('@');
+    if (at === -1) return { mapId: value, slot: 0 };
+    const slot = Number(value.slice(at + 1));
+    if (!Number.isInteger(slot) || slot < 0) return { mapId: value, slot: 0 };
+    return { mapId: value.slice(0, at), slot };
+}
+
+export function formatPlacement(mapId: string, slot: number): string {
+    return slot === 0 ? mapId : `${mapId}@${slot}`;
+}
+
 export interface BoardSave {
     placements: Record<string, string>;
     winners: Record<string, WinnerSide>;
+    teamSize?: number;
 }
 
 export function boardKey(mapId: string, civId: string): string {
@@ -173,6 +194,11 @@ function asStringRecord(value: unknown): Record<string, string> {
     return record;
 }
 
+function teamSizeOf(value: unknown): { teamSize: number } | Record<string, never> {
+    if (value === 1 || value === 2 || value === 3 || value === 4) return { teamSize: value };
+    return {};
+}
+
 export function readBoard(key: string): BoardSave {
     try {
         const raw = localStorage.getItem(key);
@@ -187,7 +213,11 @@ export function readBoard(key: string): BoardSave {
                     if (side === 'HOST' || side === 'GUEST') winners[mapId] = side;
                 }
             }
-            return { placements: asStringRecord(record.placements), winners };
+            return {
+                placements: asStringRecord(record.placements),
+                winners,
+                ...teamSizeOf(record.teamSize),
+            };
         }
         return { placements: asStringRecord(parsed), winners: {} };
     } catch {
@@ -204,11 +234,13 @@ export function prunePlacements(
     placements: Record<string, string>,
     mapIds: Set<string>,
     civIds: Set<string>,
+    teamSize = 4,
 ): Record<string, string> {
     let changed = false;
     const next: Record<string, string> = {};
-    for (const [civId, mapId] of Object.entries(placements)) {
-        if (civIds.has(civId) && mapIds.has(mapId)) next[civId] = mapId;
+    for (const [civId, raw] of Object.entries(placements)) {
+        const { mapId, slot } = parsePlacement(raw);
+        if (civIds.has(civId) && mapIds.has(mapId) && slot < teamSize) next[civId] = raw;
         else changed = true;
     }
     return changed ? next : placements;

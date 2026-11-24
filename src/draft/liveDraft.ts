@@ -2,23 +2,44 @@ import { io, type Socket } from 'socket.io-client';
 import {
     emptyWatched,
     type DraftEvent,
+    type DraftOption,
     type DraftState,
     type WatchedDraft,
 } from './types';
 
 const AOE2CM = 'https://aoe2cm.net';
 
-function asDraftState(data: Partial<DraftState> | null | undefined): DraftState {
+function asDraftState(data: {
+    nameHost?: string;
+    nameGuest?: string;
+    events?: DraftEvent[];
+    preset?: DraftState['preset'] & { pools?: { draftOptions?: DraftOption[] }[] };
+} | null | undefined): DraftState {
     return {
         nameHost: data?.nameHost ?? '',
         nameGuest: data?.nameGuest ?? '',
         events: Array.isArray(data?.events) ? data.events : [],
         preset: {
             name: data?.preset?.name,
-            draftOptions: data?.preset?.draftOptions ?? [],
+            draftOptions: optionsFrom(data?.preset),
             turns: data?.preset?.turns ?? [],
         },
     };
+}
+
+function optionsFrom(preset: {
+    draftOptions?: DraftOption[];
+    pools?: { draftOptions?: DraftOption[] }[];
+} | undefined): DraftOption[] {
+    const direct = preset?.draftOptions ?? [];
+    const pooled = (preset?.pools ?? []).flatMap((pool) => pool.draftOptions ?? []);
+    if (direct.length === 0) return pooled;
+    if (pooled.length === 0) return direct;
+    const byId = new Map<string, DraftOption>();
+    for (const option of [...direct, ...pooled]) {
+        if (!byId.has(option.id)) byId.set(option.id, option);
+    }
+    return [...byId.values()];
 }
 
 function isFinished(state: DraftState): boolean {
