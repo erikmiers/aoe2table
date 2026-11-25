@@ -2,46 +2,6 @@
     {
         "stage": "Division 1",
         "number": 0,
-        "date": "2026-11-24",
-        "time": "09:00",
-        "home": "Benanji",
-        "away": "TheViper"
-    },
-    {
-        "stage": "Post-Imperial Liga",
-        "number": 0,
-        "date": "2026-11-24",
-        "time": "18:00",
-        "home": "JoJo_Baum",
-        "away": "[GER] Paeco"
-    },
-    {
-        "stage": "Long Swordsman I",
-        "number": 0,
-        "date": "2026-11-24",
-        "time": "18:00",
-        "home": "ZitrusZunft",
-        "away": "Siegfried und Roy"
-    },
-    {
-        "stage": "Man-at-Arms II",
-        "number": 0,
-        "date": "2026-11-24",
-        "time": "20:30",
-        "home": "Team 29 - Rogan",
-        "away": "Wahnderer"
-    },
-    {
-        "stage": "Militia I",
-        "number": 0,
-        "date": "2026-11-24",
-        "time": "21:15",
-        "home": "AluJohn's Kacktapult",
-        "away": "Noobelite"
-    },
-    {
-        "stage": "Division 1",
-        "number": 0,
         "date": "2026-11-25",
         "time": "18:00",
         "home": "Target331",
@@ -74,9 +34,33 @@
     {
         "stage": "Long Swordsman II",
         "number": 0,
+        "date": "2026-11-28",
+        "time": "21:00",
+        "home": "No Loom into GG",
+        "away": "MediTrans"
+    },
+    {
+        "stage": "Militia I",
+        "number": 0,
+        "date": "2026-11-29",
+        "time": "18:00",
+        "home": "Three Idle Vills",
+        "away": "The FaMau Dynasty"
+    },
+    {
+        "stage": "Long Swordsman II",
+        "number": 0,
         "date": "2026-12-02",
         "time": "19:00",
         "home": "OIDA | Chuchich\u00e4stli",
         "away": "Low APM high BMI"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-12-07",
+        "time": "20:30",
+        "home": "Team 29 - Rogan",
+        "away": "LM | Low Elo Legends"
     }
 ]
