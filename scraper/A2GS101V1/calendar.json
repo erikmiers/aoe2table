@@ -1,19 +1,11 @@
 [
     {
-        "stage": "Division 1",
+        "stage": "Two-Handed Swordsman II",
         "number": 0,
-        "date": "2026-11-25",
-        "time": "18:00",
-        "home": "Target331",
-        "away": "JorDan_AoE"
-    },
-    {
-        "stage": "Man-at-Arms I",
-        "number": 0,
-        "date": "2026-11-25",
+        "date": "2026-11-26",
         "time": "20:00",
-        "home": "Die Deichkicker",
-        "away": "Walls & Camels"
+        "home": "LamerLegion",
+        "away": "Aktive Stubenhocker"
     },
     {
         "stage": "Two-Handed Swordsman II",
@@ -30,6 +22,14 @@
         "time": "18:00",
         "home": "LM | Shadow Monks",
         "away": "OIDA | Gloated Gamers"
+    },
+    {
+        "stage": "Two-Handed Swordsman II",
+        "number": 0,
+        "date": "2026-11-27",
+        "time": "20:00",
+        "home": "OIDA | Buffalo Soldiers",
+        "away": "Aktive Stubenhocker"
     },
     {
         "stage": "Long Swordsman II",
