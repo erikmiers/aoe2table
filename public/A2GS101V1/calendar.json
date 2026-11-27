@@ -1,21 +1,5 @@
 [
     {
-        "stage": "Two-Handed Swordsman II",
-        "number": 0,
-        "date": "2026-11-26",
-        "time": "20:00",
-        "home": "LamerLegion",
-        "away": "Aktive Stubenhocker"
-    },
-    {
-        "stage": "Two-Handed Swordsman II",
-        "number": 0,
-        "date": "2026-11-26",
-        "time": "21:45",
-        "home": "Lieblingsgegner",
-        "away": "Show Me Your Genitours: Tokyo Drift"
-    },
-    {
         "stage": "Two-Handed Swordsman I",
         "number": 0,
         "date": "2026-11-27",
@@ -46,6 +30,14 @@
         "time": "18:00",
         "home": "Three Idle Vills",
         "away": "The FaMau Dynasty"
+    },
+    {
+        "stage": "Man-at-Arms II",
+        "number": 0,
+        "date": "2026-11-29",
+        "time": "19:00",
+        "home": "Idle Time",
+        "away": "Wahnderer"
     },
     {
         "stage": "Long Swordsman II",
